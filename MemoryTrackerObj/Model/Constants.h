@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 
 NSString* const LEVEL_PATH = @"levelIndex";
-
+NSString* const SOUND_STATE = @"SoundState";
+NSString* const SOUND_TYPE = @".mp3";
 
 #endif /* Constants_h */

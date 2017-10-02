@@ -7,6 +7,7 @@
 //
 
 #import "SoundManager.h"
+#import "Constants.h"
 
 @implementation SoundManager
 
@@ -16,12 +17,12 @@
 - (id) initWith: (NSString*) musicFileName
 {
     self = [super init];
-    [self initPlayer: musicFileName type: @".mp3"];
+    [self initPlayer: musicFileName type: SOUND_TYPE];
     
     // in first launch app value will be nil
-    if ([[NSUserDefaults standardUserDefaults] valueForKey: @"SoundState"] == NULL)
+    if ([[NSUserDefaults standardUserDefaults] valueForKey: SOUND_STATE] == NULL)
     {
-        [[NSUserDefaults standardUserDefaults] setBool: true forKey: @"SoundState"];
+        [[NSUserDefaults standardUserDefaults] setBool: true forKey: SOUND_STATE];
     }
 
     return self;
@@ -29,12 +30,12 @@
 
 - (bool) soundState
 {
-    return [[NSUserDefaults standardUserDefaults] valueForKey: @"SoundState"];
+    return [[NSUserDefaults standardUserDefaults] valueForKey: SOUND_STATE];
 }
 
 - (void) setSoundState: (bool) soundState
 {
-    [[NSUserDefaults standardUserDefaults] setBool: soundState forKey: @"SoundState"];
+    [[NSUserDefaults standardUserDefaults] setBool: soundState forKey: SOUND_STATE];
 }
 
 - (void) initPlayer: (NSString*) name type: (NSString*) type
