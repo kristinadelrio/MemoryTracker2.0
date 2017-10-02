@@ -32,7 +32,7 @@
     return [[NSUserDefaults standardUserDefaults] valueForKey: @"SoundState"];
 }
 
-- (void) setSoundState: (BOOL) soundState
+- (void) setSoundState: (bool) soundState
 {
     [[NSUserDefaults standardUserDefaults] setBool: soundState forKey: @"SoundState"];
 }
