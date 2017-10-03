@@ -35,6 +35,9 @@
                                     <segment title="Hard"/>
                                 </segments>
                                 <color key="tintColor" red="0.18332526090000001" green="0.64323627949999995" blue="0.87216895819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="levelChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uSv-dt-vPX"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wot-AH-GR4">
                                 <rect key="frame" x="327" y="28" width="40" height="40"/>
@@ -43,6 +46,9 @@
                                     <constraint firstAttribute="height" constant="40" id="cbG-w9-cDc"/>
                                 </constraints>
                                 <state key="normal" image="speakerOn"/>
+                                <connections>
+                                    <action selector="changeSoundState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9sf-yr-M3o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxk-eu-cNa">
                                 <rect key="frame" x="279" y="28" width="40" height="40"/>
@@ -89,6 +95,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="levelsSegmentedControl" destination="vLX-Q6-wpc" id="NaT-V4-KGf"/>
+                        <outlet property="soundButton" destination="Wot-AH-GR4" id="5hx-dy-7c9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

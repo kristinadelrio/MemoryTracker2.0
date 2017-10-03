@@ -19,12 +19,13 @@ SoundManager* soundManager;
 
 - (id) init
 {
+    self = [super init];
     soundManager = [[SoundManager alloc] initWith: @"melody"];
     
     // in first launch app value will be nil
-    if ([[NSUserDefaults standardUserDefaults] valueForKey: LEVEL_PATH] == NULL)
+    if ([[NSUserDefaults standardUserDefaults] valueForKey: @"levelIndex"] == NULL)
     {
-        [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey: LEVEL_PATH];
+        [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey: @"levelIndex"];
     }
     
     return self;
@@ -32,12 +33,12 @@ SoundManager* soundManager;
 
 - (int) levelIndex
 {
-    return [[[NSUserDefaults standardUserDefaults] valueForKey: LEVEL_PATH] intValue];
+    return [[[NSUserDefaults standardUserDefaults] valueForKey: @"levelIndex"] intValue];
 }
 
 - (void) setLevelIndex: (int) levelIndex
 {
-    [[NSUserDefaults standardUserDefaults] setInteger: levelIndex forKey: LEVEL_PATH];
+    [[NSUserDefaults standardUserDefaults] setInteger: levelIndex forKey: @"levelIndex"];
 }
 
 - (bool) soundManagerState
@@ -48,6 +49,17 @@ SoundManager* soundManager;
 - (void) setSoundManagerState: (bool) soundState
 {
     soundManager.soundState = soundState;
+}
+
+- (void) playBackgroundMusic
+{
+    [soundManager playMusic];
+}
+
+- (void) stopBackgroundMusic
+{
+    [soundManager stopMusic];
+    
 }
 
 @end
