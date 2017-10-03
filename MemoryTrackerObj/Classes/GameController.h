@@ -10,4 +10,17 @@
 
 @interface GameController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *gameMapContainer;
+@property int timeLimit;
+
+- (void) turnOffpause;
+- (void) turnOnPause: (bool) state;
+- (void) turnToHome;
+- (void) showScore: (int) score;
+- (void) replayGame;
+- (void) gameOver;
+- (void) saveScore;
+
 @end
+
+

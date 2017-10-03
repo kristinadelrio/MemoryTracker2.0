@@ -50,6 +50,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CRY-E2-N9K"/>
                     </view>
+                    <connections>
+                        <outlet property="gameMapContainer" destination="nxe-w6-3x1" id="iq4-qT-DrZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCl-oA-02b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

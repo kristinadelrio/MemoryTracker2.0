@@ -7,31 +7,156 @@
 //
 
 #import "GameController.h"
-
-@interface GameController ()
-
-@end
+#import "PanelControlController.h"
+#import "GameMapController.h"
+#import "GameLogic.h"
 
 @implementation GameController
 
+@synthesize gameMapContainer;
+@synthesize timeLimit;
+
+PanelControlController* panelController;
+GameMapController* gameMapController;
+
+//    var pause = PauseView()
+//    var gameOverView = GameOverView()
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //        logic.presentScore = { [weak self] score in
+    //            self?.showScore(score: score)
+    //        }
+    //
+    //        gameOverView.onRepeatButtTap = { [weak self] in
+    //            self?.resrtartGame()
+    //        }
+    //
+    //        pause.onPauseButtTap = { [weak self] in
+    //            self?.turnOffpause()
+    //        }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) turnOffpause
+{
+    panelController.isPause = false;
+    [panelController changeTimerState];
+    // pause.removeFromSuperview()
 }
 
-/*
-#pragma mark - Navigation
+- (void) turnOnPause: (bool) state
+{
+    if (state)
+    {
+        //            pause.frame = gameMapController.view.frame
+        //            gameContainer.addSubview(pause)
+    }
+    else
+    {
+            //            pause.removeFromSuperview()
+    }
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void) turnToHome
+{
+    GameLogic.sharedLogic.score = 0;
+    [self dismissViewControllerAnimated: true completion: NULL];
+}
+
+- (void) showScore: (int) score
+{
+    [panelController present: score];
+}
+- (void) replayGame
+{
+    //        gameOverView.removeFromSuperview()
+    [panelController stopTimer];
+    panelController.scoreLabel.text = @"0";
+    panelController.timeLabel.text = @"00:00";
+
+    GameLogic.sharedLogic.score = 0;
+    GameLogic.sharedLogic.totalScore = 0;
+    GameLogic.sharedLogic.currentTime = GameLogic.sharedLogic.timeLimit;
+    //        gameMapController.redrawScene()
+    [panelController runTimer];
+}
+- (void) gameOver
+{
+    [panelController stopTimer];
+    //        gameOverView.frame = gameContainer.bounds
+    //        gameContainer.addSubview(gameOverView)
+    if (GameLogic.sharedLogic.totalScore > 0)
+    {
+        [self saveScore];
+    }
+}
+- (void) saveScore
+{
+    //let alert = UIAlertController(title: "Save your score", message: "Input your name here", preferredStyle: .alert)
+    //
+    //        let confirmAction = UIAlertAction(title: "Done", style: .default, handler: { (action) -> Void in
+    //            let nicknameField = alert.textFields?[0]
+    //            let score = UserScore(username: nicknameField?.text ?? "User",
+    //                                  score: Int(GameLogic.shared.totalScore))
+    //
+    //            RatingStorage.shared.saveData(score: score)
+    //        })
+    //
+    //        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil)
+    //
+    //        alert.addTextField { (nicknameField: UITextField) in
+    //            nicknameField.placeholder = "your name is..."
+    //            nicknameField.clearButtonMode = .whileEditing
+    //            nicknameField.keyboardType = .default
+    //            nicknameField.keyboardAppearance = .dark
+    //
+    //            alert.addAction(confirmAction)
+    //            alert.addAction(cancelAction)
+    //
+    //            self.present(alert, animated: true, completion:  nil)
+    //        }
+    //    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"PanelControlControllerSegue"])
+    {
+        panelController = segue.destinationViewController;
+        [self prepareControlPanelController];
+    }
+    else if ([segue.identifier isEqual: @"GameMapControllerSegue"])
+    {
+        gameMapController = segue.destinationViewController;
+        [self prepareGameMapController];
+    }
 }
-*/
 
+- (void) prepareGameMapController
+{
+    //        gameMapController.gameOver = { [weak self] in
+    //            self?.gameOver()
+    //        }
+}
+
+- (void) prepareControlPanelController
+{
+    //        detailsController.onPauseTap = { [weak self] state in
+    //            self?.turnOnPause(state: state)
+    //        }
+    //
+    //        detailsController.onHomeTap = { [weak self] in
+    //            self?.turnToHome()
+    //        }
+    //
+    //        detailsController.timeOver = { [weak self] in
+    //            self?.gameOver()
+    //        }
+    //
+    //        detailsController.onRestartTap = { [weak self] in
+    //            self?.resrtartGame()
+    //        }
+}
 @end
+
+
