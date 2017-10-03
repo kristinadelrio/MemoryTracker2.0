@@ -8,11 +8,11 @@
 
 #import "GameMapController.h"
 #import "GameLogic.h"
+#import "MapManager.h"
 
 @implementation GameMapController
 
-//    var mapManager = MapManager()
-
+MapManager* mapManager;
 NSMutableArray<CardView*>* openedCards;
 
 //    var gameOver: (()->())?
@@ -23,9 +23,10 @@ NSMutableArray<CardView*>* openedCards;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initializateGameScene];
+    mapManager = [[MapManager alloc] init];
     openedCards = [openedCards init];
-    
+    [self initializateGameScene];
+
     //        logic.closeIfNeeded = { [weak self] in
     //            self?.closeCard()
     //        }
@@ -38,7 +39,7 @@ NSMutableArray<CardView*>* openedCards;
 - (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index
 {
     CardView* card = [[CardView alloc] initWithFrame: rect];
-    card.cardFace = [UIImage imageNamed: @"ff"]; //// "\(mapManager.imageName[imageIndex])"
+    card.cardFace = [UIImage imageNamed: mapManager.pokemonsImages[index]];
     [card turnToCardFace];
     
     UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]
@@ -94,7 +95,7 @@ NSMutableArray<CardView*>* openedCards;
     }
 
     openedCards = NULL;
-    // mapManager.shuffleImages()
+    [mapManager shuffleImages];
     [self initializateGameScene];
 }
 - (void) initializateGameScene

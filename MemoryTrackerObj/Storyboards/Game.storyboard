@@ -192,6 +192,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EVs-pk-bRV"/>
                     </view>
+                    <connections>
+                        <outlet property="gameScene" destination="YNr-Nk-L2x" id="IXe-am-AbB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unu-JV-Jsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
