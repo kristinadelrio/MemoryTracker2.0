@@ -9,8 +9,8 @@
 #ifndef GameLogic_h
 #define GameLogic_h
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "CardView.h"
 
 @interface GameLogic: NSObject
 
@@ -21,42 +21,11 @@
 
 @property int timeLimit;
 @property int currentTime;
-//func setTimeLimit(time: Double) {
 
 - (void) setTimeLimit: (int) time;
-//- (void) isCardSimilarFirst: (CardView) cardOne and: (CardView) cardTwo;
+- (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo;
 - (void) updateScore;
 
 @end
 
-//// Works with game map
-//var closeIfNeeded: (()->())?
-//var deleteCards: (()->())?
-//
-//// Works with control panel
-//var presentScore: ((Double)->())?
-
-//func setTimeLimit(time: Double) {
-//    currentTime = time
-//    timeLimit = time
-//}
-//
-//// Checks if card similar
-//func isCardSimilar(cardOne: CardView, cardTwo: CardView) {
-//    if cardOne.image == cardTwo.image {
-//        score += 25
-//        deleteCards?()
-//    } else {
-//        score -= 5
-//        closeIfNeeded?()
-//    }
-//
-//    updateScore()
-//}
-//
-//// Sends current score
-//func updateScore() {
-//    totalScore = score * 100 * currentTime / timeLimit
-//    presentScore?(totalScore)
-//}
 #endif /* GameLogic_h */
