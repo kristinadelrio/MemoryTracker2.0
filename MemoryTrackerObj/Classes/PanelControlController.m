@@ -10,13 +10,6 @@
 #import "GameLogic.h"
 #import "NSTImemeIntervalToString.h"
 
-@interface PanelControlController ()
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-
-@end
-
 @implementation PanelControlController
 
 @synthesize isPause;

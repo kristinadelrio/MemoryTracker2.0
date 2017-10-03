@@ -116,6 +116,9 @@
                                     <constraint firstAttribute="width" secondItem="agX-dw-qZs" secondAttribute="height" multiplier="1:1" id="j9k-dJ-WD6"/>
                                 </constraints>
                                 <state key="normal" image="home"/>
+                                <connections>
+                                    <action selector="backToHome:" destination="Kuk-KW-Itb" eventType="touchUpInside" id="g2v-FL-aLD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-rJ-ysg">
                                 <rect key="frame" x="299" y="8" width="30" height="30"/>
@@ -124,10 +127,16 @@
                                     <constraint firstAttribute="width" constant="30" id="sAx-kj-Dsf"/>
                                 </constraints>
                                 <state key="normal" image="pause"/>
+                                <connections>
+                                    <action selector="pauseGame:" destination="Kuk-KW-Itb" eventType="touchUpInside" id="WAk-JY-fCC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0R-mN-ZHa">
                                 <rect key="frame" x="261" y="8" width="30" height="30"/>
                                 <state key="normal" image="replay"/>
+                                <connections>
+                                    <action selector="restartGame:" destination="Kuk-KW-Itb" eventType="touchUpInside" id="ltu-79-fyI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -145,6 +154,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fyd-ZO-ygz"/>
                     </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="Ych-s2-vaq" id="CKB-jZ-2IP"/>
+                        <outlet property="timeLabel" destination="26g-2q-ABO" id="U5n-tv-2vW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0i-yw-LRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

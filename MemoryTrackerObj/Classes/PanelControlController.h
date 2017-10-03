@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface PanelControlController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property bool isTimerRunning;
 @property bool isPause;
+
+
+- (IBAction) restartGame: (UIButton *) sender;
+- (IBAction) pauseGame: (UIButton *) sender;
+- (IBAction) backToHome: (UIButton *) sender;
+
 
 - (void) present: (int) score;
 - (void) presentTimer;
