@@ -32,6 +32,15 @@ MenuManager* menuManager;
     [self setLevelWith: menuManager.levelIndex];
 }
 
+- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+{
+    if ([segue.identifier  isEqual: @"GameControllerSegue"] && segue.description != NULL)
+    {
+        // Level level = (int) levelsSegmentedControl.selectedSegmentIndex;
+        // GameLogic.shared.setTimeLimit(time: timeLimit(with: level))
+    }
+}
+
 - (IBAction) changeSoundState: (UIButton *) sender
 {
     menuManager.soundManagerState = !menuManager.soundManagerState;
@@ -77,15 +86,6 @@ MenuManager* menuManager;
 }
 
 @end
-
-
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "GameControllerSegue", let _ = segue.destination as? GameController {
-//            let level = Level(rawValue: levelControl.selectedSegmentIndex) ?? Level.easy
-//            GameLogic.shared.setTimeLimit(time: timeLimit(with: level))
-//        }
-//    }
 
 
 
