@@ -17,7 +17,6 @@
 {
     self = [super init];
     
-    
     [self initPlayer: musicFileName type: @"mp3"];
     
     // in first launch app value will be nil
@@ -41,15 +40,8 @@
 
 - (void) initPlayer: (NSString*) name type: (NSString*) type
 {
-    
     NSURL* url = [[NSBundle mainBundle] URLForResource: name withExtension: type];
-
-    //NSString *resourcePath = [[NSBundle mainBundle] pathForResource: @"melody" ofType: @"mp3"];
-    //NSURL* url = [[NSURL alloc] initWithString: resourcePath];
-    
     player = [[AVAudioPlayer alloc] initWithContentsOfURL: url error: NULL];
-    
-    
 }
 
 - (void) playMusic
