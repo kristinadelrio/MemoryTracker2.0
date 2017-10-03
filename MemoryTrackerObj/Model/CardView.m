@@ -23,14 +23,14 @@
 }
 
 /// Makes card back visible
-- (void) turnOnCardBack
+- (void) turnToCardBack
 {
     [self setImageAttributes: UIViewContentModeScaleAspectFit : [UIColor whiteColor] : true];
     [self setImage: cardBack];
 }
 
 /// Makes card face visible
-- (void) turnOnCardFace
+- (void) turnToCardFace
 {
     [self setImageAttributes: UIViewContentModeScaleAspectFit : [UIColor whiteColor] : true];
     [self setImage: cardFace];

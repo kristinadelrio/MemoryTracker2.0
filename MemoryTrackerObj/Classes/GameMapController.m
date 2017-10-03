@@ -7,31 +7,143 @@
 //
 
 #import "GameMapController.h"
-
-@interface GameMapController ()
-
-@end
+#import "GameLogic.h"
 
 @implementation GameMapController
 
+//    var mapManager = MapManager()
+
+NSMutableArray<CardView*>* openedCards;
+
+//    var gameOver: (()->())?
+
+@synthesize gameScene;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self initializateGameScene];
+    openedCards = [openedCards init];
+    
+    //        logic.closeIfNeeded = { [weak self] in
+    //            self?.closeCard()
+    //        }
+    //
+    //        logic.deleteCards = { [weak self] in
+    //            self?.deleteCard()
+    //        }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index
+{
+    CardView* card = [[CardView alloc] initWithFrame: rect];
+    card.cardFace = [UIImage imageNamed: @"ff"]; //// "\(mapManager.imageName[imageIndex])"
+    [card turnToCardFace];
+    
+    UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]
+                                          initWithTarget: self
+                                          action: @selector(onCardTap:)];
+
+    [card addGestureRecognizer:recognizer];
+    [gameScene addSubview:card];
+    
+    return card;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) putCardsOnTheDeskWithRawCount: (int) raws andColumns: (int) columns
+{
+    CGFloat xPos = 0;
+    CGFloat yPos = 0;
+    
+    for (int i = 0; i < raws * columns; i++)
+    {
+        CGRect rect = CGRectMake(xPos, yPos,
+                                  gameScene.bounds.size.width / columns,
+                                  gameScene.bounds.size.height / raws);
+        
+        [gameScene addSubview:[self generateCardWith: rect andImgIndex: i]];
+        xPos += gameScene.bounds.size.width / columns;
+        
+        if (xPos == gameScene.bounds.size.width)
+        {
+            yPos += gameScene.bounds.size.height / raws;
+            xPos = 0;
+        }
+        
+    }
 }
-*/
 
+- (void) hideCardFace
+{
+    for (id subview in gameScene.subviews)
+    {
+        if ([subview isKindOfClass: [CardView class]])
+        {
+            CardView* card = subview;
+            [card turnToCardBack];
+        }
+    }
+}
+
+- (void) redrawScene
+{
+    for (UIView *subview in gameScene.subviews)
+    {
+        [subview removeFromSuperview];
+    }
+
+    openedCards = NULL;
+    // mapManager.shuffleImages()
+    [self initializateGameScene];
+}
+- (void) initializateGameScene
+{
+    [self putCardsOnTheDeskWithRawCount: 5 andColumns: 4];
+    [NSTimer scheduledTimerWithTimeInterval: 2 repeats: false block: ^(NSTimer *timer) {
+        [self hideCardFace];
+    }];
+}
+
+- (void) onCardTap: (UITapGestureRecognizer*) sender
+{
+    if ([sender.view isKindOfClass: [CardView class]])
+    {
+        CardView* card = (CardView*) sender.view;
+        if (card.image == card.cardBack)
+        {
+            if (openedCards.count == 2)
+            {
+                [GameLogic.sharedLogic isCardSimilarFirst:openedCards[0] and: openedCards[1]];
+            }
+
+            [card turnToCardFace];
+            [openedCards addObject: card];
+            [self isGameSceneEmpty];
+        }
+    }
+}
+
+- (void) closeCard
+{
+    [openedCards[0] turnToCardBack];
+    [openedCards[1] turnToCardFace];
+    
+    openedCards = NULL;
+}
+- (void) deleteCard
+{
+    [openedCards[0] removeFromSuperview];
+    [openedCards[1] removeFromSuperview];
+    
+    openedCards = NULL;
+}
+- (void) isGameSceneEmpty
+{
+    if (gameScene.subviews.count == 2)
+    {
+    // gameOver?()
+    }
+}
 @end
+

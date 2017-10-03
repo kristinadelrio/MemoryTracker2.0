@@ -14,8 +14,8 @@
 @property UIImage* cardFace;
 
 - (id) init;
-- (void) turnOnCardBack;
-- (void) turnOnCardFace;
+- (void) turnToCardBack;
+- (void) turnToCardFace;
 - (void) setImageAttributes: (UIViewContentMode) mode : (UIColor*) color : (bool) userInteraction;
 
 @end
