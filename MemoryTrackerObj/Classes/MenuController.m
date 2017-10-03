@@ -7,7 +7,8 @@
 //
 
 #import "MenuController.h"
-#import "MenuManager.h"
+#include "MenuManager.h"
+#include "GameLogic.h"
 
 @interface MenuController ()
 
@@ -36,8 +37,8 @@ MenuManager* menuManager;
 {
     if ([segue.identifier  isEqual: @"GameControllerSegue"] && segue.description != NULL)
     {
-        // Level level = (int) levelsSegmentedControl.selectedSegmentIndex;
-        // GameLogic.shared.setTimeLimit(time: timeLimit(with: level))
+        Level level = (int) levelsSegmentedControl.selectedSegmentIndex;
+        [GameLogic.sharedLogic setTimeLimit: level];
     }
 }
 

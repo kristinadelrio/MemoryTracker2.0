@@ -16,7 +16,7 @@
 @synthesize score;
 @synthesize totalScore;
 
-+ (id) sharedLogic {
++ (GameLogic*) sharedLogic {
     static GameLogic* sharedLogic = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -28,7 +28,10 @@
 
 - (id) init {
     self = [super init];
-    //someProperty = [[NSString alloc] initWithString:@"Default Property Value"];
+    
+    timeLimit = 60;
+    currentTime = timeLimit;
+    score = totalScore = 0;
     
     return self;
 }

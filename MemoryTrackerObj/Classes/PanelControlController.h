@@ -10,4 +10,13 @@
 
 @interface PanelControlController : UIViewController
 
+@property bool isTimerRunning;
+@property bool isPause;
+
+- (void) present: (int) score;
+- (void) presentTimer;
+- (void) runTimer;
+- (void) stopTimer;
+- (void) changeTimerState;
+
 @end
