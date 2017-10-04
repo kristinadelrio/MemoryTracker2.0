@@ -26,6 +26,7 @@
 		A9BE3F411F82C1700053F5D5 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F401F82C1700053F5D5 /* GameController.m */; };
 		A9BE3F4E1F82E0610053F5D5 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */; };
 		A9BE3F511F82E1280053F5D5 /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F501F82E1280053F5D5 /* MenuManager.m */; };
+		A9E051CA1F856ED80052322F /* WinnerData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051C91F856ED80052322F /* WinnerData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,8 @@
 		A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		A9BE3F4F1F82E11B0053F5D5 /* MenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuManager.h; sourceTree = "<group>"; };
 		A9BE3F501F82E1280053F5D5 /* MenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuManager.m; sourceTree = "<group>"; };
+		A9E051C81F856DB50052322F /* WinnerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WinnerData.h; sourceTree = "<group>"; };
+		A9E051C91F856ED80052322F /* WinnerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WinnerData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				A9397BC21F836D45004E85B7 /* CardView.m */,
 				A992B1441F8417D900DADE7C /* MapManager.h */,
 				A992B1451F841B5000DADE7C /* MapManager.m */,
+				A9E051C81F856DB50052322F /* WinnerData.h */,
+				A9E051C91F856ED80052322F /* WinnerData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */,
 				A9397BC31F836D45004E85B7 /* CardView.m in Sources */,
 				A932F9821F82B8DF00F0133D /* MenuController.m in Sources */,
+				A9E051CA1F856ED80052322F /* WinnerData.m in Sources */,
 				A9BE3F3B1F82C13B0053F5D5 /* PanelControlController.m in Sources */,
 				A9BE3F3E1F82C14D0053F5D5 /* GameMapController.m in Sources */,
 				A932F98D1F82B8DF00F0133D /* main.m in Sources */,
