@@ -1,4 +1,4 @@
- //
+//
 //  GameMapController.m
 //  MemoryTrackerObj
 //
@@ -14,9 +14,7 @@
 
 MapManager* mapManager;
 
-// /////////// наплутано
-NSMutableArray<CardView*>* openedCards;
-// /////////// наплутано
+NSMutableArray* openedCards;
 
 @synthesize gameScene;
 @synthesize gameOver;
@@ -25,10 +23,10 @@ NSMutableArray<CardView*>* openedCards;
     [super viewDidLoad];
     
     mapManager = [[MapManager alloc] init];
-    openedCards = [[NSMutableArray alloc] init];
+    openedCards = [[NSMutableArray alloc] initWithCapacity:2];
     
     [self initializateGameScene];
-
+    
     __weak typeof(self) weakSelf = self;
     GameLogic.sharedLogic.closeIfNeeded = ^{
         [weakSelf closeCard];
@@ -48,7 +46,7 @@ NSMutableArray<CardView*>* openedCards;
     UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]
                                           initWithTarget: self
                                           action: @selector(onCardTap:)];
-
+    
     [card addGestureRecognizer:recognizer];
     [gameScene addSubview:card];
     
@@ -61,8 +59,8 @@ NSMutableArray<CardView*>* openedCards;
     
     for (int i = 0; i < raws * columns; i++) {
         CGRect rect = CGRectMake(xPos, yPos,
-                                  gameScene.bounds.size.width / columns,
-                                  gameScene.bounds.size.height / raws);
+                                 gameScene.bounds.size.width / columns,
+                                 gameScene.bounds.size.height / raws);
         
         [gameScene addSubview:[self generateCardWith: rect andImgIndex: i]];
         xPos += gameScene.bounds.size.width / columns;
@@ -87,9 +85,8 @@ NSMutableArray<CardView*>* openedCards;
     for (UIView *subview in gameScene.subviews) {
         [subview removeFromSuperview];
     }
-/////////////////////////////
-    openedCards = NULL;
-    //[openedCards dele]
+    
+    [openedCards removeAllObjects];
     [mapManager shuffleImages];
     [self initializateGameScene];
 }
@@ -108,7 +105,7 @@ NSMutableArray<CardView*>* openedCards;
             if (openedCards.count == 2) {
                 [GameLogic.sharedLogic isCardSimilarFirst:openedCards[0] and: openedCards[1]];
             }
-
+            
             [card turnToCardFace];
             [openedCards addObject: card];
             [self isGameSceneEmpty];
@@ -118,15 +115,16 @@ NSMutableArray<CardView*>* openedCards;
 
 - (void) closeCard {
     [openedCards[0] turnToCardBack];
-    [openedCards[1] turnToCardFace];
+    [openedCards[1] turnToCardBack];
     
-    openedCards = NULL;
+    [openedCards removeAllObjects];
 }
+
 - (void) deleteCard {
     [openedCards[0] removeFromSuperview];
     [openedCards[1] removeFromSuperview];
     
-    openedCards = NULL;
+    [openedCards removeAllObjects];
 }
 - (void) isGameSceneEmpty {
     if (gameScene.subviews.count == 2 && gameOver) {

@@ -48,7 +48,9 @@
 }
 
 - (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo {
-    if (cardOne.image == cardTwo.image) {
+    if ([UIImagePNGRepresentation(cardOne.image) isEqual:
+         UIImagePNGRepresentation(cardTwo.image)]) {
+        
         score += 25;
         if (deleteCards) {
             deleteCards();
