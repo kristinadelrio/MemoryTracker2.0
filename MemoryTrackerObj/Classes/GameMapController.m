@@ -13,7 +13,10 @@
 @implementation GameMapController
 
 MapManager* mapManager;
+
+// /////////// наплутано
 NSMutableArray<CardView*>* openedCards;
+// /////////// наплутано
 
 @synthesize gameScene;
 @synthesize gameOver;
@@ -22,16 +25,17 @@ NSMutableArray<CardView*>* openedCards;
     [super viewDidLoad];
     
     mapManager = [[MapManager alloc] init];
-    openedCards = [openedCards init];
+    openedCards = [[NSMutableArray alloc] init];
+    
     [self initializateGameScene];
 
-    //        logic.closeIfNeeded = { [weak self] in
-    //            self?.closeCard()
-    //        }
-    //
-    //        logic.deleteCards = { [weak self] in
-    //            self?.deleteCard()
-    //        }
+    GameLogic.sharedLogic.closeIfNeeded = ^{
+        [self closeCard];
+    };
+    
+    GameLogic.sharedLogic.deleteCards = ^{
+        [self deleteCard];
+    };
 }
 
 - (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index {

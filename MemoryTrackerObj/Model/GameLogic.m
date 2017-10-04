@@ -13,8 +13,13 @@
 
 @synthesize timeLimit;
 @synthesize currentTime;
+
 @synthesize score;
 @synthesize totalScore;
+
+@synthesize closeIfNeeded;
+@synthesize presentScore;
+@synthesize deleteCards;
 
 + (GameLogic*) sharedLogic {
     static GameLogic* sharedLogic = nil;
@@ -44,10 +49,15 @@
 - (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo {
     if (cardOne.image == cardTwo.image) {
         score += 25;
-        //        deleteCards?()
+        if (deleteCards) {
+            deleteCards();
+        }
+        
     } else {
         score -= 5;
-        //        closeIfNeeded?()
+        if (closeIfNeeded) {
+            closeIfNeeded();
+        }
     }
     
     [self updateScore];
@@ -55,16 +65,12 @@
 
 - (void) updateScore {
     self.totalScore = score * 100 * currentTime / timeLimit;
-    //    presentScore?(totalScore)
+    if (presentScore) {
+        presentScore(totalScore);
+    }
 }
 
 @end
 
-//// Works with game map
-//var closeIfNeeded: (()->())?
-//var deleteCards: (()->())?
-//
-//// Works with control panel
-//var presentScore: ((Double)->())?
 
 

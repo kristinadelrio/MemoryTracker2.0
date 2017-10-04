@@ -25,10 +25,10 @@ GameMapController* gameMapController;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //        logic.presentScore = { [weak self] score in
-    //            self?.showScore(score: score)
-    //        }
-    //
+    GameLogic.sharedLogic.presentScore = ^(int score) {
+        [self showScore: score];
+    };
+    
     //        gameOverView.onRepeatButtTap = { [weak self] in
     //            self?.resrtartGame()
     //        }
@@ -63,6 +63,7 @@ GameMapController* gameMapController;
 - (void) showScore: (int) score {
     [panelController present: score];
 }
+
 - (void) replayGame {
     //        gameOverView.removeFromSuperview()
     [panelController stopTimer];
@@ -75,6 +76,7 @@ GameMapController* gameMapController;
     [gameMapController redrawScene];
     [panelController runTimer];
 }
+
 - (void) gameOver {
     [panelController stopTimer];
     //        gameOverView.frame = gameContainer.bounds
@@ -113,7 +115,7 @@ GameMapController* gameMapController;
     //    }
 }
 
-- (void)prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender {
+- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender {
     if ([segue.identifier  isEqual: @"PanelControlControllerSegue"]) {
         panelController = segue.destinationViewController;
         [self prepareControlPanelController];
