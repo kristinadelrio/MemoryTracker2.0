@@ -15,6 +15,10 @@
 @property bool isTimerRunning;
 @property bool isPause;
 
+@property void  (^onRestartTap)(void);
+@property void (^onPauseTap)(bool);
+@property void (^onHomeTap)(void);
+@property void (^timeOver)(void);
 
 - (IBAction) restartGame: (UIButton *) sender;
 - (IBAction) pauseGame: (UIButton *) sender;

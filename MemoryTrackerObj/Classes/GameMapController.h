@@ -11,6 +11,7 @@
 
 @interface GameMapController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *gameScene;
+@property void (^gameOver)(void);
 
 - (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index;
 - (void) putCardsOnTheDeskWithRawCount: (int) raws andColumns: (int) columns; // 5 and 4

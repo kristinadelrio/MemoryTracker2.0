@@ -17,67 +17,68 @@
 @synthesize scoreLabel;
 @synthesize timeLabel;
 
+@synthesize onHomeTap;
+@synthesize onPauseTap;
+@synthesize onRestartTap;
+@synthesize timeOver;
+
 NSTimer* timer;
 
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
     [super viewDidLoad];
     
     isPause = false;
     isTimerRunning = false;
 }
-- (IBAction) restartGame: (UIButton *) sender
-{
-    //        onRestartTap?()
+- (IBAction) restartGame: (UIButton *) sender {
+    if (onRestartTap != NULL) {
+        onRestartTap();
+    }
 }
 
-- (IBAction) pauseGame: (UIButton *) sender
-{
+- (IBAction) pauseGame: (UIButton *) sender {
     isPause = !isPause;
     [self changeTimerState];
-    //        onPauseTap?(isPause)
+    
+    if (onPauseTap != NULL) {
+        onPauseTap(isPause);
+    }
 }
-- (IBAction) backToHome: (UIButton *) sender
-{
-    //        onHomeTap?()
+- (IBAction) backToHome: (UIButton *) sender {
+    if (onHomeTap != NULL) {
+        onHomeTap();
+    }
 }
 
-- (void) viewWillAppear: (BOOL) animated
-{
+- (void) viewWillAppear: (BOOL) animated {
     [super viewWillAppear:animated];
     [self runTimer];
 }
 
-- (void) viewWillDisappear: (BOOL) animated
-{
+- (void) viewWillDisappear: (BOOL) animated {
     [super viewWillDisappear:animated];
     [self stopTimer];
 }
 
-- (void) present: (int) score
-{
+- (void) present: (int) score {
     scoreLabel.text = [[NSNumber numberWithInt: score] stringValue];
 }
 
-- (void) presentTimer
-{
-    
-    if (GameLogic.sharedLogic.currentTime < 1)
-    {
+- (void) presentTimer {
+    if (GameLogic.sharedLogic.currentTime < 1) {
         [timer invalidate];
-            //            timeOver?()
-    }
-    else
-    {
+        
+        if (timeOver != NULL) {
+            timeOver();
+        }
+    } else {
         GameLogic.sharedLogic.currentTime -= 1;
         NSString* time = [NSTImemeIntervalToString toString: GameLogic.sharedLogic.currentTime];
         timeLabel.text = time;
     }
-
 }
 
-- (void) runTimer
-{
+- (void) runTimer {
     timer = [NSTimer scheduledTimerWithTimeInterval: 1
                                              target: self
                                            selector: @selector(presentTimer)
@@ -86,21 +87,14 @@ NSTimer* timer;
     isTimerRunning = true;
 }
 
-- (void) stopTimer
-{
+- (void) stopTimer {
     [timer invalidate];
     isTimerRunning = false;
 }
-- (void) changeTimerState
-{
+
+- (void) changeTimerState {
     isTimerRunning && isPause ? [self stopTimer] : [self runTimer];
 }
 
 @end
-
-//    var onPauseTap: ((Bool)->())?
-//    var onHomeTap: (()->())?
-//    var onRestartTap: (()->())?
-//    var timeOver: (()->())?
-
 
