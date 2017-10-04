@@ -36,21 +36,16 @@
     return self;
 }
 
-- (void) initTimeLimit: (int) time
-{
+- (void) initTimeLimit: (int) time {
     currentTime = time;
     timeLimit = time;
 }
 
-- (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo
-{
-    if (cardOne.image == cardTwo.image)
-    {
+- (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo {
+    if (cardOne.image == cardTwo.image) {
         score += 25;
         //        deleteCards?()
-    }
-    else
-    {
+    } else {
         score -= 5;
         //        closeIfNeeded?()
     }
@@ -58,8 +53,7 @@
     [self updateScore];
 }
 
-- (void) updateScore
-{
+- (void) updateScore {
     self.totalScore = score * 100 * currentTime / timeLimit;
     //    presentScore?(totalScore)
 }

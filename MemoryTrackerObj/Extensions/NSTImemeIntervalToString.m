@@ -10,8 +10,7 @@
 
 @implementation NSTImemeIntervalToString
 
-+ (NSString*) toString: (NSTimeInterval) time
-{
++ (NSString*) toString: (NSTimeInterval) time {
     int minutes = (int) time / 60 % 60;
     int seconds = (int) time % 60;
     

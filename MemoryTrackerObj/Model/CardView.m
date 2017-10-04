@@ -13,8 +13,7 @@
 @synthesize cardBack;
 @synthesize cardFace;
 
-- (id) initWithFrame: (CGRect) frame
-{
+- (id) initWithFrame: (CGRect) frame {
     self = [super initWithFrame: frame];
     
     cardBack = [UIImage imageNamed: @"card"];
@@ -23,22 +22,19 @@
 }
 
 /// Makes card back visible
-- (void) turnToCardBack
-{
+- (void) turnToCardBack {
     [self setImageAttributes: UIViewContentModeScaleToFill : [UIColor whiteColor] : true];
     [self setImage: cardBack];
 }
 
 /// Makes card face visible
-- (void) turnToCardFace
-{
+- (void) turnToCardFace {
     [self setImageAttributes: UIViewContentModeScaleAspectFit : [UIColor whiteColor] : true];
     [self setImage: cardFace];
 }
 
 /// Sets attributes for image
-- (void) setImageAttributes: (UIViewContentMode) mode : (UIColor*) color : (bool) userInteraction
-{
+- (void) setImageAttributes: (UIViewContentMode) mode : (UIColor*) color : (bool) userInteraction {
     [self setUserInteractionEnabled: userInteraction];
     self.backgroundColor = color;
     self.contentMode = mode;

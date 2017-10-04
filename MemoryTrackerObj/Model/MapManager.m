@@ -15,8 +15,7 @@ const int kCountElements = 10;
 
 @synthesize pokemonsImages;
 
-- (id) init
-{
+- (id) init {
     self = [super init];
     pokemonsImages = [[NSMutableArray alloc] init];
     [self fillPokemonsArray];
@@ -25,8 +24,7 @@ const int kCountElements = 10;
     return self;
 }
 
-- (void) fillPokemonsArray
-{
+- (void) fillPokemonsArray {
     for (int i = 0; i < kCountElements; i++)
     {
         NSNumber* num =  [[NSNumber alloc] initWithInt: i + 1];
@@ -35,8 +33,7 @@ const int kCountElements = 10;
     }
 }
 
-- (void) shuffleImages
-{
+- (void) shuffleImages {
     for (int i = 0; i < pokemonsImages.count; i++) {
         int randomInt1 = arc4random() % [pokemonsImages count];
         int randomInt2 = arc4random() % [pokemonsImages count];

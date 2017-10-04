@@ -13,8 +13,7 @@
 @synthesize soundState;
 @synthesize player;
 
-- (id) initWith: (NSString*) musicFileName
-{
+- (id) initWith: (NSString*) musicFileName {
     self = [super init];
     
     [self initPlayer: musicFileName type: @"mp3"];
@@ -28,29 +27,24 @@
     return self;
 }
 
-- (bool) soundState
-{
+- (bool) soundState {
     return [[[NSUserDefaults standardUserDefaults] valueForKey: @"SoundState"] boolValue];;
 }
 
-- (void) setSoundState: (bool) soundState
-{
+- (void) setSoundState: (bool) soundState {
     [[NSUserDefaults standardUserDefaults] setBool: soundState forKey: @"SoundState"];
 }
 
-- (void) initPlayer: (NSString*) name type: (NSString*) type
-{
+- (void) initPlayer: (NSString*) name type: (NSString*) type {
     NSURL* url = [[NSBundle mainBundle] URLForResource: name withExtension: type];
     player = [[AVAudioPlayer alloc] initWithContentsOfURL: url error: NULL];
 }
 
-- (void) playMusic
-{
+- (void) playMusic {
     [player play];
 }
 
-- (void) stopMusic
-{
+- (void) stopMusic {
     [player stop];
 }
 
