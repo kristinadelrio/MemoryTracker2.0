@@ -13,11 +13,11 @@
 @synthesize cardBack;
 @synthesize cardFace;
 
-- (id) init
+- (id) initWithFrame: (CGRect) frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     
-    cardBack = [UIImage imageNamed:@"card"];
+    cardBack = [UIImage imageNamed: @"card"];
     
     return self;
 }

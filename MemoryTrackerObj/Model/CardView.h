@@ -13,7 +13,7 @@
 @property UIImage* cardBack;
 @property UIImage* cardFace;
 
-- (id) init;
+- (id) initWithFrame: (CGRect) frame;
 - (void) turnToCardBack;
 - (void) turnToCardFace;
 - (void) setImageAttributes: (UIViewContentMode) mode : (UIColor*) color : (bool) userInteraction;

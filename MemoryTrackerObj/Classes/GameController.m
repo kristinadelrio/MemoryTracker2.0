@@ -78,7 +78,7 @@ GameMapController* gameMapController;
     GameLogic.sharedLogic.score = 0;
     GameLogic.sharedLogic.totalScore = 0;
     GameLogic.sharedLogic.currentTime = GameLogic.sharedLogic.timeLimit;
-    //        gameMapController.redrawScene()
+    [gameMapController redrawScene];
     [panelController runTimer];
 }
 - (void) gameOver
@@ -93,6 +93,8 @@ GameMapController* gameMapController;
 }
 - (void) saveScore
 {
+    //UIAlertController* scoreAlert = [[UIAlertController alloc] init]
+    
     //let alert = UIAlertController(title: "Save your score", message: "Input your name here", preferredStyle: .alert)
     //
     //        let confirmAction = UIAlertAction(title: "Done", style: .default, handler: { (action) -> Void in

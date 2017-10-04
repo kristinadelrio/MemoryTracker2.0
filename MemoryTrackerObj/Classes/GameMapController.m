@@ -1,4 +1,4 @@
-//
+ //
 //  GameMapController.m
 //  MemoryTrackerObj
 //
@@ -39,7 +39,8 @@ NSMutableArray<CardView*>* openedCards;
 - (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index
 {
     CardView* card = [[CardView alloc] initWithFrame: rect];
-    card.cardFace = [UIImage imageNamed: mapManager.pokemonsImages[index]];
+    NSString* imgName =  [@([mapManager.pokemonsImages[index] intValue]) stringValue];
+    card.cardFace = [UIImage imageNamed: imgName];
     [card turnToCardFace];
     
     UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]
@@ -71,7 +72,6 @@ NSMutableArray<CardView*>* openedCards;
             yPos += gameScene.bounds.size.height / raws;
             xPos = 0;
         }
-        
     }
 }
 
