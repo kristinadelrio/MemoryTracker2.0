@@ -17,7 +17,6 @@
 
 SoundManager* soundManager;
 
-
 - (id) init {
     self = [super init];
     soundManager = [[SoundManager alloc] initWith: @"melody"];
@@ -31,31 +30,25 @@ SoundManager* soundManager;
     return self;
 }
 
-
 - (int) levelIndex {
     return [[[NSUserDefaults standardUserDefaults] valueForKey: @"levelIndex"] intValue];
 }
-
 
 - (void) setLevelIndex: (int) levelIndex {
     [[NSUserDefaults standardUserDefaults] setInteger: levelIndex forKey: @"levelIndex"];
 }
 
-
 - (bool) soundManagerState {
     return soundManager.soundState;
 }
-
 
 - (void) setSoundManagerState: (bool) soundState {
     soundManager.soundState = soundState;
 }
 
-
 - (void) playBackgroundMusic {
     [soundManager playMusic];
 }
-
 
 - (void) stopBackgroundMusic {
     [soundManager stopMusic];
