@@ -15,7 +15,7 @@
 
 - (id) initWithFrame: (CGRect) frame
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame: frame];
     
     cardBack = [UIImage imageNamed: @"card"];
     
@@ -25,7 +25,7 @@
 /// Makes card back visible
 - (void) turnToCardBack
 {
-    [self setImageAttributes: UIViewContentModeScaleAspectFit : [UIColor whiteColor] : true];
+    [self setImageAttributes: UIViewContentModeScaleToFill : [UIColor whiteColor] : true];
     [self setImage: cardBack];
 }
 
@@ -39,7 +39,7 @@
 /// Sets attributes for image
 - (void) setImageAttributes: (UIViewContentMode) mode : (UIColor*) color : (bool) userInteraction
 {
-    [self setUserInteractionEnabled:userInteraction];
+    [self setUserInteractionEnabled: userInteraction];
     self.backgroundColor = color;
     self.contentMode = mode;
 }

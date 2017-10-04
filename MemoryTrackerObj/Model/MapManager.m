@@ -37,11 +37,11 @@ const int kCountElements = 10;
 
 - (void) shuffleImages
 {
-//    for (int i = 0; i < kCountElements - 1; i++) {
-//        int remainingCount = kCountElements - i;
-//        int exchangeIndex = i + arc4random_uniform((u_int32_t) remainingCount);
-//        [pokemonsImages exchangeObjectAtIndex: i withObjectAtIndex: exchangeIndex];
-//    }
+    for (int i = 0; i < pokemonsImages.count; i++) {
+        int randomInt1 = arc4random() % [pokemonsImages count];
+        int randomInt2 = arc4random() % [pokemonsImages count];
+        [pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];
+    }
 }
 
 @end
