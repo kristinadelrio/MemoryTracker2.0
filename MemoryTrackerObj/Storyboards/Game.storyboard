@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJm-ZM-MnS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r2B-Jj-6v3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,65 +13,54 @@
     </dependencies>
     <scenes>
         <!--Game Controller-->
-        <scene sceneID="3HD-6L-84A">
+        <scene sceneID="5hF-aP-MgM">
             <objects>
-                <viewController id="jJm-ZM-MnS" customClass="GameController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L37-HG-93N"/>
-                        <viewControllerLayoutGuide type="bottom" id="IZs-xV-AcA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="UxC-Fz-sze">
+                <viewController id="r2B-Jj-6v3" customClass="GameController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c0s-iE-JMS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxe-w6-3x1">
-                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f02-zN-9C9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="97"/>
                                 <connections>
-                                    <segue destination="ffh-ro-FnP" kind="embed" identifier="GameMapControllerSegue" id="2vu-2R-6im"/>
+                                    <segue destination="j9t-yo-2rW" kind="embed" identifier="PanelControlControllerSegue" id="8Tb-9r-YPx"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJY-xJ-I6V">
-                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EC-fC-phO">
+                                <rect key="frame" x="0.0" y="117" width="375" height="550"/>
                                 <connections>
-                                    <segue destination="Kuk-KW-Itb" kind="embed" identifier="PanelControlControllerSegue" id="XeY-Lf-ScH"/>
+                                    <segue destination="q9n-uP-LHd" kind="embed" identifier="GameMapControllerSegue" id="fzo-FT-cF1"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nxe-w6-3x1" firstAttribute="leading" secondItem="CRY-E2-N9K" secondAttribute="leading" id="1Zo-XB-zCG"/>
-                            <constraint firstItem="aJY-xJ-I6V" firstAttribute="top" secondItem="L37-HG-93N" secondAttribute="bottom" id="IjS-y6-5QQ"/>
-                            <constraint firstItem="nxe-w6-3x1" firstAttribute="trailing" secondItem="CRY-E2-N9K" secondAttribute="trailing" id="JvF-pk-p6v"/>
-                            <constraint firstItem="nxe-w6-3x1" firstAttribute="height" secondItem="UxC-Fz-sze" secondAttribute="height" multiplier="0.85" id="OZo-a4-pm8"/>
-                            <constraint firstItem="aJY-xJ-I6V" firstAttribute="trailing" secondItem="CRY-E2-N9K" secondAttribute="trailing" id="Zb4-ed-C2F"/>
-                            <constraint firstItem="IZs-xV-AcA" firstAttribute="top" secondItem="nxe-w6-3x1" secondAttribute="bottom" id="dyj-OB-1xw"/>
-                            <constraint firstItem="aJY-xJ-I6V" firstAttribute="leading" secondItem="CRY-E2-N9K" secondAttribute="leading" id="koE-m2-cxh"/>
-                            <constraint firstItem="nxe-w6-3x1" firstAttribute="top" secondItem="aJY-xJ-I6V" secondAttribute="bottom" id="qE6-cL-BlH"/>
+                            <constraint firstItem="7EC-fC-phO" firstAttribute="height" secondItem="rwh-Q9-btS" secondAttribute="height" multiplier="0.85" id="HJ9-qU-QLn"/>
+                            <constraint firstItem="rwh-Q9-btS" firstAttribute="trailing" secondItem="7EC-fC-phO" secondAttribute="trailing" id="TKY-kI-dxg"/>
+                            <constraint firstItem="f02-zN-9C9" firstAttribute="leading" secondItem="rwh-Q9-btS" secondAttribute="leading" id="dza-Qn-5Co"/>
+                            <constraint firstItem="rwh-Q9-btS" firstAttribute="bottom" secondItem="7EC-fC-phO" secondAttribute="bottom" id="ebX-AK-dvg"/>
+                            <constraint firstItem="7EC-fC-phO" firstAttribute="top" secondItem="f02-zN-9C9" secondAttribute="bottom" id="ebb-E4-GuF"/>
+                            <constraint firstItem="7EC-fC-phO" firstAttribute="leading" secondItem="rwh-Q9-btS" secondAttribute="leading" id="q8I-zb-0fn"/>
+                            <constraint firstItem="rwh-Q9-btS" firstAttribute="trailing" secondItem="f02-zN-9C9" secondAttribute="trailing" id="tpI-5e-yaa"/>
+                            <constraint firstItem="f02-zN-9C9" firstAttribute="top" secondItem="rwh-Q9-btS" secondAttribute="top" id="wiG-0m-pQE"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="CRY-E2-N9K"/>
+                        <viewLayoutGuide key="safeArea" id="rwh-Q9-btS"/>
                     </view>
-                    <connections>
-                        <outlet property="gameMapContainer" destination="nxe-w6-3x1" id="iq4-qT-DrZ"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YCl-oA-02b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YVH-r7-qYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821.60000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="690" y="206"/>
         </scene>
         <!--Panel Control Controller-->
-        <scene sceneID="VBY-yX-LKQ">
+        <scene sceneID="I5I-IJ-ivL">
             <objects>
-                <viewController id="Kuk-KW-Itb" customClass="PanelControlController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dJS-vW-wuy"/>
-                        <viewControllerLayoutGuide type="bottom" id="2ci-8w-Qro"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kDt-Ff-Jnw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                <viewController id="j9t-yo-2rW" customClass="PanelControlController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ryE-wC-gbZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cUE-5s-xzU">
-                                <rect key="frame" x="16" y="16" width="115" height="48"/>
+                                <rect key="frame" x="32" y="16" width="115" height="48"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rbo-se-t0g">
                                         <rect key="frame" x="0.0" y="0.0" width="92" height="24"/>
@@ -112,93 +101,89 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agX-dw-qZs">
-                                <rect key="frame" x="337" y="8" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="GkF-RX-0IQ"/>
-                                    <constraint firstAttribute="width" secondItem="agX-dw-qZs" secondAttribute="height" multiplier="1:1" id="j9k-dJ-WD6"/>
-                                </constraints>
-                                <state key="normal" image="home"/>
-                                <connections>
-                                    <action selector="backToHome:" destination="Kuk-KW-Itb" eventType="touchUpInside" id="g2v-FL-aLD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-rJ-ysg">
-                                <rect key="frame" x="299" y="8" width="30" height="30"/>
+                                <rect key="frame" x="291" y="16" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jRY-rJ-ysg" secondAttribute="height" multiplier="1:1" id="SQ5-PQ-Ifn"/>
                                     <constraint firstAttribute="width" constant="30" id="sAx-kj-Dsf"/>
                                 </constraints>
                                 <state key="normal" image="pause"/>
                                 <connections>
-                                    <action selector="pauseGame:" destination="Kuk-KW-Itb" eventType="touchUpInside" id="WAk-JY-fCC"/>
+                                    <action selector="pauseGame:" destination="j9t-yo-2rW" eventType="touchUpInside" id="hhG-mh-Wo4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agX-dw-qZs">
+                                <rect key="frame" x="329" y="16" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="GkF-RX-0IQ"/>
+                                    <constraint firstAttribute="width" secondItem="agX-dw-qZs" secondAttribute="height" multiplier="1:1" id="j9k-dJ-WD6"/>
+                                </constraints>
+                                <state key="normal" image="home"/>
+                                <connections>
+                                    <action selector="backToHome:" destination="j9t-yo-2rW" eventType="touchUpInside" id="w66-wJ-coV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0R-mN-ZHa">
-                                <rect key="frame" x="261" y="8" width="30" height="30"/>
+                                <rect key="frame" x="253" y="16" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Z0R-mN-ZHa" secondAttribute="height" multiplier="1:1" id="gRV-mt-oz0"/>
+                                    <constraint firstAttribute="width" constant="30" id="lRE-NG-kIT"/>
+                                </constraints>
                                 <state key="normal" image="replay"/>
                                 <connections>
-                                    <action selector="restartGame:" destination="Kuk-KW-Itb" eventType="touchUpInside" id="ltu-79-fyI"/>
+                                    <action selector="restartGame:" destination="j9t-yo-2rW" eventType="touchUpInside" id="NVQ-hy-wSy"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Z0R-mN-ZHa" firstAttribute="top" secondItem="dJS-vW-wuy" secondAttribute="bottom" constant="8" symbolic="YES" id="1WK-Lj-s4a"/>
-                            <constraint firstItem="agX-dw-qZs" firstAttribute="top" secondItem="dJS-vW-wuy" secondAttribute="bottom" constant="8" symbolic="YES" id="9Vr-pY-IwO"/>
-                            <constraint firstItem="agX-dw-qZs" firstAttribute="leading" secondItem="jRY-rJ-ysg" secondAttribute="trailing" constant="8" symbolic="YES" id="EhO-hO-F3Z"/>
-                            <constraint firstItem="jRY-rJ-ysg" firstAttribute="leading" secondItem="Z0R-mN-ZHa" secondAttribute="trailing" constant="8" symbolic="YES" id="GjG-pZ-vyi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="agX-dw-qZs" secondAttribute="trailingMargin" id="Il7-Nq-VmB"/>
-                            <constraint firstItem="Z0R-mN-ZHa" firstAttribute="width" secondItem="jRY-rJ-ysg" secondAttribute="width" id="SaU-mo-Jrm"/>
-                            <constraint firstItem="cUE-5s-xzU" firstAttribute="centerY" secondItem="kDt-Ff-Jnw" secondAttribute="centerY" id="XjV-zT-o3b"/>
-                            <constraint firstItem="Z0R-mN-ZHa" firstAttribute="height" secondItem="jRY-rJ-ysg" secondAttribute="height" id="aea-O4-a9t"/>
-                            <constraint firstItem="cUE-5s-xzU" firstAttribute="leading" secondItem="kDt-Ff-Jnw" secondAttribute="leadingMargin" id="rUF-gi-NiE"/>
-                            <constraint firstItem="jRY-rJ-ysg" firstAttribute="top" secondItem="dJS-vW-wuy" secondAttribute="bottom" constant="8" symbolic="YES" id="yFI-yR-pab"/>
+                            <constraint firstAttribute="trailing" secondItem="agX-dw-qZs" secondAttribute="trailing" constant="16" id="1d8-Eh-CFN"/>
+                            <constraint firstItem="agX-dw-qZs" firstAttribute="top" secondItem="ryE-wC-gbZ" secondAttribute="top" constant="16" id="KZI-iE-gQM"/>
+                            <constraint firstItem="cUE-5s-xzU" firstAttribute="top" secondItem="ryE-wC-gbZ" secondAttribute="topMargin" constant="16" id="Oin-d6-d7d"/>
+                            <constraint firstItem="cUE-5s-xzU" firstAttribute="leading" secondItem="ryE-wC-gbZ" secondAttribute="leadingMargin" constant="16" id="WL9-np-rsP"/>
+                            <constraint firstItem="jRY-rJ-ysg" firstAttribute="leading" secondItem="Z0R-mN-ZHa" secondAttribute="trailing" constant="8" symbolic="YES" id="g28-cJ-7SB"/>
+                            <constraint firstItem="agX-dw-qZs" firstAttribute="leading" secondItem="jRY-rJ-ysg" secondAttribute="trailing" constant="8" symbolic="YES" id="h9f-Nz-alx"/>
+                            <constraint firstItem="jRY-rJ-ysg" firstAttribute="top" secondItem="ryE-wC-gbZ" secondAttribute="topMargin" constant="16" id="iWs-29-spK"/>
+                            <constraint firstItem="Z0R-mN-ZHa" firstAttribute="top" secondItem="ryE-wC-gbZ" secondAttribute="topMargin" constant="16" id="w1n-oj-74o"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fyd-ZO-ygz"/>
                     </view>
                     <connections>
-                        <outlet property="scoreLabel" destination="Ych-s2-vaq" id="CKB-jZ-2IP"/>
-                        <outlet property="timeLabel" destination="26g-2q-ABO" id="U5n-tv-2vW"/>
+                        <outlet property="scoreLabel" destination="Ych-s2-vaq" id="rNf-te-WT1"/>
+                        <outlet property="timeLabel" destination="26g-2q-ABO" id="Jl9-fa-dlh"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t0i-yw-LRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxU-9G-YJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1664" y="-132"/>
+            <point key="canvasLocation" x="1529" y="119"/>
         </scene>
         <!--Game Map Controller-->
-        <scene sceneID="Zfc-va-VW4">
+        <scene sceneID="pem-mI-fNc">
             <objects>
-                <viewController id="ffh-ro-FnP" customClass="GameMapController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wcp-ZD-3Es"/>
-                        <viewControllerLayoutGuide type="bottom" id="2dJ-uX-SRX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Sbg-4n-yDZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                <viewController id="q9n-uP-LHd" customClass="GameMapController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SFA-Et-I5y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNr-Nk-L2x">
-                                <rect key="frame" x="0.0" y="20" width="375" height="547"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6y-uv-krZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
+                                <color key="backgroundColor" red="0.98605746029999997" green="0.90932422879999997" blue="0.92102807760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.98605746029999997" green="0.90932422879999997" blue="0.92102807760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YNr-Nk-L2x" firstAttribute="trailing" secondItem="EVs-pk-bRV" secondAttribute="trailing" id="DJ4-Bi-y0f"/>
-                            <constraint firstItem="YNr-Nk-L2x" firstAttribute="leading" secondItem="EVs-pk-bRV" secondAttribute="leading" id="mD9-Zd-ira"/>
-                            <constraint firstItem="2dJ-uX-SRX" firstAttribute="top" secondItem="YNr-Nk-L2x" secondAttribute="bottom" id="tYa-GT-2AK"/>
-                            <constraint firstItem="YNr-Nk-L2x" firstAttribute="top" secondItem="wcp-ZD-3Es" secondAttribute="bottom" id="w1U-YU-lgl"/>
+                            <constraint firstAttribute="bottom" secondItem="f6y-uv-krZ" secondAttribute="bottom" id="8CF-iR-Gxd"/>
+                            <constraint firstItem="f6y-uv-krZ" firstAttribute="leading" secondItem="SFA-Et-I5y" secondAttribute="leading" id="9aj-Zw-9aO"/>
+                            <constraint firstItem="f6y-uv-krZ" firstAttribute="top" secondItem="SFA-Et-I5y" secondAttribute="top" id="VBL-YW-5Mt"/>
+                            <constraint firstAttribute="trailing" secondItem="f6y-uv-krZ" secondAttribute="trailing" id="uLH-DH-u9c"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="EVs-pk-bRV"/>
                     </view>
                     <connections>
-                        <outlet property="gameScene" destination="YNr-Nk-L2x" id="IXe-am-AbB"/>
+                        <outlet property="gameScene" destination="f6y-uv-krZ" id="x1v-Yx-BrY"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="unu-JV-Jsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MfR-PL-SHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663" y="252"/>
+            <point key="canvasLocation" x="1529" y="631"/>
         </scene>
     </scenes>
     <resources>
