@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PanelControlController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 

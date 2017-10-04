@@ -87,7 +87,6 @@ GameMapController* gameMapController;
 }
 
 - (void) saveScore {
-    
     UIAlertController* alert = [UIAlertController
                                 alertControllerWithTitle:@"Save your score"
                                 message:@"Input your name here"
@@ -97,7 +96,8 @@ GameMapController* gameMapController;
                                  actionWithTitle:@"Done"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
-                                     NSString* nikname = alert.textFields[0];
+                                     
+                                     //NSString* nikname = alert.textFields[0];
                                      // let score = UserScore(username: nicknameField?.text ?? "User",
                                      //                                  score: Int(GameLogic.shared.totalScore))
                                      //RatingStorage.shared.saveData(score: score)
@@ -135,26 +135,30 @@ GameMapController* gameMapController;
 }
 
 - (void) prepareGameMapController {
+   __weak typeof(self) weakSelf = self;
+    
     gameMapController.gameOver = ^{
-        [self gameOver];
+        [weakSelf gameOver];
     };
 }
 
 - (void) prepareControlPanelController {
+    __weak typeof(self) weakSelf = self;
     panelController.onHomeTap = ^{
-        [self turnToHome];
+        [weakSelf turnToHome];
     };
     
     panelController.onPauseTap = ^(bool state) {
-        [self turnOnPause: state];
+
+        [weakSelf turnOnPause: state];
     };
     
     panelController.timeOver = ^{
-        [self gameOver];
+        [weakSelf gameOver];
     };
     
     panelController.onRestartTap = ^{
-        [self replayGame];
+        [weakSelf replayGame];
     };
 }
 @end

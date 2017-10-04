@@ -22,8 +22,9 @@
 @synthesize deleteCards;
 
 + (GameLogic*) sharedLogic {
-    static GameLogic* sharedLogic = nil;
+    static GameLogic* sharedLogic;
     static dispatch_once_t onceToken;
+    
     dispatch_once(&onceToken, ^{
         sharedLogic = [[self alloc] init];
     });

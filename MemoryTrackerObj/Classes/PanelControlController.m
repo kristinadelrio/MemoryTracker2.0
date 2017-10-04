@@ -31,7 +31,7 @@ NSTimer* timer;
     isTimerRunning = false;
 }
 - (IBAction) restartGame: (UIButton *) sender {
-    if (onRestartTap != NULL) {
+    if (onRestartTap) {
         onRestartTap();
     }
 }
@@ -73,7 +73,9 @@ NSTimer* timer;
         }
     } else {
         GameLogic.sharedLogic.currentTime -= 1;
-        NSString* time = [NSTImemeIntervalToString toString: GameLogic.sharedLogic.currentTime];
+        NSString* time = [NSTImemeIntervalToString toString:
+                          GameLogic.sharedLogic.currentTime];
+        
         timeLabel.text = time;
     }
 }

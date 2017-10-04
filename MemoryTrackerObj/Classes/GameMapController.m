@@ -29,12 +29,13 @@ NSMutableArray<CardView*>* openedCards;
     
     [self initializateGameScene];
 
+    __weak typeof(self) weakSelf = self;
     GameLogic.sharedLogic.closeIfNeeded = ^{
-        [self closeCard];
+        [weakSelf closeCard];
     };
     
     GameLogic.sharedLogic.deleteCards = ^{
-        [self deleteCard];
+        [weakSelf deleteCard];
     };
 }
 
