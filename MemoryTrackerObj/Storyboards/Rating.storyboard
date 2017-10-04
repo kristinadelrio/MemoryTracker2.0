@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ratingCell" rowHeight="80" id="ZFl-hj-cfh" customClass="RatingCell" customModule="MemoryTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ratingCell" rowHeight="80" id="ZFl-hj-cfh" customClass="RatingCell" customModule="MemoryTrackerObj" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZFl-hj-cfh" id="Mw5-aO-zkL">
@@ -73,13 +73,19 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="score" destination="Hrb-IQ-KN4" id="0Dj-2G-A5a"/>
+                                            <outlet property="date" destination="KOL-NZ-1cK" id="JHv-PE-ajS"/>
+                                            <outlet property="score" destination="Hrb-IQ-KN4" id="e3x-NV-y0M"/>
                                             <outlet property="time" destination="KOL-NZ-1cK" id="Qp3-PH-CCb"/>
-                                            <outlet property="trophy" destination="Wvk-tg-oOi" id="oB9-zg-Dr2"/>
+                                            <outlet property="trophy" destination="Wvk-tg-oOi" id="Oti-XG-k6k"/>
                                             <outlet property="userName" destination="23f-Oe-Ise" id="t8q-1d-iiX"/>
+                                            <outlet property="username" destination="23f-Oe-Ise" id="3MB-qy-d1V"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="F0F-RW-sE6" id="9nF-5w-LkL"/>
+                                    <outlet property="delegate" destination="F0F-RW-sE6" id="wDY-Sf-XLj"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cud-fH-AWi">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -87,9 +93,15 @@
                                     <navigationItem title="Rating" id="vLJ-AX-aYA">
                                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="xjv-BZ-VXQ">
                                             <color key="tintColor" red="0.99307733769999995" green="0.81729537249999995" blue="0.090355075899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="clearRating:" destination="F0F-RW-sE6" id="OR2-em-Bcp"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="X8v-l2-hew">
                                             <color key="tintColor" red="0.87662076950000001" green="0.0027748325370000001" blue="0.1796540022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="closeRating:" destination="F0F-RW-sE6" id="sgK-Kj-grf"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -107,6 +119,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YSS-CP-I3Z"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="wDn-HL-ROa" id="8dV-xo-91M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrA-tI-5Yj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

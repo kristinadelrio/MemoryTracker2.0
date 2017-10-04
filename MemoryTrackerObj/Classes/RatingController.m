@@ -7,31 +7,104 @@
 //
 
 #import "RatingController.h"
+#import "RatingStorage.h"
+#import "RatingCell.h"
 
 @interface RatingController ()
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @implementation RatingController
 
+NSMutableArray<WinnerData*>* winnersList;
+@synthesize tableView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    winnersList = RatingStorage.shared.loadedRating;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)clearRating:(id)sender {
+    [self createDeleteAlertWith:@"Do you really want clean scores?"
+                            and:@"Your records will be empty"];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)closeRating:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:true completion:NULL];
 }
-*/
+
+- (bool) prefersStatusBarHidden {
+    return true;
+}
+
+- (void) clearScore {
+    [winnersList removeAllObjects];
+    [tableView reloadData];
+    [RatingStorage.shared removeData];
+}
+
+- (void) createDeleteAlertWith: (NSString*) title and: (NSString*) message {
+    UIAlertController* alert = [UIAlertController
+                                alertControllerWithTitle:title
+                                message:message
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    __weak typeof (self) weakSelf = self;
+    UIAlertAction* doneAction = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action) {
+                                     [weakSelf clearScore]; }];
+    
+    UIAlertAction* cancelAction = [UIAlertAction
+                                   actionWithTitle: @"Cancel"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+                                       [alert dismissViewControllerAnimated:true completion:NULL];
+                                   }];
+    
+    [alert addAction: doneAction];
+    [alert addAction: cancelAction];
+    
+    [self presentViewController:alert animated: true completion: nil];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return winnersList ? winnersList.count : 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RatingCell* cell = [tableView dequeueReusableCellWithIdentifier: @"ratingCell"
+                                                       forIndexPath: indexPath];
+    
+    NSNumber* score = [winnersList objectAtIndex:indexPath.row].score;
+    
+    if (cell && score) {
+        UIImage* img = NULL;
+        switch (indexPath.row) {
+            case 0:
+                img = [UIImage imageNamed:@"golden-medal"];
+                break;
+            case 1:
+                img = [UIImage imageNamed:@"silver-medal"];
+                break;
+            case 2:
+                img = [UIImage imageNamed:@"bronze-medal"];
+                break;
+            default:
+                break;
+        }
+        
+        [cell generateCellWith: [winnersList objectAtIndex:indexPath.row] and:img];
+        
+        return cell;
+    }
+                        
+    return [[UITableViewCell alloc] init];
+}
 
 @end
