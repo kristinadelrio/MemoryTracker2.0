@@ -50,7 +50,7 @@ GameMapController* gameMapController;
         //            gameContainer.addSubview(pause)
     }
     else {
-            //            pause.removeFromSuperview()
+        //            pause.removeFromSuperview()
     }
 }
 
@@ -69,7 +69,7 @@ GameMapController* gameMapController;
     [panelController stopTimer];
     panelController.scoreLabel.text = @"0";
     panelController.timeLabel.text = @"00:00";
-
+    
     GameLogic.sharedLogic.score = 0;
     GameLogic.sharedLogic.totalScore = 0;
     GameLogic.sharedLogic.currentTime = GameLogic.sharedLogic.timeLimit;
@@ -87,49 +87,57 @@ GameMapController* gameMapController;
 }
 
 - (void) saveScore {
-    //UIAlertController* scoreAlert = [[UIAlertController alloc] init]
     
-    //let alert = UIAlertController(title: "Save your score", message: "Input your name here", preferredStyle: .alert)
-    //
-    //        let confirmAction = UIAlertAction(title: "Done", style: .default, handler: { (action) -> Void in
-    //            let nicknameField = alert.textFields?[0]
-    //            let score = UserScore(username: nicknameField?.text ?? "User",
-    //                                  score: Int(GameLogic.shared.totalScore))
-    //
-    //            RatingStorage.shared.saveData(score: score)
-    //        })
-    //
-    //        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil)
-    //
-    //        alert.addTextField { (nicknameField: UITextField) in
-    //            nicknameField.placeholder = "your name is..."
-    //            nicknameField.clearButtonMode = .whileEditing
-    //            nicknameField.keyboardType = .default
-    //            nicknameField.keyboardAppearance = .dark
-    //
-    //            alert.addAction(confirmAction)
-    //            alert.addAction(cancelAction)
-    //
-    //            self.present(alert, animated: true, completion:  nil)
-    //        }
-    //    }
+    UIAlertController* alert = [UIAlertController
+                                alertControllerWithTitle:@"Save your score"
+                                message:@"Input your name here"
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* doneAction = [UIAlertAction
+                                 actionWithTitle:@"Done"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action) {
+                                     NSString* nikname = alert.textFields[0];
+                                     // let score = UserScore(username: nicknameField?.text ?? "User",
+                                     //                                  score: Int(GameLogic.shared.totalScore))
+                                     //RatingStorage.shared.saveData(score: score)
+                                 }];
+    
+    
+    
+    UIAlertAction* cancelAction = [UIAlertAction
+                                   actionWithTitle: @"Cancel"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) { NULL; }];
+    
+    [alert addAction: doneAction];
+    [alert addAction: cancelAction];
+    
+    [alert addTextFieldWithConfigurationHandler: ^(UITextField* nicknameField) {
+        nicknameField.placeholder = @"Your name is...";
+        nicknameField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        nicknameField.keyboardType = UIKeyboardTypeDefault;
+        nicknameField.keyboardAppearance = UIKeyboardAppearanceDark;
+    }];
+    
+    [self presentViewController:alert animated: true completion: nil];
+    
 }
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender {
     if ([segue.identifier  isEqual: @"PanelControlControllerSegue"]) {
         panelController = segue.destinationViewController;
         [self prepareControlPanelController];
-    }
-    else if ([segue.identifier isEqual: @"GameMapControllerSegue"]) {
+    } else if ([segue.identifier isEqual: @"GameMapControllerSegue"]) {
         gameMapController = segue.destinationViewController;
         [self prepareGameMapController];
     }
 }
 
 - (void) prepareGameMapController {
-    //        gameMapController.gameOver = { [weak self] in
-    //            self?.gameOver()
-    //        }
+    gameMapController.gameOver = ^{
+        [self gameOver];
+    };
 }
 
 - (void) prepareControlPanelController {
