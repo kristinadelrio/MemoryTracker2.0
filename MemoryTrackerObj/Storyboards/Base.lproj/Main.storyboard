@@ -69,7 +69,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ezh-hO-1ze" kind="show" id="L5D-Ie-nZg"/>
+                                    <segue destination="ezh-hO-1ze" kind="show" identifier="GameControllerSegue" id="L5D-Ie-nZg"/>
                                 </connections>
                             </button>
                         </subviews>

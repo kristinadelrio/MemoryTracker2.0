@@ -26,7 +26,7 @@
 @property void (^deleteCards)(void);
 @property void (^presentScore)(int);
 
-- (void) setTimeLimit: (int) time;
+- (void) initTimeLimit: (int) time;
 - (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo;
 - (void) updateScore;
 

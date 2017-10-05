@@ -33,14 +33,6 @@ GameOverView* gameOver;
     GameLogic.sharedLogic.presentScore = ^(int score) {
         [weakSelf showScore: score];
     };
-
-    gameOver.onReplayGame = ^{
-        [weakSelf replayGame];
-    };
-    
-    pauseView.onPauseTap = ^{
-        [weakSelf turnOffpause];
-    };
 }
 
 - (void) turnOffpause {
@@ -57,6 +49,11 @@ GameOverView* gameOver;
 - (void) turnOnPause: (bool) state {
     if (state) {
         pauseView = [[PauseView alloc] initWithFrame:gameMapController.view.frame];
+        __weak typeof(self) weakSelf = self;
+        pauseView.onPauseTap = ^{
+            [weakSelf turnOffpause];
+        };
+        
         [gameMapContainer addSubview:pauseView];
         [self updateFocusIfNeeded];
     }
@@ -91,6 +88,10 @@ GameOverView* gameOver;
 - (void) gameOver {
     [panelController stopTimer];
     gameOver = [[GameOverView alloc] initWithFrame:gameMapContainer.bounds];
+    __weak typeof(self) weakSelf = self;
+    gameOver.onReplayGame = ^{
+        [weakSelf replayGame];
+    };
     [gameMapContainer addSubview:gameOver];
     if (GameLogic.sharedLogic.totalScore > 0) {
         [self saveScore];
