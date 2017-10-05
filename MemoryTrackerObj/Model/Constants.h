@@ -11,8 +11,18 @@
 
 #import <Foundation/Foundation.h>
 
-NSString* const LEVEL_PATH = @"levelIndex";
-NSString* const SOUND_STATE = @"SoundState";
-NSString* const SOUND_TYPE = @".mp3";
+FOUNDATION_EXPORT NSString *const MTLevelIndex;
+FOUNDATION_EXPORT NSString *const MTSoundState;
+FOUNDATION_EXPORT NSString *const MTMelodyType;
+
+FOUNDATION_EXPORT int const MTDefaultTimeLimit;
+FOUNDATION_EXPORT int const MTScoreIncrementVal;
+FOUNDATION_EXPORT int const MTScoreDecrementVal;
+FOUNDATION_EXPORT int const MTScoreMultiplier;
+
+FOUNDATION_EXPORT int const MTRawsCountInDesk;
+FOUNDATION_EXPORT int const MTColumnsCountInDesk;
+FOUNDATION_EXPORT int const MTCardsCount;
+
 
 #endif /* Constants_h */

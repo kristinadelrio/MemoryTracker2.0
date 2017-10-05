@@ -8,6 +8,7 @@
 
 #import "MenuManager.h"
 #import "SoundManager.h"
+#import "Constants.h"
 
 @implementation MenuManager
 {
@@ -19,22 +20,23 @@
 
 - (MenuManager *) init {
     self = [super init];
+
     soundManager = [[SoundManager alloc] initWith:@"melody"];
     
     // in first launch app value will be nil
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"levelIndex"]) {
-        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"levelIndex"];
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:MTLevelIndex]) {
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:MTLevelIndex];
     }
     
     return self;
 }
 
 - (int)levelIndex {
-    return [[[NSUserDefaults standardUserDefaults] valueForKey:@"levelIndex"] intValue];
+    return [[[NSUserDefaults standardUserDefaults] valueForKey:MTLevelIndex] intValue];
 }
 
 - (void)setLevelIndex:(int)levelIndex {
-    [[NSUserDefaults standardUserDefaults] setInteger:levelIndex forKey:@"levelIndex"];
+    [[NSUserDefaults standardUserDefaults] setInteger:levelIndex forKey:MTLevelIndex];
 }
 
 - (BOOL)soundManagerState {

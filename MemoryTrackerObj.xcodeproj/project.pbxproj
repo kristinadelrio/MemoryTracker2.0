@@ -10,11 +10,12 @@
 		A932F97F1F82B8DF00F0133D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A932F97E1F82B8DF00F0133D /* AppDelegate.m */; };
 		A932F9821F82B8DF00F0133D /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A932F9811F82B8DF00F0133D /* MenuController.m */; };
 		A932F9851F82B8DF00F0133D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A932F9831F82B8DF00F0133D /* Main.storyboard */; };
-		A932F9871F82B8DF00F0133D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A932F9861F82B8DF00F0133D /* Assets.xcassets */; };
 		A932F98A1F82B8DF00F0133D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A932F9881F82B8DF00F0133D /* LaunchScreen.storyboard */; };
 		A932F98D1F82B8DF00F0133D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A932F98C1F82B8DF00F0133D /* main.m */; };
 		A9397BBD1F8367DF004E85B7 /* melody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9397BBC1F8364B8004E85B7 /* melody.mp3 */; };
 		A9397BC31F836D45004E85B7 /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9397BC21F836D45004E85B7 /* CardView.m */; };
+		A97DD3261F86AD0400B2E811 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A97DD3251F86AD0400B2E811 /* Constants.m */; };
+		A97DD3271F86B16400B2E811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A932F9861F82B8DF00F0133D /* Assets.xcassets */; };
 		A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = A9397BBF1F836A0E004E85B7 /* GameLogic.m */; };
 		A992B1421F83D5B700DADE7C /* NSTImemeIntervalToString.m in Sources */ = {isa = PBXBuildFile; fileRef = A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */; };
 		A992B1461F841B5000DADE7C /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A992B1451F841B5000DADE7C /* MapManager.m */; };
@@ -52,6 +53,8 @@
 		A9397BBF1F836A0E004E85B7 /* GameLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
 		A9397BC11F836D45004E85B7 /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
 		A9397BC21F836D45004E85B7 /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
+		A97DD3241F86AB4B00B2E811 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A97DD3251F86AD0400B2E811 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTImemeIntervalToString.m; sourceTree = "<group>"; };
 		A992B1431F83D67300DADE7C /* NSTImemeIntervalToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTImemeIntervalToString.h; sourceTree = "<group>"; };
 		A992B1441F8417D900DADE7C /* MapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapManager.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		A932F9961F82B91400F0133D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A97DD3241F86AB4B00B2E811 /* Constants.h */,
+				A97DD3251F86AD0400B2E811 /* Constants.m */,
 				A9B0DA0E1F8688D700FAA520 /* menuModel */,
 				A9B0DA101F8688FF00FAA520 /* gameModel */,
 				A9B0DA0F1F8688F400FAA520 /* ratingModel */,
@@ -323,10 +328,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97DD3271F86B16400B2E811 /* Assets.xcassets in Resources */,
 				A9B0D9FF1F862F8500FAA520 /* GameOverView.xib in Resources */,
 				A932F98A1F82B8DF00F0133D /* LaunchScreen.storyboard in Resources */,
 				A9BE3F331F82BDBA0053F5D5 /* Rating.storyboard in Resources */,
-				A932F9871F82B8DF00F0133D /* Assets.xcassets in Resources */,
 				A9BE3F351F82BDE00053F5D5 /* Game.storyboard in Resources */,
 				A9397BBD1F8367DF004E85B7 /* melody.mp3 in Resources */,
 				A932F9851F82B8DF00F0133D /* Main.storyboard in Resources */,
@@ -359,6 +364,7 @@
 				A9E051CD1F8572720052322F /* RatingStorage.m in Sources */,
 				A992B1421F83D5B700DADE7C /* NSTImemeIntervalToString.m in Sources */,
 				A932F97F1F82B8DF00F0133D /* AppDelegate.m in Sources */,
+				A97DD3261F86AD0400B2E811 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

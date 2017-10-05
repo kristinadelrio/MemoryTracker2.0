@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "MapManager.h"
+#import "Constants.h"
 
 @implementation MapManager
 
-const int kCountElements = 10;
 @synthesize pokemonsImages;
 
 - (MapManager *)init {
@@ -25,7 +25,7 @@ const int kCountElements = 10;
 }
 
 - (void)fillPokemonsArray {
-    for (int i = 0; i < kCountElements; i++) {
+    for (int i = 0; i < MTCardsCount / 2; i++) {
         NSNumber* num =  [[NSNumber alloc] initWithInt: i + 1];
         [pokemonsImages addObject: num];
         [pokemonsImages addObject: num];
@@ -33,7 +33,7 @@ const int kCountElements = 10;
 }
 
 - (void)shuffleImages {
-    for (int i = 0; i < pokemonsImages.count; i++) {
+    for (int i = 0; i < [pokemonsImages count]; i++) {
         int randomInt1 = arc4random() % [pokemonsImages count];
         int randomInt2 = arc4random() % [pokemonsImages count];
         [pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];

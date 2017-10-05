@@ -9,6 +9,7 @@
 #import "GameMapController.h"
 #import "GameLogic.h"
 #import "MapManager.h"
+#import "Constants.h"
 
 @implementation GameMapController
 {
@@ -113,7 +114,7 @@
 }
 
 - (void)initializateGameScene {
-    [self putCardsOnTheDeskWithRawCount: 5 andColumns: 4];
+    [self putCardsOnTheDeskWithRawCount: MTRawsCountInDesk andColumns: MTColumnsCountInDesk];
     [NSTimer scheduledTimerWithTimeInterval: 2 repeats: NO block: ^(NSTimer *timer) {
         [self hideCardFace];
     }];

@@ -16,7 +16,7 @@
 - (CardView *)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
-    cardBack = [UIImage imageNamed:@"card"];
+    cardBack = [UIImage imageNamed:@"cardBack"];
     
     return self;
 }

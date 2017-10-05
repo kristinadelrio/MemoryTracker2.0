@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GameLogic.h"
+#import "Constants.h"
 
 @implementation GameLogic
 
@@ -36,7 +37,7 @@
 - (GameLogic *)init {
     self = [super init];
     
-    self.timeLimit = 60;
+    self.timeLimit = MTDefaultTimeLimit;
     self.currentTime = self.timeLimit;
     self.score = totalScore = 0;
     
@@ -52,13 +53,13 @@
     if ([UIImagePNGRepresentation(cardOne.image) isEqual:
          UIImagePNGRepresentation(cardTwo.image)]) {
         
-        self.score += 25;
+        self.score += MTScoreIncrementVal;
         if (self.deleteCards) {
             self.deleteCards();
         }
         
     } else {
-        score -= 5;
+        score -= MTScoreDecrementVal;
         if (self.closeIfNeeded) {
             self.closeIfNeeded();
         }
@@ -68,7 +69,7 @@
 }
 
 - (void)updateScore {
-    self.totalScore = self.score * 100 * self.currentTime / self.timeLimit;
+    self.totalScore = self.score * MTScoreMultiplier * self.currentTime / self.timeLimit;
     if (self.presentScore) {
         self.presentScore(self.totalScore);
     }
