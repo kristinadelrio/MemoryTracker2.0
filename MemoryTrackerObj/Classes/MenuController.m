@@ -36,7 +36,8 @@ MenuManager* menuManager;
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender {
     if ([segue.identifier  isEqual: @"GameControllerSegue"]) {
         Level level = (int) levelsSegmentedControl.selectedSegmentIndex;
-        [GameLogic.sharedLogic initTimeLimit: level];
+        int time = [self timeLimitWith: level];
+        [GameLogic.sharedLogic initTimeLimit: time];
     }
 }
 
