@@ -92,6 +92,12 @@
     }
 }
 
+- (void)prepareRestartingGame {
+    [self stopTimer];
+    scoreLabel.text = @"0";
+    timeLabel.text = @"00:00";
+}
+
 #pragma mark - Timer's management
 
 - (void) runTimer {

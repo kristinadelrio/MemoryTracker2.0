@@ -36,31 +36,31 @@
 - (GameLogic *)init {
     self = [super init];
     
-    timeLimit = 60;
-    currentTime = timeLimit;
-    score = totalScore = 0;
+    self.timeLimit = 60;
+    self.currentTime = self.timeLimit;
+    self.score = totalScore = 0;
     
     return self;
 }
 
 - (void)initTimeLimit:(int)time {
-    currentTime = time;
-    timeLimit = time;
+    self.currentTime = time;
+    self.timeLimit = time;
 }
 
 - (void)isCardSimilarFirst:(CardView *)cardOne and:(CardView *)cardTwo {
     if ([UIImagePNGRepresentation(cardOne.image) isEqual:
          UIImagePNGRepresentation(cardTwo.image)]) {
         
-        score += 25;
-        if (deleteCards) {
-            deleteCards();
+        self.score += 25;
+        if (self.deleteCards) {
+            self.deleteCards();
         }
         
     } else {
         score -= 5;
-        if (closeIfNeeded) {
-            closeIfNeeded();
+        if (self.closeIfNeeded) {
+            self.closeIfNeeded();
         }
     }
     
@@ -68,10 +68,16 @@
 }
 
 - (void)updateScore {
-    self.totalScore = score * 100 * currentTime / timeLimit;
-    if (presentScore) {
-        presentScore(totalScore);
+    self.totalScore = self.score * 100 * self.currentTime / self.timeLimit;
+    if (self.presentScore) {
+        self.presentScore(self.totalScore);
     }
+}
+
+- (void)prepareGameRestarting {
+    self.score = 0;
+    self.totalScore = 0;
+    self.currentTime = timeLimit;
 }
 
 @end

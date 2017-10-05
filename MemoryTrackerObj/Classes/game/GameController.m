@@ -139,13 +139,8 @@
 
 - (void)replayGame {
     [self deinitGameOverView];
-    [panelController stopTimer];
-    panelController.scoreLabel.text = @"0";
-    panelController.timeLabel.text = @"00:00";
-    
-    GameLogic.shared.score = 0;
-    GameLogic.shared.totalScore = 0;
-    GameLogic.shared.currentTime = GameLogic.shared.timeLimit;
+    [panelController prepareRestartingGame];
+    [GameLogic.shared prepareGameRestarting];
     [gameMapController redrawScene];
     [panelController runTimer];
 }
@@ -154,6 +149,7 @@
     [panelController stopTimer];
     [self initGameOverView];
     [gameMapContainer addSubview:gameOver];
+    
     if (GameLogic.shared.totalScore > 0) {
         [self saveScore];
     }
