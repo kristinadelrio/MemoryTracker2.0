@@ -7,6 +7,7 @@
 //
 
 #import "RatingCell.h"
+#import "NSDate+TimeSinceDate.h"
 
 @implementation RatingCell
 
@@ -14,7 +15,7 @@
     _trophyImageView.image = img;
     _username.text = user.username;
     _userScore.text = [user.score stringValue];
-    _wonDate.text = @"1 minutes ago"; //[NSDateFormatter [user.winDate]; // convert to str;
+    _wonDate.text = [user.winDate timeSinceDate];
 }
 
 @end

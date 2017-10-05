@@ -27,9 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    tableView.delegate = self;
-    tableView.dataSource = self;
     winnersList = RatingStorage.shared.loadedRating;
+    NSLog(@"Res:");
 }
 
 - (IBAction)clearRating:(id)sender {
