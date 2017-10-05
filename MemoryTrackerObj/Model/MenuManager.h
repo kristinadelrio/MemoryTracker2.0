@@ -14,7 +14,7 @@
 @interface MenuManager: NSObject
 
 @property int levelIndex;
-@property bool soundManagerState;
+@property BOOL soundManagerState;
 
 - (void)stopBackgroundMusic;
 - (void)playBackgroundMusic;

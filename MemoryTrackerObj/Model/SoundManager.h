@@ -13,7 +13,7 @@
 
 @interface SoundManager: NSObject
 
-@property bool soundState;
+@property BOOL soundState;
 @property AVAudioPlayer *player;
 
 - (SoundManager *)initWith: (NSString *)musicFileName;

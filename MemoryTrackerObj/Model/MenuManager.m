@@ -22,7 +22,7 @@
     soundManager = [[SoundManager alloc] initWith:@"melody"];
     
     // in first launch app value will be nil
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"levelIndex"] == nil) {
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"levelIndex"]) {
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"levelIndex"];
     }
     

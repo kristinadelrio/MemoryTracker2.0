@@ -19,7 +19,7 @@
     [self initPlayer:musicFileName type:@"mp3"];
     
     // in first launch app value will be nil
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"SoundState"] == nil) {
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"SoundState"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SoundState"];
     }
 

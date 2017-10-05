@@ -14,7 +14,7 @@
 
 @interface GameLogic: NSObject
 
-+ (GameLogic*) shared;
++ (GameLogic *) shared;
 
 @property int score;
 @property int totalScore;
@@ -26,9 +26,9 @@
 @property void (^deleteCards)(void);
 @property void (^presentScore)(int);
 
-- (void) initTimeLimit: (int) time;
-- (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo;
-- (void) updateScore;
+- (void)initTimeLimit:(int)time;
+- (void)isCardSimilarFirst:(CardView *)cardOne and:(CardView *)cardTwo;
+- (void)updateScore;
 
 @end
 
