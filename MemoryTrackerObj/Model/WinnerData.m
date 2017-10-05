@@ -24,6 +24,16 @@
     return self;
 }
 
+- (id) initWithUserName: (NSString*) name andScore: (int) score {
+    self = [super init];
+    username = name;
+    NSNumber* scoreNum = [[NSNumber alloc] initWithInt:score];
+    self.score = scoreNum;
+    
+    return self;
+}
+
+
 - (id) initWithCoder: (NSCoder*) decoder {
     self = [super init];
     

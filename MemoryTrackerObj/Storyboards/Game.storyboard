@@ -46,6 +46,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rwh-Q9-btS"/>
                     </view>
+                    <connections>
+                        <outlet property="gameMapContainer" destination="7EC-fC-phO" id="Ohc-vB-TfJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVH-r7-qYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,6 +149,7 @@
                             <constraint firstItem="jRY-rJ-ysg" firstAttribute="top" secondItem="ryE-wC-gbZ" secondAttribute="topMargin" constant="16" id="iWs-29-spK"/>
                             <constraint firstItem="Z0R-mN-ZHa" firstAttribute="top" secondItem="ryE-wC-gbZ" secondAttribute="topMargin" constant="16" id="w1n-oj-74o"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="AM7-Eg-AGv"/>
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="Ych-s2-vaq" id="rNf-te-WT1"/>
@@ -176,6 +180,7 @@
                             <constraint firstItem="f6y-uv-krZ" firstAttribute="top" secondItem="SFA-Et-I5y" secondAttribute="top" id="VBL-YW-5Mt"/>
                             <constraint firstAttribute="trailing" secondItem="f6y-uv-krZ" secondAttribute="trailing" id="uLH-DH-u9c"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="f8x-h9-veG"/>
                     </view>
                     <connections>
                         <outlet property="gameScene" destination="f6y-uv-krZ" id="x1v-Yx-BrY"/>

@@ -10,6 +10,10 @@
 #import "PanelControlController.h"
 #import "GameMapController.h"
 #import "GameLogic.h"
+#import "WinnerData.h"
+#import "RatingStorage.h"
+#import "PauseView.h"
+#import "GameOverView.h"
 
 @implementation GameController
 
@@ -19,43 +23,49 @@
 PanelControlController* panelController;
 GameMapController* gameMapController;
 
-//    var pause = PauseView()
-//    var gameOverView = GameOverView()
+PauseView* pauseView;
+GameOverView* gameOver;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __weak typeof(self) weakSelf = self;
     GameLogic.sharedLogic.presentScore = ^(int score) {
-        [self showScore: score];
+        [weakSelf showScore: score];
+    };
+
+    gameOver.onReplayGame = ^{
+        [weakSelf replayGame];
     };
     
-    //        gameOverView.onRepeatButtTap = { [weak self] in
-    //            self?.resrtartGame()
-    //        }
-    //
-    //        pause.onPauseButtTap = { [weak self] in
-    //            self?.turnOffpause()
-    //        }
+    pauseView.onPauseTap = ^{
+        [weakSelf turnOffpause];
+    };
 }
 
 - (void) turnOffpause {
     panelController.isPause = false;
     [panelController changeTimerState];
-    // pause.removeFromSuperview()
+    [self deallocPauseView];
+}
+
+- (void) deallocPauseView {
+    [pauseView removeFromSuperview];
+    pauseView = NULL;
 }
 
 - (void) turnOnPause: (bool) state {
     if (state) {
-        //            pause.frame = gameMapController.view.frame
-        //            gameContainer.addSubview(pause)
+        pauseView = [[PauseView alloc] initWithFrame:gameMapController.view.frame];
+        [gameMapContainer addSubview:pauseView];
+        [self updateFocusIfNeeded];
     }
     else {
-        //            pause.removeFromSuperview()
+        [self deallocPauseView];
     }
 }
 
-- (void) turnToHome
-{
+- (void) turnToHome {
     GameLogic.sharedLogic.score = 0;
     [self dismissViewControllerAnimated: true completion: NULL];
 }
@@ -65,7 +75,8 @@ GameMapController* gameMapController;
 }
 
 - (void) replayGame {
-    //        gameOverView.removeFromSuperview()
+    [gameOver removeFromSuperview];
+    gameOver = NULL;
     [panelController stopTimer];
     panelController.scoreLabel.text = @"0";
     panelController.timeLabel.text = @"00:00";
@@ -79,8 +90,8 @@ GameMapController* gameMapController;
 
 - (void) gameOver {
     [panelController stopTimer];
-    //        gameOverView.frame = gameContainer.bounds
-    //        gameContainer.addSubview(gameOverView)
+    gameOver = [[GameOverView alloc] initWithFrame:gameMapContainer.bounds];
+    [gameMapContainer addSubview:gameOver];
     if (GameLogic.sharedLogic.totalScore > 0) {
         [self saveScore];
     }
@@ -96,14 +107,10 @@ GameMapController* gameMapController;
                                  actionWithTitle:@"Done"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
-                                     
-                                     //NSString* nikname = alert.textFields[0];
-                                     // let score = UserScore(username: nicknameField?.text ?? "User",
-                                     //                                  score: Int(GameLogic.shared.totalScore))
-                                     //RatingStorage.shared.saveData(score: score)
+                                     NSString* nickname = [alert.textFields[0] text];
+                                     WinnerData* winner = [[WinnerData alloc] initWithUserName:nickname andScore:GameLogic.sharedLogic.totalScore];
+                                     [RatingStorage.shared saveData:winner];
                                  }];
-    
-    
     
     UIAlertAction* cancelAction = [UIAlertAction
                                    actionWithTitle: @"Cancel"
@@ -161,6 +168,7 @@ GameMapController* gameMapController;
         [weakSelf replayGame];
     };
 }
+
 @end
 
 

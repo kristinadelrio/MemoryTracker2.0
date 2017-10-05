@@ -18,7 +18,7 @@
 @property NSDate* winDate;
 
 - (id) init;
-
+- (id) initWithUserName: (NSString*) name andScore: (int) score;
 @end
 
 #endif /* WinnerData_h */
