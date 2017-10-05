@@ -15,7 +15,7 @@
 @interface RatingStorage: NSObject
 
 +(RatingStorage *) shared;
-@property NSMutableArray<WinnerData *> *loadedRating;
+@property NSMutableArray *loadedRating;
 
 -(void) removeData;
 -(void) saveData:(WinnerData*) data;

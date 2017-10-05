@@ -40,8 +40,8 @@
     }
 }
 
-- (NSMutableArray<WinnerData *> *)loadData {
-    loadedRating = [[NSMutableArray alloc] initWithObjects:
+- (NSMutableArray *)loadData {
+    loadedRating = [loadedRating initWithObjects:
                     [[NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]] mutableCopy], nil];
 
     return loadedRating;

@@ -19,7 +19,7 @@
 
     username = @"Unknown";
     score = 0;
-    winDate = [NSDate date];
+    winDate = [[NSDate date] copy];
     
     return self;
 }
