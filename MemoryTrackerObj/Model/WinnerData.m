@@ -14,9 +14,9 @@
 @synthesize score;
 @synthesize winDate;
 
-- (id) init {
+- (WinnerData *) init {
     self = [super init];
-    
+
     username = @"Unknown";
     score = 0;
     winDate = [NSDate date];
@@ -24,7 +24,7 @@
     return self;
 }
 
-- (id) initWithUserName: (NSString*) name andScore: (int) score {
+- (WinnerData *) initWithUserName: (NSString*) name andScore: (int) score {
     self = [super init];
     
     username = [[NSString alloc] initWithString:name];
@@ -34,8 +34,7 @@
     return self;
 }
 
-
-- (id) initWithCoder: (NSCoder*) decoder {
+- (WinnerData *)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     
     username = [NSString alloc];
@@ -47,7 +46,8 @@
     
     return self;
 }
-- (void) encodeWithCoder: (NSCoder*) encoder {
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:username forKey:@"username"];
     [encoder encodeObject:score forKey:@"score"];
     [encoder encodeObject:winDate forKey:@"date"];

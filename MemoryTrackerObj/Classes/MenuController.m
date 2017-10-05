@@ -37,7 +37,7 @@ MenuManager *menuManager;
     if ([segue.identifier  isEqual: @"GameControllerSegue"]) {
         Level level = (int)levelsSegmentedControl.selectedSegmentIndex;
         int time = [self timeLimitWith: level];
-        [GameLogic.sharedLogic initTimeLimit: time];
+        [GameLogic.shared initTimeLimit: time];
     }
 }
 

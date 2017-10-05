@@ -14,12 +14,11 @@
 
 @interface RatingStorage: NSObject
 
-+(RatingStorage*) shared;
-@property NSMutableArray<WinnerData*>* loadedRating;
++(RatingStorage *) shared;
+@property NSMutableArray<WinnerData *> *loadedRating;
 
 -(void) removeData;
 -(void) saveData:(WinnerData*) data;
-
 
 @end
 

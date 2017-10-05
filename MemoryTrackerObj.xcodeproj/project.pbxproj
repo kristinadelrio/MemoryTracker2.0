@@ -168,10 +168,10 @@
 		A932F9961F82B91400F0133D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A9BE3F501F82E1280053F5D5 /* MenuManager.m */,
 				A9BE3F4F1F82E11B0053F5D5 /* MenuManager.h */,
-				A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */,
+				A9BE3F501F82E1280053F5D5 /* MenuManager.m */,
 				A932F9971F82B96700F0133D /* SoundManager.h */,
+				A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */,
 				A9397BBC1F8364B8004E85B7 /* melody.mp3 */,
 				A9397BBE1F836992004E85B7 /* GameLogic.h */,
 				A9397BBF1F836A0E004E85B7 /* GameLogic.m */,

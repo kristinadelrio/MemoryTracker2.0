@@ -14,11 +14,11 @@
 @interface SoundManager: NSObject
 
 @property bool soundState;
-@property AVAudioPlayer* player;
+@property AVAudioPlayer *player;
 
-- (id) initWith: (NSString*) musicFileName;
-- (void) playMusic;
-- (void) stopMusic;
+- (SoundManager *)initWith: (NSString *)musicFileName;
+- (void)playMusic;
+- (void)stopMusic;
 
 @end
 

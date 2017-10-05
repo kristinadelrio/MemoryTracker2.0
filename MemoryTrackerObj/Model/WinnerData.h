@@ -13,12 +13,12 @@
 
 @interface WinnerData: NSObject<NSCoding>
 
-@property NSString* username;
-@property NSNumber* score;
-@property NSDate* winDate;
+@property NSString *username;
+@property NSNumber *score;
+@property NSDate *winDate;
 
-- (id) init;
-- (id) initWithUserName: (NSString*) name andScore: (int) score;
+- (WinnerData *)initWithUserName:(NSString *)name andScore:(int)score;
+
 @end
 
 #endif /* WinnerData_h */

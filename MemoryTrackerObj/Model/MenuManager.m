@@ -7,50 +7,49 @@
 //
 
 #import "MenuManager.h"
-#import "Constants.h"
 #import "SoundManager.h"
 
 @implementation MenuManager
+{
+    SoundManager *soundManager;
+}
 
 @synthesize soundManagerState;
 @synthesize levelIndex;
 
-SoundManager* soundManager;
-
-- (id) init {
+- (MenuManager *) init {
     self = [super init];
-    soundManager = [[SoundManager alloc] initWith: @"melody"];
+    soundManager = [[SoundManager alloc] initWith:@"melody"];
     
     // in first launch app value will be nil
-    if ([[NSUserDefaults standardUserDefaults] valueForKey: @"levelIndex"] == NULL)
-    {
-        [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey: @"levelIndex"];
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"levelIndex"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"levelIndex"];
     }
     
     return self;
 }
 
-- (int) levelIndex {
-    return [[[NSUserDefaults standardUserDefaults] valueForKey: @"levelIndex"] intValue];
+- (int)levelIndex {
+    return [[[NSUserDefaults standardUserDefaults] valueForKey:@"levelIndex"] intValue];
 }
 
-- (void) setLevelIndex: (int) levelIndex {
-    [[NSUserDefaults standardUserDefaults] setInteger: levelIndex forKey: @"levelIndex"];
+- (void)setLevelIndex:(int)levelIndex {
+    [[NSUserDefaults standardUserDefaults] setInteger:levelIndex forKey:@"levelIndex"];
 }
 
-- (bool) soundManagerState {
+- (BOOL)soundManagerState {
     return soundManager.soundState;
 }
 
-- (void) setSoundManagerState: (bool) soundState {
+- (void)setSoundManagerState:(BOOL)soundState {
     soundManager.soundState = soundState;
 }
 
-- (void) playBackgroundMusic {
+- (void)playBackgroundMusic {
     [soundManager playMusic];
 }
 
-- (void) stopBackgroundMusic {
+- (void)stopBackgroundMusic {
     [soundManager stopMusic];
 }
 

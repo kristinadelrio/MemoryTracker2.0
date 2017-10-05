@@ -13,38 +13,37 @@
 @synthesize soundState;
 @synthesize player;
 
-- (id) initWith: (NSString*) musicFileName {
+- (SoundManager *)initWith:(NSString *)musicFileName {
     self = [super init];
     
-    [self initPlayer: musicFileName type: @"mp3"];
+    [self initPlayer:musicFileName type:@"mp3"];
     
     // in first launch app value will be nil
-    if ([[NSUserDefaults standardUserDefaults] valueForKey: @"SoundState"] == NULL)
-    {
-        [[NSUserDefaults standardUserDefaults] setBool: true forKey: @"SoundState"];
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"SoundState"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SoundState"];
     }
 
     return self;
 }
 
-- (bool) soundState {
-    return [[[NSUserDefaults standardUserDefaults] valueForKey: @"SoundState"] boolValue];;
+- (BOOL)soundState {
+    return [[[NSUserDefaults standardUserDefaults] valueForKey:@"SoundState"] boolValue];;
 }
 
-- (void) setSoundState: (bool) soundState {
-    [[NSUserDefaults standardUserDefaults] setBool: soundState forKey: @"SoundState"];
+- (void)setSoundState:(BOOL)soundState {
+    [[NSUserDefaults standardUserDefaults] setBool:soundState forKey:@"SoundState"];
 }
 
-- (void) initPlayer: (NSString*) name type: (NSString*) type {
-    NSURL* url = [[NSBundle mainBundle] URLForResource: name withExtension: type];
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL: url error: NULL];
+- (void)initPlayer:(NSString *)name type:(NSString *)type {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:name withExtension:type];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
 }
 
-- (void) playMusic {
+- (void)playMusic {
     [player play];
 }
 
-- (void) stopMusic {
+- (void)stopMusic {
     [player stop];
 }
 

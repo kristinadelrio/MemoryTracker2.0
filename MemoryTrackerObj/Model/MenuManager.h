@@ -16,9 +16,9 @@
 @property int levelIndex;
 @property bool soundManagerState;
 
-- (void) stopBackgroundMusic;
-- (void) playBackgroundMusic;
-- (id) init;
+- (void)stopBackgroundMusic;
+- (void)playBackgroundMusic;
+- (MenuManager *)init;
 
 @end
 

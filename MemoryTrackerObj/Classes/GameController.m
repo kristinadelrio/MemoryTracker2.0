@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    GameLogic.sharedLogic.presentScore = ^(int score) {
+    GameLogic.shared.presentScore = ^(int score) {
         [weakSelf showScore: score];
     };
 }
@@ -127,7 +127,7 @@
 }
 
 - (void)turnToHome {
-    GameLogic.sharedLogic.score = 0;
+    GameLogic.shared.score = 0;
     [self dismissViewControllerAnimated: true completion: NULL];
 }
 
@@ -143,9 +143,9 @@
     panelController.scoreLabel.text = @"0";
     panelController.timeLabel.text = @"00:00";
     
-    GameLogic.sharedLogic.score = 0;
-    GameLogic.sharedLogic.totalScore = 0;
-    GameLogic.sharedLogic.currentTime = GameLogic.sharedLogic.timeLimit;
+    GameLogic.shared.score = 0;
+    GameLogic.shared.totalScore = 0;
+    GameLogic.shared.currentTime = GameLogic.shared.timeLimit;
     [gameMapController redrawScene];
     [panelController runTimer];
 }
@@ -154,7 +154,7 @@
     [panelController stopTimer];
     [self initGameOverView];
     [gameMapContainer addSubview:gameOver];
-    if (GameLogic.sharedLogic.totalScore > 0) {
+    if (GameLogic.shared.totalScore > 0) {
         [self saveScore];
     }
 }
@@ -172,7 +172,7 @@
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
                                      NSString* nickname = [alert.textFields[0] text];
-                                     WinnerData* winner = [[WinnerData alloc] initWithUserName:nickname andScore:GameLogic.sharedLogic.totalScore];
+                                     WinnerData* winner = [[WinnerData alloc] initWithUserName:nickname andScore:GameLogic.shared.totalScore];
                                      [RatingStorage.shared saveData:winner];
                                  }];
     

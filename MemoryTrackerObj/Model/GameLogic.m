@@ -21,7 +21,8 @@
 @synthesize presentScore;
 @synthesize deleteCards;
 
-+ (GameLogic*) sharedLogic {
+// Singleton creation
++ (GameLogic *)shared {
     static GameLogic* sharedLogic;
     static dispatch_once_t onceToken;
     
@@ -32,7 +33,7 @@
     return sharedLogic;
 }
 
-- (id) init {
+- (GameLogic *)init {
     self = [super init];
     
     timeLimit = 60;
@@ -42,12 +43,12 @@
     return self;
 }
 
-- (void) initTimeLimit: (int) time {
+- (void)initTimeLimit:(int)time {
     currentTime = time;
     timeLimit = time;
 }
 
-- (void) isCardSimilarFirst: (CardView*) cardOne and: (CardView*) cardTwo {
+- (void)isCardSimilarFirst:(CardView *)cardOne and:(CardView *)cardTwo {
     if ([UIImagePNGRepresentation(cardOne.image) isEqual:
          UIImagePNGRepresentation(cardTwo.image)]) {
         
@@ -66,7 +67,7 @@
     [self updateScore];
 }
 
-- (void) updateScore {
+- (void)updateScore {
     self.totalScore = score * 100 * currentTime / timeLimit;
     if (presentScore) {
         presentScore(totalScore);

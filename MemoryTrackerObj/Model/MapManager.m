@@ -12,11 +12,11 @@
 @implementation MapManager
 
 const int kCountElements = 10;
-
 @synthesize pokemonsImages;
 
-- (id) init {
+- (MapManager *)init {
     self = [super init];
+    
     pokemonsImages = [[NSMutableArray alloc] init];
     [self fillPokemonsArray];
     [self shuffleImages];
@@ -24,16 +24,15 @@ const int kCountElements = 10;
     return self;
 }
 
-- (void) fillPokemonsArray {
-    for (int i = 0; i < kCountElements; i++)
-    {
+- (void)fillPokemonsArray {
+    for (int i = 0; i < kCountElements; i++) {
         NSNumber* num =  [[NSNumber alloc] initWithInt: i + 1];
         [pokemonsImages addObject: num];
         [pokemonsImages addObject: num];
     }
 }
 
-- (void) shuffleImages {
+- (void)shuffleImages {
     for (int i = 0; i < pokemonsImages.count; i++) {
         int randomInt1 = arc4random() % [pokemonsImages count];
         int randomInt2 = arc4random() % [pokemonsImages count];

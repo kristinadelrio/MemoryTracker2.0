@@ -76,7 +76,7 @@
 }
 
 - (void)presentTimer {
-    if (GameLogic.sharedLogic.currentTime < 1) {
+    if (GameLogic.shared.currentTime < 1) {
         [timer invalidate];
         
         if (timeOver) {
@@ -84,9 +84,9 @@
         }
         
     } else {
-        GameLogic.sharedLogic.currentTime -= 1;
+        GameLogic.shared.currentTime -= 1;
         NSString* time = [NSTImemeIntervalToString toString:
-                          GameLogic.sharedLogic.currentTime];
+                          GameLogic.shared.currentTime];
         
         timeLabel.text = time;
     }

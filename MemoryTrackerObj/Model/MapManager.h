@@ -11,14 +11,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef int Pokemons;
-
 @interface MapManager: NSObject
 
-@property NSMutableArray* pokemonsImages;
+@property NSMutableArray *pokemonsImages;
 
-- (id) init;
-- (void) shuffleImages;
+- (MapManager *)init;
+- (void)shuffleImages;
 
 @end
 

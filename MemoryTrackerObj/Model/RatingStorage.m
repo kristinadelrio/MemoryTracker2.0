@@ -12,8 +12,8 @@
 
 @synthesize loadedRating;
 
-+(RatingStorage*) shared {
-    static RatingStorage* shared;
++ (RatingStorage *)shared {
+    static RatingStorage *shared;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
@@ -23,7 +23,7 @@
     return shared;
 }
 
-- (id) init {
+- (RatingStorage *)init {
     self = [super init];
     
     loadedRating = [NSMutableArray alloc];
@@ -32,32 +32,32 @@
     return self;
 }
 
-- (void) removeData {
+- (void)removeData {
     @try {
-        [NSFileManager.defaultManager removeItemAtPath:[self filePath] error:NULL];
+        [NSFileManager.defaultManager removeItemAtPath:[self filePath] error:nil];
     } @catch(...) {
         NSLog(@"Cannot clear data!");
     }
 }
 
--(NSMutableArray<WinnerData*>*) loadData {
+- (NSMutableArray<WinnerData *> *)loadData {
     loadedRating = [[NSMutableArray alloc] initWithObjects:
                     [[NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]] mutableCopy], nil];
 
     return loadedRating;
 }
 
-- (void) saveData: (WinnerData*) data {
+- (void)saveData:(WinnerData *)data {
     [loadedRating addObject:data];
     [NSKeyedArchiver archiveRootObject:loadedRating toFile:[self filePath]];
 }
 
-- (NSString*) filePath {
-    NSURL* url = [[NSFileManager.defaultManager
-                   URLsForDirectory: NSDocumentDirectory
-                   inDomains: NSUserDomainMask] lastObject];
+- (NSString *)filePath {
+    NSURL *url = [[NSFileManager.defaultManager
+                   URLsForDirectory:NSDocumentDirectory
+                   inDomains:NSUserDomainMask] lastObject];
     
-    return [[url URLByAppendingPathComponent: @"rating"] path];
+    return [[url URLByAppendingPathComponent:@"rating"] path];
 }
 
 @end

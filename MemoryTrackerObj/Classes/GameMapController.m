@@ -30,11 +30,11 @@
     [self initializateGameScene];
     
     __weak typeof(self) weakSelf = self;
-    GameLogic.sharedLogic.closeIfNeeded = ^{
+    GameLogic.shared.closeIfNeeded = ^{
         [weakSelf closeCard];
     };
     
-    GameLogic.sharedLogic.deleteCards = ^{
+    GameLogic.shared.deleteCards = ^{
         [weakSelf deleteCard];
     };
 }
@@ -81,7 +81,7 @@
         CardView* card = (CardView*) sender.view;
         if (card.image == card.cardBack) {
             if (openedCards.count == 2) {
-                [GameLogic.sharedLogic isCardSimilarFirst:openedCards[0] and: openedCards[1]];
+                [GameLogic.shared isCardSimilarFirst:openedCards[0] and: openedCards[1]];
             }
             
             [card turnToCardFace];

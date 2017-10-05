@@ -14,7 +14,7 @@
 
 @interface GameLogic: NSObject
 
-+ (GameLogic*) sharedLogic;
++ (GameLogic*) shared;
 
 @property int score;
 @property int totalScore;
