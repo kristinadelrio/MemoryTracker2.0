@@ -8,19 +8,27 @@
 
 #import "GameOverView.h"
 
+@interface GameOverView ()
+
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+- (void) commonInit;
+@end
+
 @implementation GameOverView
 
 @synthesize contentView;
 @synthesize onReplayGame;
 
-- (id) initWithFrame: (CGRect) frame {
+#pragma mark - LifyCycle
+
+- (GameOverView*)initWithFrame:(CGRect)frame {
     self = [super initWithFrame: frame];
     [self commonInit];
     
     return self;
 }
 
-- (id) initWithCoder:(NSCoder *)aDecoder {
+- (GameOverView*)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     [self commonInit];
     
@@ -28,7 +36,7 @@
 }
 
 
-- (void) commonInit {
+- (void)commonInit {
     [NSBundle.mainBundle loadNibNamed:@"GameOverView" owner:self options:NULL];
     [self addSubview:contentView];
     
@@ -36,7 +44,9 @@
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 }
 
-- (IBAction) gameOver: (UIButton*) sender {
+#pragma mark - IBActions
+
+- (IBAction)gameOver:(UIButton *)sender {
     if (onReplayGame) {
         onReplayGame();
     }

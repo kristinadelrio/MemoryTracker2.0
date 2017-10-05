@@ -12,9 +12,8 @@
 
 @property void (^onReplayGame)(void);
 
-@property (strong, nonatomic) IBOutlet UIView *contentView;
-
 - (IBAction)gameOver:(UIButton *)sender;
-- (id) initWithFrame:(CGRect)frame;
+- (GameOverView*)initWithFrame:(CGRect)frame;
+- (GameOverView*)initWithCoder:(NSCoder *)aDecoder;
 
 @end

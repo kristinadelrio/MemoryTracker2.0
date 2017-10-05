@@ -11,8 +11,9 @@
 @interface PauseView : UIView
 
 @property void (^onPauseTap)(void);
-@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 - (IBAction)onPauseTap:(UIButton *)sender;
+- (PauseView *)initWithFrame: (CGRect) frame;
+- (PauseView *)initWithCoder:(NSCoder *)aDecoder;
 
 @end

@@ -38,6 +38,9 @@
 - (id) initWithCoder: (NSCoder*) decoder {
     self = [super init];
     
+    username = [NSString alloc];
+    score = [NSNumber alloc];
+    
     username = [decoder decodeObjectForKey:@"username"];
     score = [decoder decodeObjectForKey:@"score"];
     winDate = [decoder  decodeObjectForKey:@"date"];

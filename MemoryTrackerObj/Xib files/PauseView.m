@@ -8,37 +8,39 @@
 
 #import "PauseView.h"
 
+@interface PauseView ()
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@end
+
 @implementation PauseView
 
 @synthesize contentView;
 @synthesize onPauseTap;
 
-- (id) initWithFrame: (CGRect) frame {
+- (PauseView *)initWithFrame:(CGRect)frame {
     self = [super initWithFrame: frame];
     [self commonInit];
     
     return self;
 }
 
-- (id) initWithCoder:(NSCoder *)aDecoder {
+- (PauseView *)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     [self commonInit];
     
     return self;
 }
 
-- (void) commonInit {
-    [NSBundle.mainBundle loadNibNamed:@"PauseView" owner:self options:NULL];
+- (void)commonInit {
+    [NSBundle.mainBundle loadNibNamed:@"PauseView" owner:self options:nil];
 
-    
     contentView.frame = self.bounds;
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self addSubview:contentView];
 }
 
 - (IBAction)onPauseTap:(UIButton *)sender {
-    if (onPauseTap)
-    {
+    if (onPauseTap) {
         onPauseTap();
     }
 }
