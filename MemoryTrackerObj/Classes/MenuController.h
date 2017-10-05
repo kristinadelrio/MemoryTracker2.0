@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface MenuController : UIViewController
+
 typedef int Level;
 enum Levels { easyLevel = 0, normalLevel, hardLevel };
-
-@interface MenuController : UIViewController
 
 - (NSTimeInterval)timeLimitWith:(Level)level;
 - (void)setLevelWith:(int)index;
