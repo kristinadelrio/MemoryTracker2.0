@@ -37,9 +37,9 @@
 - (id) initWithCoder: (NSCoder*) decoder {
     self = [super init];
     
-    username = [decoder decodeObjectForKey:@"username"];
-    score = [decoder    decodeObjectForKey:@"score"];
-    winDate = [decoder  decodeObjectForKey:@"date"];
+    username = [[decoder decodeObjectForKey:@"username"] copy];
+    score = [[decoder    decodeObjectForKey:@"score"] copy];
+    winDate = [[decoder  decodeObjectForKey:@"date"] copy];
     
     return self;
 }

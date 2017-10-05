@@ -9,18 +9,31 @@
 #import "RatingCell.h"
 #import "WinnerData.h"
 
+@interface RatingCell ()
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
+@end
+
 @implementation RatingCell
 
-@synthesize date;
+@synthesize contentView;
+@synthesize wonDate;
 @synthesize username;
-@synthesize score;
+@synthesize userScore;
 @synthesize trophy;
 
 - (void) generateCellWith: (WinnerData*) user and: (UIImage*) img {
     trophy.image = img;
     username.text = user.username;
-    score.text = [user.score stringValue];
-    date.text = @"1 minutes ago"; //[NSDateFormatter [user.winDate]; // convert to str;
+    userScore.text = [user.score stringValue];
+    wonDate.text = @"1 minutes ago"; //[NSDateFormatter [user.winDate]; // convert to str;
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    [self addSubview:contentView];
+    
+    return self;
 }
 
 @end

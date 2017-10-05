@@ -22,6 +22,7 @@
 		A9B0DA031F86303600FAA520 /* GameOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B0DA021F86303600FAA520 /* GameOverView.m */; };
 		A9B0DA051F863A6700FAA520 /* PauseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B0DA041F863A6700FAA520 /* PauseView.xib */; };
 		A9B0DA081F863AA000FAA520 /* PauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B0DA071F863AA000FAA520 /* PauseView.m */; };
+		A9B0DA0D1F8669A800FAA520 /* RatingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051CF1F8579E90052322F /* RatingCell.m */; };
 		A9BE3F331F82BDBA0053F5D5 /* Rating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BE3F321F82BDBA0053F5D5 /* Rating.storyboard */; };
 		A9BE3F351F82BDE00053F5D5 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BE3F341F82BDDF0053F5D5 /* Game.storyboard */; };
 		A9BE3F381F82C11B0053F5D5 /* RatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F371F82C11B0053F5D5 /* RatingController.m */; };
@@ -32,7 +33,6 @@
 		A9BE3F511F82E1280053F5D5 /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F501F82E1280053F5D5 /* MenuManager.m */; };
 		A9E051CA1F856ED80052322F /* WinnerData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051C91F856ED80052322F /* WinnerData.m */; };
 		A9E051CD1F8572720052322F /* RatingStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051CC1F8572720052322F /* RatingStorage.m */; };
-		A9E051D01F8579E90052322F /* RatingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051CF1F8579E90052322F /* RatingCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -285,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B0DA0D1F8669A800FAA520 /* RatingCell.m in Sources */,
 				A992B1461F841B5000DADE7C /* MapManager.m in Sources */,
 				A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */,
 				A9397BC31F836D45004E85B7 /* CardView.m in Sources */,
@@ -299,7 +300,6 @@
 				A9B0DA081F863AA000FAA520 /* PauseView.m in Sources */,
 				A9BE3F511F82E1280053F5D5 /* MenuManager.m in Sources */,
 				A9BE3F381F82C11B0053F5D5 /* RatingController.m in Sources */,
-				A9E051D01F8579E90052322F /* RatingCell.m in Sources */,
 				A9E051CD1F8572720052322F /* RatingStorage.m in Sources */,
 				A992B1421F83D5B700DADE7C /* NSTImemeIntervalToString.m in Sources */,
 				A932F97F1F82B8DF00F0133D /* AppDelegate.m in Sources */,

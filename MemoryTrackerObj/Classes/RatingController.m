@@ -25,6 +25,8 @@ NSMutableArray<WinnerData*>* winnersList;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    tableView.delegate = self;
+    tableView.dataSource = self;
     winnersList = RatingStorage.shared.loadedRating;
 }
 
@@ -78,12 +80,12 @@ NSMutableArray<WinnerData*>* winnersList;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RatingCell* cell = [tableView dequeueReusableCellWithIdentifier: @"ratingCell"
-                                                       forIndexPath: indexPath];
+    RatingCell *cell = (RatingCell *)[tableView dequeueReusableCellWithIdentifier:@"RatingCell"];
     
-    NSNumber* score = [winnersList objectAtIndex:indexPath.row].score;
-    
-    if (cell && score) {
+    if (cell) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RatingCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+
         UIImage* img = NULL;
         switch (indexPath.row) {
             case 0:

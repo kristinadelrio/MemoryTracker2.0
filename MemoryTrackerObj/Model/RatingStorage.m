@@ -25,7 +25,10 @@
 
 - (id) init {
     self = [super init];
+    
+    loadedRating = [NSMutableArray alloc];
     [self loadData];
+    
     return self;
 }
 
@@ -39,13 +42,13 @@
 
 -(NSMutableArray<WinnerData*>*) loadData {
     loadedRating = [[NSMutableArray alloc] initWithObjects:
-                    [NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]], nil];
+                    [[NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]] mutableCopy], nil];
 
     return loadedRating;
 }
 
 - (void) saveData: (WinnerData*) data {
-    [loadedRating arrayByAddingObject:data];
+    [loadedRating addObject:data];
     [NSKeyedArchiver archiveRootObject:loadedRating toFile:[self filePath]];
 }
 
@@ -54,7 +57,7 @@
                    URLsForDirectory: NSDocumentDirectory
                    inDomains: NSUserDomainMask] lastObject];
     
-    return [[url URLByAppendingPathComponent: @"rating"] absoluteString];
+    return [[url URLByAppendingPathComponent: @"rating"] path];
 }
 
 @end

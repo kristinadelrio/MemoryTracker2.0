@@ -26,6 +26,8 @@ GameMapController* gameMapController;
 PauseView* pauseView;
 GameOverView* gameOver;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

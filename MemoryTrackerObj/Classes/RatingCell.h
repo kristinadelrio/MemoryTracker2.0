@@ -13,8 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *trophy;
 @property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UILabel *score;
-@property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet UILabel *userScore;
+@property (weak, nonatomic) IBOutlet UILabel *wonDate;
 
 - (void) generateCellWith: (WinnerData*) user and: (UIImage*) img;
 
