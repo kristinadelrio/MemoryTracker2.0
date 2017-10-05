@@ -11,6 +11,11 @@
 #import "NSTImemeIntervalToString.h"
 
 @implementation PanelControlController
+{
+    NSTimer *timer;
+}
+
+#pragma mark - Properties
 
 @synthesize isPause;
 @synthesize isTimerRunning;
@@ -22,32 +27,13 @@
 @synthesize onRestartTap;
 @synthesize timeOver;
 
-NSTimer* timer;
+#pragma mark - LifeCycle
 
-- (void) viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     
-    isPause = false;
-    isTimerRunning = false;
-}
-- (IBAction) restartGame: (UIButton *) sender {
-    if (onRestartTap) {
-        onRestartTap();
-    }
-}
-
-- (IBAction) pauseGame: (UIButton *) sender {
-    isPause = !isPause;
-    [self changeTimerState];
-    
-    if (onPauseTap != NULL) {
-        onPauseTap(isPause);
-    }
-}
-- (IBAction) backToHome: (UIButton *) sender {
-    if (onHomeTap != NULL) {
-        onHomeTap();
-    }
+    isPause = NO;
+    isTimerRunning = NO;
 }
 
 - (void) viewWillAppear: (BOOL) animated {
@@ -60,17 +46,43 @@ NSTimer* timer;
     [self stopTimer];
 }
 
-- (void) present: (int) score {
+#pragma mark - IBActions
+
+- (IBAction)restartGame:(UIButton *)sender {
+    if (onRestartTap) {
+        onRestartTap();
+    }
+}
+
+- (IBAction)pauseGame:(UIButton *)sender {
+    isPause = !isPause;
+    [self changeTimerState];
+    
+    if (onPauseTap) {
+        onPauseTap(isPause);
+    }
+}
+
+- (IBAction)backToHome:(UIButton *)sender {
+    if (onHomeTap) {
+        onHomeTap();
+    }
+}
+
+#pragma mark - Presentation block
+
+- (void)present:(int)score {
     scoreLabel.text = [[NSNumber numberWithInt: score] stringValue];
 }
 
-- (void) presentTimer {
+- (void)presentTimer {
     if (GameLogic.sharedLogic.currentTime < 1) {
         [timer invalidate];
         
-        if (timeOver != NULL) {
+        if (timeOver) {
             timeOver();
         }
+        
     } else {
         GameLogic.sharedLogic.currentTime -= 1;
         NSString* time = [NSTImemeIntervalToString toString:
@@ -80,21 +92,25 @@ NSTimer* timer;
     }
 }
 
+#pragma mark - Timer's management
+
 - (void) runTimer {
-    timer = [NSTimer scheduledTimerWithTimeInterval: 1
-                                             target: self
-                                           selector: @selector(presentTimer)
-                                           userInfo: NULL
-                                            repeats: true];
-    isTimerRunning = true;
+    timer = [NSTimer
+             scheduledTimerWithTimeInterval: 1
+             target: self
+             selector: @selector(presentTimer)
+             userInfo: nil
+             repeats: YES];
+    
+    isTimerRunning = YES;
 }
 
-- (void) stopTimer {
+- (void)stopTimer {
     [timer invalidate];
-    isTimerRunning = false;
+    isTimerRunning = NO;
 }
 
-- (void) changeTimerState {
+- (void)changeTimerState {
     isTimerRunning && isPause ? [self stopTimer] : [self runTimer];
 }
 

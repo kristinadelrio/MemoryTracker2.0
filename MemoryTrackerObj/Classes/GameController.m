@@ -16,15 +16,16 @@
 #import "GameOverView.h"
 
 @implementation GameController
+{
+    PanelControlController *panelController;
+    GameMapController *gameMapController;
+    
+    PauseView *pauseView;
+    GameOverView *gameOver;
+}
 
 @synthesize gameMapContainer;
 @synthesize timeLimit;
-
-PanelControlController* panelController;
-GameMapController* gameMapController;
-
-PauseView* pauseView;
-GameOverView* gameOver;
 
 #pragma mark - Lifecycle
 
@@ -37,45 +38,107 @@ GameOverView* gameOver;
     };
 }
 
-- (void) turnOffpause {
-    panelController.isPause = false;
-    [panelController changeTimerState];
-    [self deallocPauseView];
-}
-
-- (void) deallocPauseView {
-    [pauseView removeFromSuperview];
-    pauseView = NULL;
-}
-
-- (void) turnOnPause: (bool) state {
-    if (state) {
-        pauseView = [[PauseView alloc] initWithFrame:gameMapController.view.frame];
-        __weak typeof(self) weakSelf = self;
-        pauseView.onPauseTap = ^{
-            [weakSelf turnOffpause];
-        };
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier  isEqual: @"PanelControlControllerSegue"]) {
+        panelController = segue.destinationViewController;
+        [self prepareControlPanelController];
         
+    } else if ([segue.identifier isEqual: @"GameMapControllerSegue"]) {
+        gameMapController = segue.destinationViewController;
+        [self prepareGameMapController];
+    }
+}
+
+- (void)prepareGameMapController {
+    __weak typeof(self) weakSelf = self;
+    
+    gameMapController.gameOver = ^{
+        [weakSelf gameOver];
+    };
+}
+
+- (void)prepareControlPanelController {
+    __weak typeof(self) weakSelf = self;
+    panelController.onHomeTap = ^{
+        [weakSelf turnToHome];
+    };
+    
+    panelController.onPauseTap = ^(bool state) {
+        [weakSelf turnOnPause: state];
+    };
+    
+    panelController.timeOver = ^{
+        [weakSelf gameOver];
+    };
+    
+    panelController.onRestartTap = ^{
+        [weakSelf replayGame];
+    };
+}
+
+#pragma mark - Runtime view's management
+
+- (void)initPauseView {
+    pauseView = [[PauseView alloc]
+                 initWithFrame:gameMapContainer.bounds];
+    
+    __weak typeof(self) weakSelf = self;
+    pauseView.onPauseTap = ^{
+        [weakSelf turnOffpause];
+    };
+}
+
+- (void)deinitPauseView {
+    [pauseView removeFromSuperview];
+    pauseView = nil;
+}
+
+- (void)initGameOverView {
+    gameOver = [[GameOverView alloc] initWithFrame:gameMapContainer.bounds];
+    
+    __weak typeof(self) weakSelf = self;
+    gameOver.onReplayGame = ^{
+        [weakSelf replayGame];
+    };
+}
+
+- (void)deinitGameOverView {
+    [gameOver removeFromSuperview];
+    gameOver = nil;
+}
+
+#pragma mark - OnButtonTap action
+
+- (void)turnOffpause {
+    panelController.isPause = NO;
+    [panelController changeTimerState];
+    [self deinitPauseView];
+}
+
+- (void)turnOnPause:(BOOL)state {
+    if (state) {
+        [self initPauseView];
         [gameMapContainer addSubview:pauseView];
         [self updateFocusIfNeeded];
     }
     else {
-        [self deallocPauseView];
+        [self deinitPauseView];
     }
 }
 
-- (void) turnToHome {
+- (void)turnToHome {
     GameLogic.sharedLogic.score = 0;
     [self dismissViewControllerAnimated: true completion: NULL];
 }
 
-- (void) showScore: (int) score {
+#pragma mark - Presentation block
+
+- (void)showScore:(int)score {
     [panelController present: score];
 }
 
-- (void) replayGame {
-    [gameOver removeFromSuperview];
-    gameOver = NULL;
+- (void)replayGame {
+    [self deinitGameOverView];
     [panelController stopTimer];
     panelController.scoreLabel.text = @"0";
     panelController.timeLabel.text = @"00:00";
@@ -87,26 +150,24 @@ GameOverView* gameOver;
     [panelController runTimer];
 }
 
-- (void) gameOver {
+- (void)gameOver {
     [panelController stopTimer];
-    gameOver = [[GameOverView alloc] initWithFrame:gameMapContainer.bounds];
-    __weak typeof(self) weakSelf = self;
-    gameOver.onReplayGame = ^{
-        [weakSelf replayGame];
-    };
+    [self initGameOverView];
     [gameMapContainer addSubview:gameOver];
     if (GameLogic.sharedLogic.totalScore > 0) {
         [self saveScore];
     }
 }
 
-- (void) saveScore {
-    UIAlertController* alert = [UIAlertController
+#pragma mark - Saving score to RatingStorage block
+
+- (void)saveScore {
+    UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Save your score"
                                 message:@"Input your name here"
                                 preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* doneAction = [UIAlertAction
+    UIAlertAction *doneAction = [UIAlertAction
                                  actionWithTitle:@"Done"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
@@ -115,13 +176,13 @@ GameOverView* gameOver;
                                      [RatingStorage.shared saveData:winner];
                                  }];
     
-    UIAlertAction* cancelAction = [UIAlertAction
+    UIAlertAction *cancelAction = [UIAlertAction
                                    actionWithTitle: @"Cancel"
                                    style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action) { NULL; }];
+                                   handler: nil];
     
-    [alert addAction: doneAction];
-    [alert addAction: cancelAction];
+    [alert addAction:doneAction];
+    [alert addAction:cancelAction];
     
     [alert addTextFieldWithConfigurationHandler: ^(UITextField* nicknameField) {
         nicknameField.placeholder = @"Your name is...";
@@ -130,46 +191,7 @@ GameOverView* gameOver;
         nicknameField.keyboardAppearance = UIKeyboardAppearanceDark;
     }];
     
-    [self presentViewController:alert animated: true completion: nil];
-    
-}
-
-- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender {
-    if ([segue.identifier  isEqual: @"PanelControlControllerSegue"]) {
-        panelController = segue.destinationViewController;
-        [self prepareControlPanelController];
-    } else if ([segue.identifier isEqual: @"GameMapControllerSegue"]) {
-        gameMapController = segue.destinationViewController;
-        [self prepareGameMapController];
-    }
-}
-
-- (void) prepareGameMapController {
-   __weak typeof(self) weakSelf = self;
-    
-    gameMapController.gameOver = ^{
-        [weakSelf gameOver];
-    };
-}
-
-- (void) prepareControlPanelController {
-    __weak typeof(self) weakSelf = self;
-    panelController.onHomeTap = ^{
-        [weakSelf turnToHome];
-    };
-    
-    panelController.onPauseTap = ^(bool state) {
-
-        [weakSelf turnOnPause: state];
-    };
-    
-    panelController.timeOver = ^{
-        [weakSelf gameOver];
-    };
-    
-    panelController.onRestartTap = ^{
-        [weakSelf replayGame];
-    };
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

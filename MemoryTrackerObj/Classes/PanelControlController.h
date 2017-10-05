@@ -21,15 +21,15 @@
 @property void (^onHomeTap)(void);
 @property void (^timeOver)(void);
 
-- (IBAction) restartGame: (UIButton *) sender;
-- (IBAction) pauseGame: (UIButton *) sender;
-- (IBAction) backToHome: (UIButton *) sender;
+- (IBAction)restartGame:(UIButton *)sender;
+- (IBAction)pauseGame:(UIButton *)sender;
+- (IBAction)backToHome:(UIButton *)sender;
 
 
-- (void) present: (int) score;
-- (void) presentTimer;
-- (void) runTimer;
-- (void) stopTimer;
-- (void) changeTimerState;
+- (void)present:(int)score;
+- (void)presentTimer;
+- (void)runTimer;
+- (void)stopTimer;
+- (void)changeTimerState;
 
 @end

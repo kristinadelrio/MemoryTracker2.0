@@ -18,8 +18,10 @@
 @end
 
 @implementation RatingController
+{
+    NSMutableArray *winnersList;
+}
 
-NSMutableArray* winnersList;
 @synthesize tableView;
 
 - (void)viewDidLoad {
@@ -39,40 +41,40 @@ NSMutableArray* winnersList;
     [self dismissViewControllerAnimated:true completion:NULL];
 }
 
-- (bool) prefersStatusBarHidden {
-    return true;
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
-- (void) clearScore {
+- (void)clearScore {
     [winnersList removeAllObjects];
     [tableView reloadData];
     [RatingStorage.shared removeData];
 }
 
-- (void) createDeleteAlertWith: (NSString*) title and: (NSString*) message {
-    UIAlertController* alert = [UIAlertController
+- (void)createDeleteAlertWith:(NSString *)title and:(NSString *) message {
+    UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:title
                                 message:message
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     __weak typeof (self) weakSelf = self;
-    UIAlertAction* doneAction = [UIAlertAction
+    UIAlertAction *doneAction = [UIAlertAction
                                  actionWithTitle:@"OK"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
                                      [weakSelf clearScore]; }];
     
-    UIAlertAction* cancelAction = [UIAlertAction
+    UIAlertAction *cancelAction = [UIAlertAction
                                    actionWithTitle: @"Cancel"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction * action) {
-                                       [alert dismissViewControllerAnimated:true completion:NULL];
+                                       [alert dismissViewControllerAnimated:true completion:nil];
                                    }];
     
     [alert addAction: doneAction];
     [alert addAction: cancelAction];
     
-    [self presentViewController:alert animated: true completion: nil];
+    [self presentViewController:alert animated: YES completion: nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -80,16 +82,14 @@ NSMutableArray* winnersList;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *simpleTableIdentifier = @"RatingCell";
-    
-    RatingCell *cell = (RatingCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RatingCell *cell = (RatingCell *)[tableView dequeueReusableCellWithIdentifier:@"RatingCell"];
     if (!cell) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RatingCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    UIImage* img = NULL;
+    
+    UIImage *img;
     switch (indexPath.row) {
         case 0:
             img = [UIImage imageNamed:@"golden-medal"];
@@ -104,7 +104,7 @@ NSMutableArray* winnersList;
             break;
     }
     
-    [cell generateCellWith: (WinnerData*)[winnersList objectAtIndex:indexPath.row] and:img];
+    [cell generateCellWith: (WinnerData *)[winnersList objectAtIndex:indexPath.row] and:img];
     
     return cell;
 }

@@ -13,7 +13,7 @@
 
 @interface NSTImemeIntervalToString: NSObject
 
-+ (NSString*) toString: (NSTimeInterval) time;
++ (NSString *)toString:(NSTimeInterval)time;
 
 @end
 

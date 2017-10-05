@@ -10,17 +10,18 @@
 #import "CardView.h"
 
 @interface GameMapController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UIView *gameScene;
 @property void (^gameOver)(void);
 
-- (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index;
-- (void) putCardsOnTheDeskWithRawCount: (int) raws andColumns: (int) columns; 
-- (void) hideCardFace;
-- (void) redrawScene;
-- (void) initializateGameScene;
-- (void) closeCard;
-- (void) deleteCard;
-- (void) isGameSceneEmpty;
+- (CardView *)generateCardWith:(CGRect)rect andImgIndex:(int)index;
+- (void)putCardsOnTheDeskWithRawCount:(int)raws andColumns:(int)columns;
+- (void)hideCardFace;
+- (void)redrawScene;
+- (void)initializateGameScene;
+- (void)closeCard;
+- (void)deleteCard;
+- (void)isGameSceneEmpty;
 
 @end
 

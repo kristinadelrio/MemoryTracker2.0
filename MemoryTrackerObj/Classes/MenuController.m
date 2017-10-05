@@ -22,55 +22,55 @@
 @synthesize soundButton;
 @synthesize levelsSegmentedControl;
 
-MenuManager* menuManager;
+MenuManager *menuManager;
 
-- (void) viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     menuManager = [[MenuManager alloc] init];
     
-    [self setSoundWith: menuManager.soundManagerState];
-    [self setLevelWith: menuManager.levelIndex];
+    [self setSoundWith:menuManager.soundManagerState];
+    [self setLevelWith:menuManager.levelIndex];
 }
 
-- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier  isEqual: @"GameControllerSegue"]) {
-        Level level = (int) levelsSegmentedControl.selectedSegmentIndex;
+        Level level = (int)levelsSegmentedControl.selectedSegmentIndex;
         int time = [self timeLimitWith: level];
         [GameLogic.sharedLogic initTimeLimit: time];
     }
 }
 
-- (IBAction) changeSoundState: (UIButton *) sender {
+- (IBAction)changeSoundState:(UIButton *)sender {
     menuManager.soundManagerState = !menuManager.soundManagerState;
     [self setSoundWith: menuManager.soundManagerState];
 }
 
-- (IBAction) levelChanged: (UISegmentedControl *) sender {
-    menuManager.levelIndex = (int) sender.selectedSegmentIndex;
+- (IBAction)levelChanged:(UISegmentedControl *)sender {
+    menuManager.levelIndex = (int)sender.selectedSegmentIndex;
 }
 
-- (NSTimeInterval) timeLimitWith: (Level) level {
+- (NSTimeInterval)timeLimitWith:(Level)level {
     switch (level) {
-        case easyLevel:   return 90;
+        case easyLevel: return 90;
         case normalLevel: return 60;
-        case hardLevel:   return 45;
-        default:          return 60;
+        case hardLevel: return 45;
+        default: return 60;
     }
 }
 
-- (void) setLevelWith: (int) index {
+- (void)setLevelWith:(int)index {
     levelsSegmentedControl.selectedSegmentIndex = index;
 }
 
-- (void) setSoundWith: (bool) state {
+- (void)setSoundWith:(BOOL)state {
     if (state) {
-        UIImage* img = [UIImage imageNamed:@"speakerOn"];
-        [soundButton setImage: img forState: normal];
+        UIImage *img = [UIImage imageNamed:@"speakerOn"];
+        [soundButton setImage: img forState:normal];
         [menuManager playBackgroundMusic];
     } else {
-        UIImage* img = [UIImage imageNamed:@"speakerOff"];
-        [soundButton setImage: img forState: normal];
+        UIImage *img = [UIImage imageNamed:@"speakerOff"];
+        [soundButton setImage: img forState:normal];
         [menuManager stopBackgroundMusic];
     }
 }

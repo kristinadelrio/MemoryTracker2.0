@@ -11,6 +11,7 @@
 @interface RatingController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 - (IBAction)clearRating:(UIBarButtonItem *)sender;
 - (IBAction)closeRating:(UIBarButtonItem *)sender;
 

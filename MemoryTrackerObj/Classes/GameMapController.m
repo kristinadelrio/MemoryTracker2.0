@@ -11,13 +11,15 @@
 #import "MapManager.h"
 
 @implementation GameMapController
-
-MapManager* mapManager;
-
-NSMutableArray* openedCards;
+{
+    MapManager *mapManager;
+    NSMutableArray *openedCards;
+}
 
 @synthesize gameScene;
 @synthesize gameOver;
+
+#pragma mark - LifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,13 +39,15 @@ NSMutableArray* openedCards;
     };
 }
 
-- (CardView*) generateCardWith: (CGRect) rect andImgIndex: (int) index {
-    CardView* card = [[CardView alloc] initWithFrame: rect];
-    NSString* imgName =  [@([mapManager.pokemonsImages[index] intValue]) stringValue];
+#pragma mark - Card's initialization
+
+- (CardView *)generateCardWith:(CGRect)rect andImgIndex:(int)index {
+    CardView *card = [[CardView alloc] initWithFrame:rect];
+    NSString *imgName = [@([mapManager.pokemonsImages[index] intValue]) stringValue];
     card.cardFace = [UIImage imageNamed: imgName];
     [card turnToCardFace];
     
-    UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]
                                           initWithTarget: self
                                           action: @selector(onCardTap:)];
     
@@ -53,7 +57,7 @@ NSMutableArray* openedCards;
     return card;
 }
 
-- (void) putCardsOnTheDeskWithRawCount: (int) raws andColumns: (int) columns {
+- (void)putCardsOnTheDeskWithRawCount:(int)raws andColumns:(int)columns {
     CGFloat xPos = 0;
     CGFloat yPos = 0;
     
@@ -62,7 +66,7 @@ NSMutableArray* openedCards;
                                  gameScene.bounds.size.width / columns,
                                  gameScene.bounds.size.height / raws);
         
-        [gameScene addSubview:[self generateCardWith: rect andImgIndex: i]];
+        [gameScene addSubview:[self generateCardWith:rect andImgIndex:i]];
         xPos += gameScene.bounds.size.width / columns;
         
         if (xPos == gameScene.bounds.size.width) {
@@ -72,33 +76,7 @@ NSMutableArray* openedCards;
     }
 }
 
-- (void) hideCardFace {
-    for (id subview in gameScene.subviews) {
-        if ([subview isKindOfClass: [CardView class]]) {
-            CardView* card = subview;
-            [card turnToCardBack];
-        }
-    }
-}
-
-- (void) redrawScene {
-    for (UIView *subview in gameScene.subviews) {
-        [subview removeFromSuperview];
-    }
-    
-    [openedCards removeAllObjects];
-    [mapManager shuffleImages];
-    [self initializateGameScene];
-}
-
-- (void) initializateGameScene {
-    [self putCardsOnTheDeskWithRawCount: 5 andColumns: 4];
-    [NSTimer scheduledTimerWithTimeInterval: 2 repeats: false block: ^(NSTimer *timer) {
-        [self hideCardFace];
-    }];
-}
-
-- (void) onCardTap: (UITapGestureRecognizer*) sender {
+- (void)onCardTap:(UITapGestureRecognizer*)sender {
     if ([sender.view isKindOfClass: [CardView class]]) {
         CardView* card = (CardView*) sender.view;
         if (card.image == card.cardBack) {
@@ -113,20 +91,49 @@ NSMutableArray* openedCards;
     }
 }
 
-- (void) closeCard {
+#pragma mark - Scene management
+
+- (void)hideCardFace {
+    for (id subview in gameScene.subviews) {
+        if ([subview isKindOfClass: [CardView class]]) {
+            CardView *card = subview;
+            [card turnToCardBack];
+        }
+    }
+}
+
+- (void)redrawScene {
+    for (UIView *subview in gameScene.subviews) {
+        [subview removeFromSuperview];
+    }
+    
+    [openedCards removeAllObjects];
+    [mapManager shuffleImages];
+    [self initializateGameScene];
+}
+
+- (void)initializateGameScene {
+    [self putCardsOnTheDeskWithRawCount: 5 andColumns: 4];
+    [NSTimer scheduledTimerWithTimeInterval: 2 repeats: NO block: ^(NSTimer *timer) {
+        [self hideCardFace];
+    }];
+}
+
+
+- (void)closeCard {
     [openedCards[0] turnToCardBack];
     [openedCards[1] turnToCardBack];
     
     [openedCards removeAllObjects];
 }
 
-- (void) deleteCard {
+- (void)deleteCard {
     [openedCards[0] removeFromSuperview];
     [openedCards[1] removeFromSuperview];
     
     [openedCards removeAllObjects];
 }
-- (void) isGameSceneEmpty {
+- (void)isGameSceneEmpty {
     if (gameScene.subviews.count == 2 && gameOver) {
         gameOver();
     }

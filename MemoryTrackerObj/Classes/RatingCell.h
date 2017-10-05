@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *userScore;
 @property (weak, nonatomic) IBOutlet UILabel *wonDate;
 
-- (void) generateCellWith: (WinnerData*) user and: (UIImage*) img;
+- (void)generateCellWith:(WinnerData *)user and:(UIImage *)img;
 
 @end

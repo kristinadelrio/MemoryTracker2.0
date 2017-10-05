@@ -10,7 +10,7 @@
 
 @implementation RatingCell
 
-- (void) generateCellWith: (WinnerData*) user and: (UIImage*) img {
+- (void)generateCellWith:(WinnerData *)user and:(UIImage *)img {
     _trophyImageView.image = img;
     _username.text = user.username;
     _userScore.text = [user.score stringValue];

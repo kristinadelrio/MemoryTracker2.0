@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 typedef int Level;
-enum Levels { easyLevel = 0, normalLevel, hardLevel};
+enum Levels { easyLevel = 0, normalLevel, hardLevel };
 
 @interface MenuController : UIViewController
 
-- (NSTimeInterval) timeLimitWith: (Level) level;
-- (void) setLevelWith: (int) index;
-- (void) setSoundWith: (bool) state;
+- (NSTimeInterval)timeLimitWith:(Level)level;
+- (void)setLevelWith:(int)index;
+- (void)setSoundWith:(BOOL)state;
 
 @end
 
