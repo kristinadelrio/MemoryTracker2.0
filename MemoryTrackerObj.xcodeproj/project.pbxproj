@@ -151,16 +151,8 @@
 			children = (
 				A932F9801F82B8DF00F0133D /* MenuController.h */,
 				A932F9811F82B8DF00F0133D /* MenuController.m */,
-				A9BE3F361F82C11B0053F5D5 /* RatingController.h */,
-				A9BE3F371F82C11B0053F5D5 /* RatingController.m */,
-				A9BE3F391F82C13B0053F5D5 /* PanelControlController.h */,
-				A9BE3F3A1F82C13B0053F5D5 /* PanelControlController.m */,
-				A9BE3F3C1F82C14D0053F5D5 /* GameMapController.h */,
-				A9BE3F3D1F82C14D0053F5D5 /* GameMapController.m */,
-				A9BE3F3F1F82C1700053F5D5 /* GameController.h */,
-				A9BE3F401F82C1700053F5D5 /* GameController.m */,
-				A9E051CE1F8579E90052322F /* RatingCell.h */,
-				A9E051CF1F8579E90052322F /* RatingCell.m */,
+				A9B0DA121F86891F00FAA520 /* rating */,
+				A9B0DA111F86891400FAA520 /* game */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -168,21 +160,9 @@
 		A932F9961F82B91400F0133D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A9BE3F4F1F82E11B0053F5D5 /* MenuManager.h */,
-				A9BE3F501F82E1280053F5D5 /* MenuManager.m */,
-				A932F9971F82B96700F0133D /* SoundManager.h */,
-				A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */,
-				A9397BBC1F8364B8004E85B7 /* melody.mp3 */,
-				A9397BBE1F836992004E85B7 /* GameLogic.h */,
-				A9397BBF1F836A0E004E85B7 /* GameLogic.m */,
-				A9397BC11F836D45004E85B7 /* CardView.h */,
-				A9397BC21F836D45004E85B7 /* CardView.m */,
-				A992B1441F8417D900DADE7C /* MapManager.h */,
-				A992B1451F841B5000DADE7C /* MapManager.m */,
-				A9E051C81F856DB50052322F /* WinnerData.h */,
-				A9E051C91F856ED80052322F /* WinnerData.m */,
-				A9E051CB1F8571780052322F /* RatingStorage.h */,
-				A9E051CC1F8572720052322F /* RatingStorage.m */,
+				A9B0DA0E1F8688D700FAA520 /* menuModel */,
+				A9B0DA101F8688FF00FAA520 /* gameModel */,
+				A9B0DA0F1F8688F400FAA520 /* ratingModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,14 +179,90 @@
 		A9B0DA001F862FE400FAA520 /* Xib files */ = {
 			isa = PBXGroup;
 			children = (
+				A9B0DA131F86893000FAA520 /* gameOver */,
+				A9B0DA141F86893A00FAA520 /* pause */,
+			);
+			path = "Xib files";
+			sourceTree = "<group>";
+		};
+		A9B0DA0E1F8688D700FAA520 /* menuModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE3F4F1F82E11B0053F5D5 /* MenuManager.h */,
+				A9BE3F501F82E1280053F5D5 /* MenuManager.m */,
+				A932F9971F82B96700F0133D /* SoundManager.h */,
+				A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */,
+				A9397BBC1F8364B8004E85B7 /* melody.mp3 */,
+			);
+			path = menuModel;
+			sourceTree = "<group>";
+		};
+		A9B0DA0F1F8688F400FAA520 /* ratingModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9E051C81F856DB50052322F /* WinnerData.h */,
+				A9E051C91F856ED80052322F /* WinnerData.m */,
+				A9E051CB1F8571780052322F /* RatingStorage.h */,
+				A9E051CC1F8572720052322F /* RatingStorage.m */,
+			);
+			path = ratingModel;
+			sourceTree = "<group>";
+		};
+		A9B0DA101F8688FF00FAA520 /* gameModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9397BBE1F836992004E85B7 /* GameLogic.h */,
+				A9397BBF1F836A0E004E85B7 /* GameLogic.m */,
+				A9397BC11F836D45004E85B7 /* CardView.h */,
+				A9397BC21F836D45004E85B7 /* CardView.m */,
+				A992B1441F8417D900DADE7C /* MapManager.h */,
+				A992B1451F841B5000DADE7C /* MapManager.m */,
+			);
+			path = gameModel;
+			sourceTree = "<group>";
+		};
+		A9B0DA111F86891400FAA520 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE3F391F82C13B0053F5D5 /* PanelControlController.h */,
+				A9BE3F3A1F82C13B0053F5D5 /* PanelControlController.m */,
+				A9BE3F3C1F82C14D0053F5D5 /* GameMapController.h */,
+				A9BE3F3D1F82C14D0053F5D5 /* GameMapController.m */,
+				A9BE3F3F1F82C1700053F5D5 /* GameController.h */,
+				A9BE3F401F82C1700053F5D5 /* GameController.m */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		A9B0DA121F86891F00FAA520 /* rating */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE3F361F82C11B0053F5D5 /* RatingController.h */,
+				A9BE3F371F82C11B0053F5D5 /* RatingController.m */,
+				A9E051CE1F8579E90052322F /* RatingCell.h */,
+				A9E051CF1F8579E90052322F /* RatingCell.m */,
+			);
+			path = rating;
+			sourceTree = "<group>";
+		};
+		A9B0DA131F86893000FAA520 /* gameOver */ = {
+			isa = PBXGroup;
+			children = (
 				A9B0D9FE1F862F8500FAA520 /* GameOverView.xib */,
 				A9B0DA011F86303600FAA520 /* GameOverView.h */,
 				A9B0DA021F86303600FAA520 /* GameOverView.m */,
+			);
+			path = gameOver;
+			sourceTree = "<group>";
+		};
+		A9B0DA141F86893A00FAA520 /* pause */ = {
+			isa = PBXGroup;
+			children = (
 				A9B0DA041F863A6700FAA520 /* PauseView.xib */,
 				A9B0DA061F863AA000FAA520 /* PauseView.h */,
 				A9B0DA071F863AA000FAA520 /* PauseView.m */,
 			);
-			path = "Xib files";
+			path = pause;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
