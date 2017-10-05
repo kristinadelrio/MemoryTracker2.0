@@ -11,7 +11,7 @@
 
 @interface RatingCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *trophy;
+@property (weak, nonatomic) IBOutlet UIImageView *trophyImageView;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *userScore;
 @property (weak, nonatomic) IBOutlet UILabel *wonDate;

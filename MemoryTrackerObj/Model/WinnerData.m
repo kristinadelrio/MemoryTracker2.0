@@ -26,9 +26,10 @@
 
 - (id) initWithUserName: (NSString*) name andScore: (int) score {
     self = [super init];
-    username = name;
-    NSNumber* scoreNum = [[NSNumber alloc] initWithInt:score];
-    self.score = scoreNum;
+    
+    username = [[NSString alloc] initWithString:name];
+    self.score = [[NSNumber alloc] initWithInt:score];
+    winDate = [NSDate date];
     
     return self;
 }
@@ -37,16 +38,16 @@
 - (id) initWithCoder: (NSCoder*) decoder {
     self = [super init];
     
-    username = [[decoder decodeObjectForKey:@"username"] copy];
-    score = [[decoder    decodeObjectForKey:@"score"] copy];
-    winDate = [[decoder  decodeObjectForKey:@"date"] copy];
+    username = [decoder decodeObjectForKey:@"username"];
+    score = [decoder decodeObjectForKey:@"score"];
+    winDate = [decoder  decodeObjectForKey:@"date"];
     
     return self;
 }
 - (void) encodeWithCoder: (NSCoder*) encoder {
     [encoder encodeObject:username forKey:@"username"];
-    [encoder encodeObject:score    forKey:@"score"];
-    [encoder encodeObject:winDate  forKey:@"date"];
+    [encoder encodeObject:score forKey:@"score"];
+    [encoder encodeObject:winDate forKey:@"date"];
 }
 
 @end

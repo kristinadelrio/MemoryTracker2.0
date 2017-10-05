@@ -19,7 +19,7 @@
 
 @implementation RatingController
 
-NSMutableArray<WinnerData*>* winnersList;
+NSMutableArray* winnersList;
 @synthesize tableView;
 
 - (void)viewDidLoad {
@@ -79,34 +79,34 @@ NSMutableArray<WinnerData*>* winnersList;
     return winnersList ? winnersList.count : 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RatingCell *cell = (RatingCell *)[tableView dequeueReusableCellWithIdentifier:@"RatingCell"];
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"RatingCell";
     
-    if (cell) {
+    RatingCell *cell = (RatingCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (!cell) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RatingCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
-
-        UIImage* img = NULL;
-        switch (indexPath.row) {
-            case 0:
-                img = [UIImage imageNamed:@"golden-medal"];
-                break;
-            case 1:
-                img = [UIImage imageNamed:@"silver-medal"];
-                break;
-            case 2:
-                img = [UIImage imageNamed:@"bronze-medal"];
-                break;
-            default:
-                break;
-        }
-        
-        [cell generateCellWith: [winnersList objectAtIndex:indexPath.row] and:img];
-        
-        return cell;
     }
-                        
-    return [[UITableViewCell alloc] init];
+    UIImage* img = NULL;
+    switch (indexPath.row) {
+        case 0:
+            img = [UIImage imageNamed:@"golden-medal"];
+            break;
+        case 1:
+            img = [UIImage imageNamed:@"silver-medal"];
+            break;
+        case 2:
+            img = [UIImage imageNamed:@"bronze-medal"];
+            break;
+        default:
+            break;
+    }
+    
+    [cell generateCellWith: (WinnerData*)[winnersList objectAtIndex:indexPath.row] and:img];
+    
+    return cell;
 }
 
 @end
