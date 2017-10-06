@@ -39,8 +39,10 @@
 }
 
 - (void)loadData {
-    loadedRating = [[NSMutableArray alloc] initWithObjects:
-                    [NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]], nil];
+    loadedRating = [NSMutableArray array];
+    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]];
+    loadedRating = [data mutableCopy];
+    data = nil;
 }
 
 - (void)saveData:(WinnerData *)data {

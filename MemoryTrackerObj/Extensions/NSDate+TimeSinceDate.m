@@ -12,46 +12,46 @@
 @implementation NSDate (TimeSinceDate)
 
 - (NSString *)timeSinceDate {
-    NSString *durationString;
-    
-    NSDate *now = [NSDate date];
-    NSDate *startDate = [now earlierDate:self];
-    NSDate *endDate = (startDate == now) ? self : now;
-    
     NSDateComponents *components = [[NSCalendar currentCalendar]
-                                    components: NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate: startDate toDate: endDate options: 0];
+                                    components: NSCalendarUnitWeekOfYear|NSCalendarUnitDay|
+                                    NSCalendarUnitHour|NSCalendarUnitMinute
+                                    fromDate: self
+                                    toDate: [NSDate date]
+                                    options: 0];
     
-    NSArray *timeUnits = [[NSArray alloc] initWithObjects:
-                    [[NSNumber alloc] initWithInteger:[components weekOfYear]],
-                    [[NSNumber alloc] initWithInteger:[components day]],
-                    [[NSNumber alloc] initWithInteger:[components hour]],
-                    [[NSNumber alloc] initWithInteger:[components minute]],
-                    [[NSNumber alloc] initWithInteger:[components second]], nil];
-    
-    
-    durationString = [self createDurationStringWith:timeUnits andStrAnalog:@"week"];
-
-
-    return durationString ? durationString : @"";
+    return [self createDateStringWithComponents:components];
 }
 
-- (NSString *)createDurationStringWith:(NSArray *)timeUnits andStrAnalog: (NSString *)insertor {
-    NSString *durationString;
-    NSInteger ind = 0;
-    while (ind < [timeUnits count] && !durationString) {
-        NSInteger timeUnit = [[timeUnits objectAtIndex:ind++] integerValue];
-        if (timeUnit > 0) {
-            if(timeUnit > 1) {
-                durationString = [durationString initWithFormat: @"%li %@ s ago", (long)timeUnit, insertor];
-                break;
-            } else {
-                durationString = [durationString initWithFormat: @"%li %@ ago", (long)timeUnit, insertor];
-                break;
-            }
-        }
+- (NSString *)createDateStringWithComponents:(NSDateComponents *)components  {
+    if (components.weekOfYear > 1) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"dd MMMM yyyy"];
+        
+        return [formatter stringFromDate:self];
+        
+    } else if (components.weekOfYear == 1) {
+        return @"1 week ago";
+        
+    } else if (components.day > 1) {
+        return [NSString stringWithFormat:@"%i days ago", (int)components.day];
+        
+    } else if (components.day == 1) {
+        return @"1 day ago";
+        
+    } else if (components.hour > 1) {
+        return [NSString stringWithFormat:@"%i hours ago", (int)components.hour];
+        
+    } else if (components.hour == 1) {
+        return @"1 hour ago";
+        
+    } else if (components.minute > 1) {
+        return [NSString stringWithFormat:@"%i minutes ago", (int)components.minute];
+        
+    } else if (components.minute == 1) {
+        return @"1 minute ago";
     }
     
-    return durationString;
+    return @"just now";
 }
 
 @end
