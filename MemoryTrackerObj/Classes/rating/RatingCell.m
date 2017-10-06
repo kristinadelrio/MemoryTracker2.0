@@ -18,6 +18,15 @@
     _wonDate.text = [user.winDate timeSinceDate];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    _trophyImageView.image = nil;
+    _username.text = @"";
+    _userScore.text = @"";
+    _wonDate.text = @"";
+}
+
 @end
 
 
