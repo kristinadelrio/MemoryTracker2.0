@@ -87,7 +87,7 @@
     }
     
     UIImage *img = [self getImageWithIndexPath:indexPath.row];
-    [cell generateCellWith: [RatingStorage.shared.loadedRating objectAtIndex:indexPath.row] and:img];
+    [cell generateCellWith: [RatingStorage.shared.sortedLoadedRating objectAtIndex:indexPath.row] and:img];
     
     return cell;
 }

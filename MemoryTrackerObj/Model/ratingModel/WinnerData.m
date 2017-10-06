@@ -53,4 +53,8 @@
     [encoder encodeObject:winDate forKey:@"date"];
 }
 
+- (NSComparisonResult)compare:(WinnerData *)object {
+    return !(self.score > object.score);
+}
+
 @end

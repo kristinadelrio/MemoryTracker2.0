@@ -11,6 +11,7 @@
 @implementation RatingStorage
 
 @synthesize loadedRating;
+@synthesize sortedLoadedRating;
 
 + (RatingStorage *)shared {
     static RatingStorage *shared;
@@ -56,6 +57,18 @@
     if (!loadedRating) {
         loadedRating = [NSMutableArray array];
     }
+}
+
+- (NSMutableArray *)sortedLoadedRating {
+    if (loadedRating) {
+            [loadedRating sortUsingComparator:
+             ^NSComparisonResult(WinnerData *first, WinnerData *second) {
+                return [first compare:second];
+             }];
+        
+        return loadedRating;
+    }
+        return nil;
 }
 
 - (NSString *)filePath {

@@ -16,6 +16,7 @@
 
 +(RatingStorage *) shared;
 @property NSMutableArray *loadedRating;
+@property (readonly, atomic) NSMutableArray *sortedLoadedRating;
 
 -(void) removeData;
 -(void) saveData:(WinnerData*) data;

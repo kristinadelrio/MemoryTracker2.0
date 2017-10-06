@@ -155,10 +155,9 @@
 		A932F9951F82B90E00F0133D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A932F9801F82B8DF00F0133D /* MenuController.h */,
-				A932F9811F82B8DF00F0133D /* MenuController.m */,
-				A9B0DA121F86891F00FAA520 /* rating */,
 				A9B0DA111F86891400FAA520 /* game */,
+				A9B0DA121F86891F00FAA520 /* rating */,
+				A9F1E8F91F87BB0600DBF906 /* menu */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -178,8 +177,8 @@
 		A992B13F1F83D20300DADE7C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */,
 				A992B1431F83D67300DADE7C /* NSTImemeIntervalToString.h */,
+				A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */,
 				A97DD3281F86B52B00B2E811 /* NSDate+TimeSinceDate.h */,
 				A97DD32B1F86B63600B2E811 /* NSDate+TimeSinceDate.m */,
 			);
@@ -273,6 +272,15 @@
 				A9B0DA071F863AA000FAA520 /* PauseView.m */,
 			);
 			path = pause;
+			sourceTree = "<group>";
+		};
+		A9F1E8F91F87BB0600DBF906 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				A932F9801F82B8DF00F0133D /* MenuController.h */,
+				A932F9811F82B8DF00F0133D /* MenuController.m */,
+			);
+			path = menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
