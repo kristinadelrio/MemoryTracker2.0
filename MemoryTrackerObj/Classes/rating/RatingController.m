@@ -21,6 +21,8 @@
 
 @synthesize tableView;
 
+#pragma mark - IBActions
+
 - (IBAction)clearRating:(id)sender {
     [self createDeleteAlertWith:@"Do you really want clean scores?"
                             and:@"Your records will be empty"];
@@ -30,13 +32,17 @@
     [self dismissViewControllerAnimated:true completion:NULL];
 }
 
+#pragma mark - Controller customization
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
+#pragma mark - Data clearing block
+
 - (void)clearScore {
-    [tableView reloadData];
     [RatingStorage.shared removeData];
+    [tableView reloadData];
 }
 
 - (void)createDeleteAlertWith:(NSString *)title and:(NSString *) message {
@@ -65,6 +71,8 @@
     [self presentViewController:alert animated: YES completion: nil];
 }
 
+#pragma mark - TableViewDataSource protocol implementation
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return RatingStorage.shared.loadedRating ? RatingStorage.shared.loadedRating.count : 0;
 }
@@ -72,29 +80,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RatingCell *cell = (RatingCell *)[tableView dequeueReusableCellWithIdentifier:@"RatingCell"];
+    
     if (!cell) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RatingCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-    UIImage *img;
-    switch (indexPath.row) {
-        case 0:
-            img = [UIImage imageNamed:@"golden-medal"];
-            break;
-        case 1:
-            img = [UIImage imageNamed:@"silver-medal"];
-            break;
-        case 2:
-            img = [UIImage imageNamed:@"bronze-medal"];
-            break;
-        default:
-            break;
-    }
-    
+    UIImage *img = [self getImageWithIndexPath:indexPath.row];
     [cell generateCellWith: [RatingStorage.shared.loadedRating objectAtIndex:indexPath.row] and:img];
     
     return cell;
+}
+
+- (UIImage *)getImageWithIndexPath:(NSInteger)row {
+    switch (row) {
+        case 0:  return [UIImage imageNamed:@"golden-medal"];
+        case 1:  return [UIImage imageNamed:@"silver-medal"];
+        case 2:  return [UIImage imageNamed:@"bronze-medal"];
+        default: return nil;
+    }
 }
 
 @end

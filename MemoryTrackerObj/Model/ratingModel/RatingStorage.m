@@ -32,6 +32,7 @@
 
 - (void)removeData {
     @try {
+        [loadedRating removeAllObjects];
         [NSFileManager.defaultManager removeItemAtPath:[self filePath] error:nil];
     } @catch(...) {
         NSLog(@"Cannot clear data!");
@@ -46,8 +47,15 @@
 }
 
 - (void)saveData:(WinnerData *)data {
+    [self initLoadedRatingArrayIfNeeded];
     [loadedRating addObject:data];
     [NSKeyedArchiver archiveRootObject:loadedRating toFile:[self filePath]];
+}
+
+- (void)initLoadedRatingArrayIfNeeded {
+    if (!loadedRating) {
+        loadedRating = [NSMutableArray array];
+    }
 }
 
 - (NSString *)filePath {
