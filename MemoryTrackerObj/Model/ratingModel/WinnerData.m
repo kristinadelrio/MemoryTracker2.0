@@ -19,7 +19,7 @@
 
     username = @"Unknown";
     score = 0;
-    winDate = [[NSDate date] copy];
+    winDate = [[NSDate alloc] init];
     
     return self;
 }
@@ -29,7 +29,7 @@
     
     username = [[NSString alloc] initWithString:name];
     self.score = [[NSNumber alloc] initWithInt:score];
-    winDate = [NSDate date];
+    winDate = [[NSDate alloc] init];
     
     return self;
 }

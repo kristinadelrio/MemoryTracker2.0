@@ -13,7 +13,7 @@
 
 - (void)generateCellWith:(WinnerData *)user and:(UIImage *)img {
     _trophyImageView.image = img;
-    _username.text = user.username;
+    _username.text = [user.username copy];
     _userScore.text = [user.score stringValue];
     _wonDate.text = [user.winDate timeSinceDate];
 }

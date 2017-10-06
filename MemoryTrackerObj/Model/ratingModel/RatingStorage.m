@@ -26,9 +26,7 @@
 - (RatingStorage *)init {
     self = [super init];
     
-    loadedRating = [NSMutableArray alloc];
     [self loadData];
-    
     return self;
 }
 
@@ -40,11 +38,9 @@
     }
 }
 
-- (NSMutableArray *)loadData {
-    loadedRating = [loadedRating initWithObjects:
-                    [[NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]] mutableCopy], nil];
-
-    return loadedRating;
+- (void)loadData {
+    loadedRating = [[NSMutableArray alloc] initWithObjects:
+                    [NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]], nil];
 }
 
 - (void)saveData:(WinnerData *)data {

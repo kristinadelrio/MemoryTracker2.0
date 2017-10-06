@@ -36,7 +36,7 @@
 }
 
 - (NSString *)createDurationStringWith:(NSArray *)timeUnits andStrAnalog: (NSString *)insertor {
-    NSString *durationString = [NSString alloc];
+    NSString *durationString;
     NSInteger ind = 0;
     while (ind < [timeUnits count] && !durationString) {
         NSInteger timeUnit = [[timeUnits objectAtIndex:ind++] integerValue];

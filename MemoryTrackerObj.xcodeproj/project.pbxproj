@@ -16,6 +16,7 @@
 		A9397BC31F836D45004E85B7 /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9397BC21F836D45004E85B7 /* CardView.m */; };
 		A97DD3261F86AD0400B2E811 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A97DD3251F86AD0400B2E811 /* Constants.m */; };
 		A97DD3271F86B16400B2E811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A932F9861F82B8DF00F0133D /* Assets.xcassets */; };
+		A97DD32C1F86B63600B2E811 /* NSDate+TimeSinceDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A97DD32B1F86B63600B2E811 /* NSDate+TimeSinceDate.m */; };
 		A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = A9397BBF1F836A0E004E85B7 /* GameLogic.m */; };
 		A992B1421F83D5B700DADE7C /* NSTImemeIntervalToString.m in Sources */ = {isa = PBXBuildFile; fileRef = A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */; };
 		A992B1461F841B5000DADE7C /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A992B1451F841B5000DADE7C /* MapManager.m */; };
@@ -55,6 +56,8 @@
 		A9397BC21F836D45004E85B7 /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		A97DD3241F86AB4B00B2E811 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A97DD3251F86AD0400B2E811 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		A97DD3281F86B52B00B2E811 /* NSDate+TimeSinceDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeSinceDate.h"; sourceTree = "<group>"; };
+		A97DD32B1F86B63600B2E811 /* NSDate+TimeSinceDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeSinceDate.m"; sourceTree = "<group>"; };
 		A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTImemeIntervalToString.m; sourceTree = "<group>"; };
 		A992B1431F83D67300DADE7C /* NSTImemeIntervalToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTImemeIntervalToString.h; sourceTree = "<group>"; };
 		A992B1441F8417D900DADE7C /* MapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapManager.h; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 			children = (
 				A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */,
 				A992B1431F83D67300DADE7C /* NSTImemeIntervalToString.h */,
+				A97DD3281F86B52B00B2E811 /* NSDate+TimeSinceDate.h */,
+				A97DD32B1F86B63600B2E811 /* NSDate+TimeSinceDate.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			files = (
 				A9B0DA0D1F8669A800FAA520 /* RatingCell.m in Sources */,
 				A992B1461F841B5000DADE7C /* MapManager.m in Sources */,
+				A97DD32C1F86B63600B2E811 /* NSDate+TimeSinceDate.m in Sources */,
 				A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */,
 				A9397BC31F836D45004E85B7 /* CardView.m in Sources */,
 				A932F9821F82B8DF00F0133D /* MenuController.m in Sources */,

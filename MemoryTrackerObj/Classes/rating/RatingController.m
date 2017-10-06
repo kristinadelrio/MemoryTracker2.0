@@ -18,18 +18,8 @@
 @end
 
 @implementation RatingController
-{
-    NSMutableArray *winnersList;
-}
 
 @synthesize tableView;
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    winnersList = RatingStorage.shared.loadedRating;
-    NSLog(@"Res:");
-}
 
 - (IBAction)clearRating:(id)sender {
     [self createDeleteAlertWith:@"Do you really want clean scores?"
@@ -45,7 +35,6 @@
 }
 
 - (void)clearScore {
-    [winnersList removeAllObjects];
     [tableView reloadData];
     [RatingStorage.shared removeData];
 }
@@ -77,7 +66,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return winnersList ? winnersList.count : 0;
+    return RatingStorage.shared.loadedRating ? RatingStorage.shared.loadedRating.count : 0;
 }
 
 
@@ -103,7 +92,7 @@
             break;
     }
     
-    [cell generateCellWith: (WinnerData *)[winnersList objectAtIndex:indexPath.row] and:img];
+    [cell generateCellWith: [RatingStorage.shared.loadedRating objectAtIndex:indexPath.row] and:img];
     
     return cell;
 }
