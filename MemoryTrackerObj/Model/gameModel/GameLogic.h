@@ -22,14 +22,18 @@
 @property int timeLimit;
 @property int currentTime;
 
+@property NSMutableArray *pokemonsImages;
+
 @property void (^closeIfNeeded)(void);
 @property void (^deleteCards)(void);
 @property void (^presentScore)(int);
 
 - (void)initTimeLimit:(int)time;
+- (void)initCards;
 - (void)isCardSimilarFirst:(CardView *)cardOne and:(CardView *)cardTwo;
 - (void)updateScore;
 - (void)prepareGameRestarting;
+- (void)shuffleImages;
 
 @end
 

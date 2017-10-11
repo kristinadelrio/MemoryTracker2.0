@@ -22,6 +22,8 @@
 @synthesize presentScore;
 @synthesize deleteCards;
 
+@synthesize pokemonsImages;
+
 // Singleton creation
 + (GameLogic *)shared {
     static GameLogic* sharedLogic;
@@ -42,6 +44,12 @@
     self.score = totalScore = 0;
     
     return self;
+}
+
+- (void)initCards {
+    pokemonsImages = [[NSMutableArray alloc] init];
+    [self fillPokemonsArray];
+    [self shuffleImages];
 }
 
 - (void)initTimeLimit:(int)time {
@@ -79,6 +87,22 @@
     self.score = 0;
     self.totalScore = 0;
     self.currentTime = timeLimit;
+}
+
+- (void)fillPokemonsArray {
+    for (int i = 0; i < MTCardsCount / 2; i++) {
+        NSNumber* num =  [[NSNumber alloc] initWithInt: i + 1];
+        [pokemonsImages addObject: num];
+        [pokemonsImages addObject: num];
+    }
+}
+
+- (void)shuffleImages {
+    for (int i = 0; i < [pokemonsImages count]; i++) {
+        int randomInt1 = arc4random() % [pokemonsImages count];
+        int randomInt2 = arc4random() % [pokemonsImages count];
+        [pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];
+    }
 }
 
 @end

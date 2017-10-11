@@ -8,12 +8,10 @@
 
 #import "GameMapController.h"
 #import "GameLogic.h"
-#import "MapManager.h"
 #import "Constants.h"
 
 @implementation GameMapController
 {
-    MapManager *mapManager;
     NSMutableArray *openedCards;
 }
 
@@ -25,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    mapManager = [[MapManager alloc] init];
+    [GameLogic.shared initCards];
     openedCards = [[NSMutableArray alloc] initWithCapacity:2];
     
     [self initializateGameScene];
@@ -44,7 +42,7 @@
 
 - (CardView *)generateCardWith:(CGRect)rect andImgIndex:(int)index {
     CardView *card = [[CardView alloc] initWithFrame:rect];
-    NSString *imgName = [@([mapManager.pokemonsImages[index] intValue]) stringValue];
+    NSString *imgName = [@([GameLogic.shared.pokemonsImages[index] intValue]) stringValue];
     card.cardFace = [UIImage imageNamed: imgName];
     [card turnToCardFace];
     
@@ -109,7 +107,7 @@
     }
     
     [openedCards removeAllObjects];
-    [mapManager shuffleImages];
+    [GameLogic.shared shuffleImages];
     [self initializateGameScene];
 }
 

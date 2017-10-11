@@ -19,7 +19,6 @@
 		A97DD32C1F86B63600B2E811 /* NSDate+TimeSinceDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A97DD32B1F86B63600B2E811 /* NSDate+TimeSinceDate.m */; };
 		A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = A9397BBF1F836A0E004E85B7 /* GameLogic.m */; };
 		A992B1421F83D5B700DADE7C /* NSTImemeIntervalToString.m in Sources */ = {isa = PBXBuildFile; fileRef = A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */; };
-		A992B1461F841B5000DADE7C /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A992B1451F841B5000DADE7C /* MapManager.m */; };
 		A9B0D9FF1F862F8500FAA520 /* GameOverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B0D9FE1F862F8500FAA520 /* GameOverView.xib */; };
 		A9B0DA031F86303600FAA520 /* GameOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B0DA021F86303600FAA520 /* GameOverView.m */; };
 		A9B0DA051F863A6700FAA520 /* PauseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B0DA041F863A6700FAA520 /* PauseView.xib */; };
@@ -60,8 +59,6 @@
 		A97DD32B1F86B63600B2E811 /* NSDate+TimeSinceDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeSinceDate.m"; sourceTree = "<group>"; };
 		A992B1411F83D5B700DADE7C /* NSTImemeIntervalToString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTImemeIntervalToString.m; sourceTree = "<group>"; };
 		A992B1431F83D67300DADE7C /* NSTImemeIntervalToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTImemeIntervalToString.h; sourceTree = "<group>"; };
-		A992B1441F8417D900DADE7C /* MapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapManager.h; sourceTree = "<group>"; };
-		A992B1451F841B5000DADE7C /* MapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapManager.m; sourceTree = "<group>"; };
 		A9B0D9FE1F862F8500FAA520 /* GameOverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverView.xib; sourceTree = "<group>"; };
 		A9B0DA011F86303600FAA520 /* GameOverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOverView.h; sourceTree = "<group>"; };
 		A9B0DA021F86303600FAA520 /* GameOverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameOverView.m; sourceTree = "<group>"; };
@@ -224,8 +221,6 @@
 				A9397BBF1F836A0E004E85B7 /* GameLogic.m */,
 				A9397BC11F836D45004E85B7 /* CardView.h */,
 				A9397BC21F836D45004E85B7 /* CardView.m */,
-				A992B1441F8417D900DADE7C /* MapManager.h */,
-				A992B1451F841B5000DADE7C /* MapManager.m */,
 			);
 			path = gameModel;
 			sourceTree = "<group>";
@@ -360,7 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9B0DA0D1F8669A800FAA520 /* RatingCell.m in Sources */,
-				A992B1461F841B5000DADE7C /* MapManager.m in Sources */,
 				A97DD32C1F86B63600B2E811 /* NSDate+TimeSinceDate.m in Sources */,
 				A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */,
 				A9397BC31F836D45004E85B7 /* CardView.m in Sources */,
