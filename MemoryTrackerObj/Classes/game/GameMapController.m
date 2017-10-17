@@ -40,7 +40,7 @@
 
 #pragma mark - Card's initialization
 
-- (CardView *)generateCardWith:(CGRect)rect andImgIndex:(int)index {
+- (CardView *)generateCardWith:(CGRect)rect andImgIndex:(NSInteger)index {
     CardView *card = [[CardView alloc] initWithFrame:rect];
     NSString *imgName = [@([GameLogic.shared.pokemonsImages[index] intValue]) stringValue];
     card.cardFace = [UIImage imageNamed: imgName];
@@ -56,7 +56,7 @@
     return card;
 }
 
-- (void)putCardsOnTheDeskWithRawCount:(int)raws andColumns:(int)columns {
+- (void)putCardsOnTheDeskWithRawCount:(NSInteger)raws andColumns:(NSInteger)columns {
     CGFloat xPos = 0;
     CGFloat yPos = 0;
     

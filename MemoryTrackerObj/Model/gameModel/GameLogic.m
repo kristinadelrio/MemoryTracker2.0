@@ -52,7 +52,7 @@
     [self shuffleImages];
 }
 
-- (void)initTimeLimit:(int)time {
+- (void)initTimeLimit:(NSInteger)time {
     self.currentTime = time;
     self.timeLimit = time;
 }

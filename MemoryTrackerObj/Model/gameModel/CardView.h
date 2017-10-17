@@ -10,12 +10,13 @@
 
 @interface CardView : UIImageView
 
-@property UIImage* cardBack;
-@property UIImage* cardFace;
+@property (nonatomic, weak) UIImage* cardBack;
+@property (nonatomic, weak) UIImage* cardFace;
 
-- (CardView *)initWithFrame:(CGRect)frame;
+- (instancetype)initWithFrame:(CGRect)frame;
 - (void)turnToCardBack;
 - (void)turnToCardFace;
 - (void)setImageAttributes:(UIViewContentMode)mode :(UIColor *)color :(BOOL)userInteraction;
 
 @end
+

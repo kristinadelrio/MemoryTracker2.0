@@ -14,8 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView *gameScene;
 @property void (^gameOver)(void);
 
-- (CardView *)generateCardWith:(CGRect)rect andImgIndex:(int)index;
-- (void)putCardsOnTheDeskWithRawCount:(int)raws andColumns:(int)columns;
+- (CardView *)generateCardWith:(CGRect)rect andImgIndex:(NSInteger)index;
+- (void)putCardsOnTheDeskWithRawCount:(NSInteger)raws andColumns:(NSInteger)columns;
 - (void)hideCardFace;
 - (void)redrawScene;
 - (void)initializateGameScene;

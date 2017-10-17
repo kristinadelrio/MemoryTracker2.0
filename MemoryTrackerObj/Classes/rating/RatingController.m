@@ -10,12 +10,6 @@
 #import "RatingStorage.h"
 #import "RatingCell.h"
 
-@interface RatingController ()
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-
-@end
 
 @implementation RatingController
 

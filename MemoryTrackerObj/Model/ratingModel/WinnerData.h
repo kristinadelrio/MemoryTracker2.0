@@ -17,7 +17,7 @@
 @property NSNumber *score;
 @property NSDate *winDate;
 
-- (WinnerData *)initWithUserName:(NSString *)name andScore:(int)score;
+- (WinnerData *)initWithUserName:(NSString *)name andScore:(NSInteger)score;
 - (NSComparisonResult)compare:(WinnerData *)object;
 
 @end

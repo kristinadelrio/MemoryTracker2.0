@@ -12,11 +12,11 @@ NSString *const MTLevelIndex = @"levelIndex";
 NSString *const MTSoundState = @"soundState";
 NSString *const MTMelodyType = @"mp3";
 
-int const MTScoreIncrementVal = 25;
-int const MTScoreDecrementVal = 10;
-int const MTDefaultTimeLimit = 60;
-int const MTScoreMultiplier = 100;
+NSInteger const MTScoreIncrementVal = 25;
+NSInteger const MTScoreDecrementVal = 10;
+NSInteger const MTDefaultTimeLimit = 60;
+NSInteger const MTScoreMultiplier = 100;
 
-int const MTRawsCountInDesk = 5;
-int const MTColumnsCountInDesk = 4;
-int const MTCardsCount = MTRawsCountInDesk * MTColumnsCountInDesk;
+NSInteger const MTRawsCountInDesk = 5;
+NSInteger const MTColumnsCountInDesk = 4;
+NSInteger const MTCardsCount = MTRawsCountInDesk * MTColumnsCountInDesk;

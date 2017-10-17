@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    GameLogic.shared.presentScore = ^(int score) {
+    GameLogic.shared.presentScore = ^(NSInteger score) {
         [weakSelf showScore: score];
     };
 }
@@ -133,7 +133,7 @@
 
 #pragma mark - Presentation block
 
-- (void)showScore:(int)score {
+- (void)showScore:(NSInteger)score {
     [panelController present: score];
 }
 

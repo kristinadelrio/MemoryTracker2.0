@@ -11,8 +11,8 @@
 @implementation NSTImemeIntervalToString
 
 + (NSString *)toString:(NSTimeInterval)time {
-    int minutes = (int)time / 60 % 60;
-    int seconds = (int)time % 60;
+    int minutes = (NSInteger)time / 60 % 60;
+    int seconds = (NSInteger)time % 60;
     
     return [NSString stringWithFormat:@"%2i:%2i", minutes, seconds];
 }

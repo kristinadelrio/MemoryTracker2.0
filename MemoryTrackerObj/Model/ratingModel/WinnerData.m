@@ -24,11 +24,11 @@
     return self;
 }
 
-- (WinnerData *) initWithUserName: (NSString*) name andScore: (int) score {
+- (WinnerData *) initWithUserName: (NSString*) name andScore: (NSInteger) score {
     self = [super init];
     
     username = [[NSString alloc] initWithString:name];
-    self.score = [[NSNumber alloc] initWithInt:score];
+    self.score = [[NSNumber alloc] initWithInteger:score];
     winDate = [[NSDate alloc] init];
     
     return self;

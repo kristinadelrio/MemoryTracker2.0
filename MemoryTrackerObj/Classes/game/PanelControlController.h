@@ -26,7 +26,7 @@
 - (IBAction)backToHome:(UIButton *)sender;
 
 - (void)prepareRestartingGame;
-- (void)present:(int)score;
+- (void)present:(NSInteger)score;
 - (void)presentTimer;
 - (void)runTimer;
 - (void)stopTimer;

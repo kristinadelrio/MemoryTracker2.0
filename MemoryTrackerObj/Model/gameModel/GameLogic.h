@@ -16,19 +16,19 @@
 
 + (GameLogic *) shared;
 
-@property int score;
-@property int totalScore;
+@property NSInteger score;
+@property NSInteger totalScore;
 
-@property int timeLimit;
-@property int currentTime;
+@property NSInteger timeLimit;
+@property NSInteger currentTime;
 
 @property NSMutableArray *pokemonsImages;
 
 @property void (^closeIfNeeded)(void);
 @property void (^deleteCards)(void);
-@property void (^presentScore)(int);
+@property void (^presentScore)(NSInteger);
 
-- (void)initTimeLimit:(int)time;
+- (void)initTimeLimit:(NSInteger)time;
 - (void)initCards;
 - (void)isCardSimilarFirst:(CardView *)cardOne and:(CardView *)cardTwo;
 - (void)updateScore;

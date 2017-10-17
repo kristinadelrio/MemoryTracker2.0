@@ -71,8 +71,8 @@
 
 #pragma mark - Presentation block
 
-- (void)present:(int)score {
-    scoreLabel.text = [[NSNumber numberWithInt: score] stringValue];
+- (void)present:(NSInteger)score {
+    scoreLabel.text = [[NSNumber numberWithInteger: score] stringValue];
 }
 
 - (void)presentTimer {
