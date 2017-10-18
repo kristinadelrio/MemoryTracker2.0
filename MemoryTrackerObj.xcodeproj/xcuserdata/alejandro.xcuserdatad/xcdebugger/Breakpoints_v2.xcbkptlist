@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemoryTrackerObj/Classes/game/GameMapController.m"
-            timestampString = "529417655.708456"
+            timestampString = "530007406.072259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-putCardsOnTheDeskWithRawCount:andColumns:"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-hideCardFace"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

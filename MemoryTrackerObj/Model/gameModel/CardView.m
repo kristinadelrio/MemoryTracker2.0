@@ -13,7 +13,7 @@
 @synthesize cardBack;
 @synthesize cardFace;
 
-- (CardView *)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     cardBack = [UIImage imageNamed:@"cardBack"];
