@@ -10,16 +10,12 @@
 
 @implementation WinnerData
 
-@synthesize username;
-@synthesize score;
-@synthesize winDate;
-
-- (WinnerData *) init {
+- (instancetype) init {
     self = [super init];
 
-    username = @"Unknown";
-    score = 0;
-    winDate = [[NSDate alloc] init];
+    self.username = @"Unknown";
+    self.score = 0;
+    self.winDate = [[NSDate alloc] init];
     
     return self;
 }
@@ -27,9 +23,9 @@
 - (WinnerData *) initWithUserName: (NSString*) name andScore: (NSInteger) score {
     self = [super init];
     
-    username = [[NSString alloc] initWithString:name];
+    self.username = [[NSString alloc] initWithString:name];
     self.score = [[NSNumber alloc] initWithInteger:score];
-    winDate = [[NSDate alloc] init];
+    self.winDate = [[NSDate alloc] init];
     
     return self;
 }
@@ -37,20 +33,20 @@
 - (WinnerData *)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     
-    username = [NSString alloc];
-    score = [NSNumber alloc];
+    self.username = [NSString alloc];
+    self.score = [NSNumber alloc];
     
-    username = [decoder decodeObjectForKey:@"username"];
-    score = [decoder decodeObjectForKey:@"score"];
-    winDate = [decoder  decodeObjectForKey:@"date"];
+    self.username = [decoder decodeObjectForKey:@"username"];
+    self.score = [decoder decodeObjectForKey:@"score"];
+    self.winDate = [decoder  decodeObjectForKey:@"date"];
     
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:username forKey:@"username"];
-    [encoder encodeObject:score forKey:@"score"];
-    [encoder encodeObject:winDate forKey:@"date"];
+    [encoder encodeObject:self.username forKey:@"username"];
+    [encoder encodeObject:self.score forKey:@"score"];
+    [encoder encodeObject:self.winDate forKey:@"date"];
 }
 
 - (NSComparisonResult)compare:(WinnerData *)object {

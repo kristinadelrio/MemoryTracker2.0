@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WinnerData.h"
+
+@class WinnerData;
 
 @interface RatingCell : UITableViewCell
 

@@ -10,7 +10,8 @@
 #define RatingStorage_h
 
 #import <Foundation/Foundation.h>
-#import "WinnerData.h"
+
+@class WinnerData;
 
 @interface RatingStorage: NSObject
 
@@ -19,7 +20,7 @@
 @property (readonly, atomic) NSMutableArray *sortedLoadedRating;
 
 -(void) removeData;
--(void) saveData:(WinnerData*) data;
+-(void) saveData:(WinnerData *) data;
 
 @end
 

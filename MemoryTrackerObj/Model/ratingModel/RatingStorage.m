@@ -7,11 +7,9 @@
 //
 
 #import "RatingStorage.h"
+#import "MemoryTrackerObj-Swift.h"
 
 @implementation RatingStorage
-
-@synthesize loadedRating;
-@synthesize sortedLoadedRating;
 
 + (RatingStorage *)shared {
     static RatingStorage *shared;
@@ -24,7 +22,7 @@
     return shared;
 }
 
-- (RatingStorage *)init {
+- (instancetype)init {
     self = [super init];
     
     [self loadData];
@@ -33,7 +31,7 @@
 
 - (void)removeData {
     @try {
-        [loadedRating removeAllObjects];
+        [self.loadedRating removeAllObjects];
         [NSFileManager.defaultManager removeItemAtPath:[self filePath] error:nil];
     } @catch(...) {
         NSLog(@"Cannot clear data!");
@@ -41,34 +39,37 @@
 }
 
 - (void)loadData {
-    loadedRating = [NSMutableArray array];
+    self.loadedRating = [NSMutableArray array];
+    [NSKeyedUnarchiver setClass:WinnerData.self forClassName:@"WinnerData"];
     NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile: [self filePath]];
-    loadedRating = [data mutableCopy];
+    self.loadedRating = [data mutableCopy];
     data = nil;
 }
 
 - (void)saveData:(WinnerData *)data {
+    [NSKeyedArchiver setClassName:@"WinnerData" forClass:WinnerData.self];
     [self initLoadedRatingArrayIfNeeded];
-    [loadedRating addObject:data];
-    [NSKeyedArchiver archiveRootObject:loadedRating toFile:[self filePath]];
+    [self.loadedRating addObject:data];
+    [NSKeyedArchiver archiveRootObject:self.loadedRating toFile:[self filePath]];
 }
 
 - (void)initLoadedRatingArrayIfNeeded {
-    if (!loadedRating) {
-        loadedRating = [NSMutableArray array];
+    if (!self.loadedRating) {
+        self.loadedRating = [NSMutableArray array];
     }
 }
 
 - (NSMutableArray *)sortedLoadedRating {
-    if (loadedRating) {
-            [loadedRating sortUsingComparator:
+    if (self.loadedRating) {
+            [self.loadedRating sortUsingComparator:
              ^NSComparisonResult(WinnerData *first, WinnerData *second) {
-                return [first compare:second];
+                return first < second;
+                //return [first compare:second];
              }];
         
-        return loadedRating;
+        return self.loadedRating;
     }
-        return nil;
+    return nil;
 }
 
 - (NSString *)filePath {

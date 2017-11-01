@@ -10,7 +10,7 @@
 #import "PanelControlController.h"
 #import "GameMapController.h"
 #import "GameLogic.h"
-#import "WinnerData.h"
+#import "MemoryTrackerObj-Swift.h"
 #import "RatingStorage.h"
 #import "PauseView.h"
 #import "GameOverView.h"
@@ -165,7 +165,8 @@
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
                                      NSString* nickname = [alert.textFields[0] text];
-                                     WinnerData* winner = [[WinnerData alloc] initWithUserName:nickname andScore:GameLogic.shared.totalScore];
+                                     WinnerData* winner = [[WinnerData alloc] initWithUser:nickname score:GameLogic.shared.totalScore];
+                                     //WinnerData* winner = [[WinnerData alloc] initWithUserName:nickname andScore:GameLogic.shared.totalScore];
                                      [RatingStorage.shared saveData:winner];
                                  }];
     

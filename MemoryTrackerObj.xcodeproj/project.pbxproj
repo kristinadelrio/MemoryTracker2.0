@@ -32,7 +32,7 @@
 		A9BE3F411F82C1700053F5D5 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F401F82C1700053F5D5 /* GameController.m */; };
 		A9BE3F4E1F82E0610053F5D5 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */; };
 		A9BE3F511F82E1280053F5D5 /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE3F501F82E1280053F5D5 /* MenuManager.m */; };
-		A9E051CA1F856ED80052322F /* WinnerData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051C91F856ED80052322F /* WinnerData.m */; };
+		A9C472961FA9E4EB001B37BC /* WinnerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C472951FA9E4EB001B37BC /* WinnerData.swift */; };
 		A9E051CD1F8572720052322F /* RatingStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E051CC1F8572720052322F /* RatingStorage.m */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +78,8 @@
 		A9BE3F4B1F82E0610053F5D5 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		A9BE3F4F1F82E11B0053F5D5 /* MenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuManager.h; sourceTree = "<group>"; };
 		A9BE3F501F82E1280053F5D5 /* MenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuManager.m; sourceTree = "<group>"; };
-		A9E051C81F856DB50052322F /* WinnerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WinnerData.h; sourceTree = "<group>"; };
-		A9E051C91F856ED80052322F /* WinnerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WinnerData.m; sourceTree = "<group>"; };
+		A9C472941FA9E4EA001B37BC /* MemoryTrackerObj-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MemoryTrackerObj-Bridging-Header.h"; sourceTree = "<group>"; };
+		A9C472951FA9E4EB001B37BC /* WinnerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerData.swift; sourceTree = "<group>"; };
 		A9E051CB1F8571780052322F /* RatingStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingStorage.h; sourceTree = "<group>"; };
 		A9E051CC1F8572720052322F /* RatingStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatingStorage.m; sourceTree = "<group>"; };
 		A9E051CE1F8579E90052322F /* RatingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingCell.h; sourceTree = "<group>"; };
@@ -206,10 +206,10 @@
 		A9B0DA0F1F8688F400FAA520 /* ratingModel */ = {
 			isa = PBXGroup;
 			children = (
-				A9E051C81F856DB50052322F /* WinnerData.h */,
-				A9E051C91F856ED80052322F /* WinnerData.m */,
 				A9E051CB1F8571780052322F /* RatingStorage.h */,
 				A9E051CC1F8572720052322F /* RatingStorage.m */,
+				A9C472951FA9E4EB001B37BC /* WinnerData.swift */,
+				A9C472941FA9E4EA001B37BC /* MemoryTrackerObj-Bridging-Header.h */,
 			);
 			path = ratingModel;
 			sourceTree = "<group>";
@@ -309,6 +309,7 @@
 				TargetAttributes = {
 					A932F9791F82B8DF00F0133D = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -359,9 +360,9 @@
 				A992B13E1F83D13800DADE7C /* GameLogic.m in Sources */,
 				A9397BC31F836D45004E85B7 /* CardView.m in Sources */,
 				A932F9821F82B8DF00F0133D /* MenuController.m in Sources */,
-				A9E051CA1F856ED80052322F /* WinnerData.m in Sources */,
 				A9BE3F3B1F82C13B0053F5D5 /* PanelControlController.m in Sources */,
 				A9BE3F3E1F82C14D0053F5D5 /* GameMapController.m in Sources */,
+				A9C472961FA9E4EB001B37BC /* WinnerData.swift in Sources */,
 				A9B0DA031F86303600FAA520 /* GameOverView.m in Sources */,
 				A932F98D1F82B8DF00F0133D /* main.m in Sources */,
 				A9BE3F411F82C1700053F5D5 /* GameController.m in Sources */,
@@ -506,12 +507,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HVKBNHWDD2;
 				INFOPLIST_FILE = MemoryTrackerObj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.MemoryTrackerObj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MemoryTrackerObj/Model/ratingModel/MemoryTrackerObj-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -520,12 +526,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HVKBNHWDD2;
 				INFOPLIST_FILE = MemoryTrackerObj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.MemoryTrackerObj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MemoryTrackerObj/Model/ratingModel/MemoryTrackerObj-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
