@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class WinnerData: NSObject, NSCoding, Comparable {
+@objc class WinnerData: NSObject, NSCoding {
     
     let username: String
     let score: Int
@@ -36,14 +36,6 @@ import Foundation
         aCoder.encode(username, forKey: "username")
         aCoder.encode(score, forKey: "score")
         aCoder.encode(winDate, forKey: "date")
-    }
-    
-    static func < (lhs: WinnerData, rhs: WinnerData) -> Bool {
-        return lhs.score < rhs.score
-    }
-    
-    static func == (lhs: WinnerData, rhs: WinnerData) -> Bool {
-        return lhs.score == rhs.score
     }
 }
 

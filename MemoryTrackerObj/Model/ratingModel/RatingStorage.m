@@ -63,7 +63,7 @@
     if (self.loadedRating) {
             [self.loadedRating sortUsingComparator:
              ^NSComparisonResult(WinnerData *first, WinnerData *second) {
-                return first < second;
+                return first.score < second.score;
                 //return [first compare:second];
              }];
         

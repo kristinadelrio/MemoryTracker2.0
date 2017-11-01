@@ -86,11 +86,11 @@
 }
 
 - (void)shuffleImages {
-//    for (int i = 0; i < [self.pokemonsImages count]; i++) {
-//        int randomInt1 = arc4random() % [self.pokemonsImages count];
-//        int randomInt2 = arc4random() % [self.pokemonsImages count];
-//        [self.pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];
-//    }
+    for (int i = 0; i < [self.pokemonsImages count]; i++) {
+        int randomInt1 = arc4random() % [self.pokemonsImages count];
+        int randomInt2 = arc4random() % [self.pokemonsImages count];
+        [self.pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];
+    }
 }
 
 @end
