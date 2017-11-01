@@ -28,8 +28,8 @@
 @property void (^deleteCards)(void);
 @property void (^presentScore)(NSInteger);
 
-- (void)initTimeLimit:(NSInteger)time;
-- (void)initCards;
+- (void)setupTimeLimit:(NSInteger)time;
+- (void)setupCards;
 - (void)isCardSimilarFirst:(CardView *)cardOne and:(CardView *)cardTwo;
 - (void)updateScore;
 - (void)prepareGameRestarting;

@@ -12,18 +12,6 @@
 
 @implementation GameLogic
 
-@synthesize timeLimit;
-@synthesize currentTime;
-
-@synthesize score;
-@synthesize totalScore;
-
-@synthesize closeIfNeeded;
-@synthesize presentScore;
-@synthesize deleteCards;
-
-@synthesize pokemonsImages;
-
 // Singleton creation
 + (GameLogic *)shared {
     static GameLogic* sharedLogic;
@@ -36,23 +24,23 @@
     return sharedLogic;
 }
 
-- (GameLogic *)init {
+- (instancetype)init {
     self = [super init];
     
     self.timeLimit = MTDefaultTimeLimit;
     self.currentTime = self.timeLimit;
-    self.score = totalScore = 0;
+    self.score = self.totalScore = 0;
     
     return self;
 }
 
-- (void)initCards {
-    pokemonsImages = [[NSMutableArray alloc] init];
+- (void)setupCards {
+    self.pokemonsImages = [[NSMutableArray alloc] init];
     [self fillPokemonsArray];
     [self shuffleImages];
 }
 
-- (void)initTimeLimit:(NSInteger)time {
+- (void)setupTimeLimit:(NSInteger)time {
     self.currentTime = time;
     self.timeLimit = time;
 }
@@ -67,7 +55,7 @@
         }
         
     } else {
-        score -= MTScoreDecrementVal;
+        self.score -= MTScoreDecrementVal;
         if (self.closeIfNeeded) {
             self.closeIfNeeded();
         }
@@ -86,22 +74,22 @@
 - (void)prepareGameRestarting {
     self.score = 0;
     self.totalScore = 0;
-    self.currentTime = timeLimit;
+    self.currentTime = self.timeLimit;
 }
 
 - (void)fillPokemonsArray {
     for (int i = 0; i < MTCardsCount / 2; i++) {
         NSNumber* num =  [[NSNumber alloc] initWithInt: i + 1];
-        [pokemonsImages addObject: num];
-        [pokemonsImages addObject: num];
+        [self.pokemonsImages addObject: num];
+        [self.pokemonsImages addObject: num];
     }
 }
 
 - (void)shuffleImages {
-    for (int i = 0; i < [pokemonsImages count]; i++) {
-        int randomInt1 = arc4random() % [pokemonsImages count];
-        int randomInt2 = arc4random() % [pokemonsImages count];
-        [pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];
+    for (int i = 0; i < [self.pokemonsImages count]; i++) {
+        int randomInt1 = arc4random() % [self.pokemonsImages count];
+        int randomInt2 = arc4random() % [self.pokemonsImages count];
+        [self.pokemonsImages exchangeObjectAtIndex: randomInt1 withObjectAtIndex: randomInt2];
     }
 }
 

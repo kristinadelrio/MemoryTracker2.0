@@ -18,7 +18,6 @@
 
 - (void)stopBackgroundMusic;
 - (void)playBackgroundMusic;
-- (MenuManager *)init;
 
 @end
 

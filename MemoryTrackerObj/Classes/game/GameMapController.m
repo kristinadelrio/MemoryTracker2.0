@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [GameLogic.shared initCards];
+    [GameLogic.shared setupCards];
     openedCards = [[NSMutableArray alloc] initWithCapacity:2];
     
     [self initializateGameScene];

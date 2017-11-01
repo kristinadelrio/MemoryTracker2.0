@@ -16,7 +16,7 @@
 @property BOOL soundState;
 @property AVAudioPlayer *player;
 
-- (SoundManager *)initWith: (NSString *)musicFileName;
+- (instancetype)initWith: (NSString *)musicFileName;
 - (void)playMusic;
 - (void)stopMusic;
 

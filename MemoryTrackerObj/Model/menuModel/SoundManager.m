@@ -11,19 +11,17 @@
 
 @implementation SoundManager
 
-@synthesize soundState;
-@synthesize player;
-
-- (SoundManager *)initWith:(NSString *)musicFileName {
-    self = [super init];
+- (instancetype)initWith:(NSString *)musicFileName {
     
-    [self initPlayer:musicFileName type:MTMelodyType];
-    
-    // in first launch app value will be nil
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:MTSoundState]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MTSoundState];
+    if (self = [super init]) {
+        [self initPlayer:musicFileName type:MTMelodyType];
+        
+        // in first launch app value will be nil
+        if (![[NSUserDefaults standardUserDefaults] valueForKey:MTSoundState]) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MTSoundState];
+        }
     }
-
+    
     return self;
 }
 
@@ -37,15 +35,15 @@
 
 - (void)initPlayer:(NSString *)name type:(NSString *)type {
     NSURL *url = [[NSBundle mainBundle] URLForResource:name withExtension:type];
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
 }
 
 - (void)playMusic {
-    [player play];
+    [self.player play];
 }
 
 - (void)stopMusic {
-    [player stop];
+    [self.player stop];
 }
 
 @end

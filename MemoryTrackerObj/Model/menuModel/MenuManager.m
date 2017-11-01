@@ -15,17 +15,15 @@
     SoundManager *soundManager;
 }
 
-@synthesize soundManagerState;
-@synthesize levelIndex;
-
-- (MenuManager *) init {
-    self = [super init];
-
-    soundManager = [[SoundManager alloc] initWith:@"melody"];
+- (instancetype)init {
     
-    // in first launch app value will be nil
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:MTLevelIndex]) {
-        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:MTLevelIndex];
+    if (self = [super init]) {
+        soundManager = [[SoundManager alloc] initWith:@"melody"];
+    
+        // in first launch app value will be nil
+        if (![[NSUserDefaults standardUserDefaults] valueForKey:MTLevelIndex]) {
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:MTLevelIndex];
+        }
     }
     
     return self;

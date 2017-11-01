@@ -8,15 +8,33 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
-
-@end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    self.watermark = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.watermark.windowLevel = UIWindowLevelStatusBar;
+//    self.watermark.rootViewController.view.userInteractionEnabled = false;
+//    self.watermark.userInteractionEnabled = false;
+//
+//
+//    self.watermark.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+//    self.watermark.rootViewController = [[UIViewController alloc] init];
+//    self.watermark.rootViewController.view.backgroundColor =
+//    [[UIColor redColor] colorWithAlphaComponent:0.5];
+//    [self.watermark makeKeyAndVisible];
+    
+//    Variant two
+    
+//    UIView *aView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    [aView setUserInteractionEnabled:false];
+//    aView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.8];
+//
+//    [self.window addSubview:aView];
+//    [self.window bringSubviewToFront:aView];
+
+    
     return YES;
 }
 
