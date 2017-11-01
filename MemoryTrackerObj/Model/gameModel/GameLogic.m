@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GameLogic.h"
 #import "Constants.h"
+#import "CardView.h"
 
 @implementation GameLogic
 

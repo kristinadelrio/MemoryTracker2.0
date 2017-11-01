@@ -10,8 +10,8 @@
 
 @interface CardView : UIImageView
 
-@property (nonatomic, strong) UIImage* cardBack;
-@property (nonatomic, strong) UIImage* cardFace;
+@property (nonatomic, strong) UIImage *cardBack;
+@property (nonatomic, strong) UIImage *cardFace;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 - (void)turnToCardBack;

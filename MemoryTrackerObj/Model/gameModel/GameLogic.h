@@ -10,7 +10,7 @@
 #define GameLogic_h
 
 #import <UIKit/UIKit.h>
-#import "CardView.h"
+@class CardView;
 
 @interface GameLogic: NSObject
 

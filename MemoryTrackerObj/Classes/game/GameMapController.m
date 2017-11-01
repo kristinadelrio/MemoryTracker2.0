@@ -9,6 +9,7 @@
 #import "GameMapController.h"
 #import "GameLogic.h"
 #import "Constants.h"
+#import "CardView.h"
 
 @implementation GameMapController
 {
