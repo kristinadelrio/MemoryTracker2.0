@@ -13,8 +13,8 @@
 + (NSString *)toString:(NSTimeInterval)time {
     int minutes = (NSInteger)time / 60 % 60;
     int seconds = (NSInteger)time % 60;
-    
-    return [NSString stringWithFormat:@"%2i:%2i", minutes, seconds];
+
+    return [NSString stringWithFormat:@"%02i:%02i", minutes, seconds];
 }
 
 @end

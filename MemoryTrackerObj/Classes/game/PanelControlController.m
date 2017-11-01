@@ -73,10 +73,9 @@
         
     } else {
         GameLogic.shared.currentTime -= 1;
-        NSString* time = [NSTImemeIntervalToString toString:
-                          GameLogic.shared.currentTime];
         
-        self.timeLabel.text = time;
+        self.timeLabel.text = [NSTImemeIntervalToString toString:
+                               GameLogic.shared.currentTime];
     }
 }
 
