@@ -19,9 +19,6 @@
 
 @implementation MenuController
 
-@synthesize soundButton;
-@synthesize levelsSegmentedControl;
-
 MenuManager *menuManager;
 
 - (void)viewDidLoad {
@@ -35,7 +32,7 @@ MenuManager *menuManager;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier  isEqual: @"GameControllerSegue"]) {
-        Level level = (int)levelsSegmentedControl.selectedSegmentIndex;
+        Level level = (int)self.levelsSegmentedControl.selectedSegmentIndex;
         int time = [self timeLimitWith: level];
         [GameLogic.shared setupTimeLimit: time];
     }
@@ -60,17 +57,17 @@ MenuManager *menuManager;
 }
 
 - (void)setLevelWith:(int)index {
-    levelsSegmentedControl.selectedSegmentIndex = index;
+    self.levelsSegmentedControl.selectedSegmentIndex = index;
 }
 
 - (void)setSoundWith:(BOOL)state {
     if (state) {
         UIImage *img = [UIImage imageNamed:@"speakerOn"];
-        [soundButton setImage: img forState:normal];
+        [self.soundButton setImage: img forState:normal];
         [menuManager playBackgroundMusic];
     } else {
         UIImage *img = [UIImage imageNamed:@"speakerOff"];
-        [soundButton setImage: img forState:normal];
+        [self.soundButton setImage: img forState:normal];
         [menuManager stopBackgroundMusic];
     }
 }

@@ -15,9 +15,6 @@
     NSMutableArray *openedCards;
 }
 
-@synthesize gameScene;
-@synthesize gameOver;
-
 #pragma mark - LifeCycle
 
 - (void)viewDidLoad {
@@ -62,14 +59,14 @@
     
     for (int i = 0; i < raws * columns; i++) {
         CGRect rect = CGRectMake(xPos, yPos,
-                                 gameScene.bounds.size.width / columns,
-                                 gameScene.bounds.size.height / raws);
+                                 self.gameScene.bounds.size.width / columns,
+                                 self.gameScene.bounds.size.height / raws);
         
-        [gameScene addSubview:[self generateCardWith:rect andImgIndex:i]];
-        xPos += gameScene.bounds.size.width / columns;
+        [self.gameScene addSubview:[self generateCardWith:rect andImgIndex:i]];
+        xPos += self.gameScene.bounds.size.width / columns;
         
-        if (xPos == gameScene.bounds.size.width) {
-            yPos += gameScene.bounds.size.height / raws;
+        if (xPos == self.gameScene.bounds.size.width) {
+            yPos += self.gameScene.bounds.size.height / raws;
             xPos = 0;
         }
     }
@@ -93,7 +90,7 @@
 #pragma mark - Scene management
 
 - (void)hideCardFace {
-    for (id subview in gameScene.subviews) {
+    for (id subview in self.gameScene.subviews) {
         if ([subview isKindOfClass: [CardView class]]) {
             CardView *card = subview;
             [card turnToCardBack];
@@ -102,7 +99,7 @@
 }
 
 - (void)redrawScene {
-    for (UIView *subview in gameScene.subviews) {
+    for (UIView *subview in self.gameScene.subviews) {
         [subview removeFromSuperview];
     }
     
@@ -132,9 +129,10 @@
     
     [openedCards removeAllObjects];
 }
+
 - (void)isGameSceneEmpty {
-    if (gameScene.subviews.count == 2 && gameOver) {
-        gameOver();
+    if (self.gameScene.subviews.count == 2 && self.gameOver) {
+        self.gameOver();
     }
 }
 

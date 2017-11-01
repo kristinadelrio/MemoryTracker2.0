@@ -24,9 +24,6 @@
     GameOverView *gameOver;
 }
 
-@synthesize gameMapContainer;
-@synthesize timeLimit;
-
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad {
@@ -80,7 +77,7 @@
 
 - (void)initPauseView {
     pauseView = [[PauseView alloc]
-                 initWithFrame:gameMapContainer.bounds];
+                 initWithFrame:self.gameMapContainer.bounds];
     
     __weak typeof(self) weakSelf = self;
     pauseView.onPauseTap = ^{
@@ -94,7 +91,7 @@
 }
 
 - (void)initGameOverView {
-    gameOver = [[GameOverView alloc] initWithFrame:gameMapContainer.bounds];
+    gameOver = [[GameOverView alloc] initWithFrame:self.gameMapContainer.bounds];
     
     __weak typeof(self) weakSelf = self;
     gameOver.onReplayGame = ^{
@@ -118,7 +115,7 @@
 - (void)turnOnPause:(BOOL)state {
     if (state) {
         [self initPauseView];
-        [gameMapContainer addSubview:pauseView];
+        [self.gameMapContainer addSubview:pauseView];
         [self updateFocusIfNeeded];
     }
     else {
@@ -148,7 +145,7 @@
 - (void)gameOver {
     [panelController stopTimer];
     [self initGameOverView];
-    [gameMapContainer addSubview:gameOver];
+    [self.gameMapContainer addSubview:gameOver];
     
     if (GameLogic.shared.totalScore > 0) {
         [self saveScore];

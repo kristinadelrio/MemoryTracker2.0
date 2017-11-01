@@ -13,11 +13,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
-@property bool isTimerRunning;
-@property bool isPause;
+@property BOOL isTimerRunning;
+@property BOOL isPause;
 
 @property void  (^onRestartTap)(void);
-@property void (^onPauseTap)(bool);
+@property void (^onPauseTap)(BOOL);
 @property void (^onHomeTap)(void);
 @property void (^timeOver)(void);
 

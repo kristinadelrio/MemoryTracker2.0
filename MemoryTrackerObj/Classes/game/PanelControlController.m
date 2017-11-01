@@ -15,25 +15,13 @@
     NSTimer *timer;
 }
 
-#pragma mark - Properties
-
-@synthesize isPause;
-@synthesize isTimerRunning;
-@synthesize scoreLabel;
-@synthesize timeLabel;
-
-@synthesize onHomeTap;
-@synthesize onPauseTap;
-@synthesize onRestartTap;
-@synthesize timeOver;
-
 #pragma mark - LifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    isPause = NO;
-    isTimerRunning = NO;
+    self.isPause = NO;
+    self.isTimerRunning = NO;
 }
 
 - (void) viewWillAppear: (BOOL) animated {
@@ -49,22 +37,22 @@
 #pragma mark - IBActions
 
 - (IBAction)restartGame:(UIButton *)sender {
-    if (onRestartTap) {
-        onRestartTap();
+    if (self.onRestartTap) {
+        self.onRestartTap();
     }
 }
 
 - (IBAction)pauseGame:(UIButton *)sender {
-    isPause = !isPause;
+    self.isPause = !self.isPause;
     [self changeTimerState];
     
-    if (onPauseTap) {
-        onPauseTap(isPause);
+    if (self.onPauseTap) {
+        onPauseTap(self.isPause);
     }
 }
 
 - (IBAction)backToHome:(UIButton *)sender {
-    if (onHomeTap) {
+    if (self.onHomeTap) {
         onHomeTap();
     }
 }
@@ -94,8 +82,8 @@
 
 - (void)prepareRestartingGame {
     [self stopTimer];
-    scoreLabel.text = @"0";
-    timeLabel.text = @"00:00";
+    self.scoreLabel.text = @"0";
+    self.timeLabel.text = @"00:00";
 }
 
 #pragma mark - Timer's management
@@ -108,16 +96,16 @@
              userInfo: nil
              repeats: YES];
     
-    isTimerRunning = YES;
+    self.isTimerRunning = YES;
 }
 
 - (void)stopTimer {
     [timer invalidate];
-    isTimerRunning = NO;
+    self.isTimerRunning = NO;
 }
 
 - (void)changeTimerState {
-    isTimerRunning && isPause ? [self stopTimer] : [self runTimer];
+    self.isTimerRunning && self.isPause ? [self stopTimer] : [self runTimer];
 }
 
 @end

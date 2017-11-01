@@ -10,10 +10,7 @@
 #import "RatingStorage.h"
 #import "RatingCell.h"
 
-
 @implementation RatingController
-
-@synthesize tableView;
 
 #pragma mark - IBActions
 
@@ -36,7 +33,7 @@
 
 - (void)clearScore {
     [RatingStorage.shared removeData];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)createDeleteAlertWith:(NSString *)title and:(NSString *) message {
