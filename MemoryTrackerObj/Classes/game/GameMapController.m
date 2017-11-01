@@ -48,7 +48,7 @@
                                           action: @selector(onCardTap:)];
     
     [card addGestureRecognizer:recognizer];
-    [gameScene addSubview:card];
+    [self.gameScene addSubview:card];
     
     return card;
 }

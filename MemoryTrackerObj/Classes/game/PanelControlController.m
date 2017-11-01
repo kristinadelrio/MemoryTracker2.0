@@ -47,28 +47,28 @@
     [self changeTimerState];
     
     if (self.onPauseTap) {
-        onPauseTap(self.isPause);
+        self.onPauseTap(self.isPause);
     }
 }
 
 - (IBAction)backToHome:(UIButton *)sender {
     if (self.onHomeTap) {
-        onHomeTap();
+        self.onHomeTap();
     }
 }
 
 #pragma mark - Presentation block
 
 - (void)present:(NSInteger)score {
-    scoreLabel.text = [[NSNumber numberWithInteger: score] stringValue];
+    self.scoreLabel.text = [[NSNumber numberWithInteger: score] stringValue];
 }
 
 - (void)presentTimer {
     if (GameLogic.shared.currentTime < 1) {
         [timer invalidate];
         
-        if (timeOver) {
-            timeOver();
+        if (self.timeOver) {
+            self.timeOver();
         }
         
     } else {
@@ -76,7 +76,7 @@
         NSString* time = [NSTImemeIntervalToString toString:
                           GameLogic.shared.currentTime];
         
-        timeLabel.text = time;
+        self.timeLabel.text = time;
     }
 }
 
